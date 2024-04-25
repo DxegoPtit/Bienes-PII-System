@@ -99,7 +99,7 @@ public class TableModels {
             columnas.add("ASIGNADO A");
             columnas.add("UBICACION");
             columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
+        Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
         
         dtm = new DefaultTableModel(data, columnas){
             @Override

@@ -143,6 +143,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -279,7 +280,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Inventario de Bienes - Menú Principal");
-        setMinimumSize(new java.awt.Dimension(1153, 658));
+        setMinimumSize(new java.awt.Dimension(1153, 690));
         setResizable(false);
 
         scenary1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -332,7 +333,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(pplname)
                     .addComponent(jLabel20)
                     .addComponent(jButton1))
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(500, Short.MAX_VALUE))
         );
 
         btnMODE.setBackground(new java.awt.Color(0, 204, 153));
@@ -554,6 +555,13 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("...");
 
+        jButton6.setText("Ver todo el inventario");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -568,6 +576,10 @@ public class MenuFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(jButton6)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,7 +594,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -637,7 +651,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -711,7 +725,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -756,7 +770,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("REGISTRAR FALTANTES", jPanel5);
@@ -769,7 +783,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR SERVICIOS", jPanel10);
@@ -782,7 +796,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR UNIDADES", jPanel13);
@@ -795,7 +809,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR SECTORES", jPanel15);
@@ -808,7 +822,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR ENTIDADES", jPanel16);
@@ -821,7 +835,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 690, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR TRABAJADORES", jPanel17);
@@ -994,6 +1008,8 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        tmls = new TableModels();
+        
         String item;
         String idExtraido = "";
         
@@ -1005,10 +1021,14 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
+        
+        invTable.setModel(tmls.modeloInventarioByUnidades(idExtraido));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        tmls = new TableModels();
+        
         String item;
         String idExtraido = "";
         
@@ -1020,7 +1040,15 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
+        
+        invTable.setModel(tmls.modeloInventarioByServicios(idExtraido));
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        tmls = new TableModels();
+        invTable.setModel(tmls.modeloInventarioByAll());
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1057,6 +1085,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

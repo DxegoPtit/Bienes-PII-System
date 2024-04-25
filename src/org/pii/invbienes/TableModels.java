@@ -54,7 +54,52 @@ public class TableModels {
             columnas.add("UNIDAD");
             columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioByEntidad(ID);
+        Vector<Vector<Object>> data = scc.dataInventarioBySector(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloInventarioByUnidades(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
+            columnas.add("ESTADO");
+            columnas.add("STATUS");
+            columnas.add("ASIGNADO A");
+            columnas.add("UBICACION");
+            columnas.add("SERVICIO");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloInventarioByServicios(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
+            columnas.add("ESTADO");
+            columnas.add("STATUS");
+            columnas.add("ASIGNADO A");
+            columnas.add("UBICACION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
         
         dtm = new DefaultTableModel(data, columnas){
             @Override
@@ -75,6 +120,7 @@ public class TableModels {
             columnas.add("STATUS");
             columnas.add("ASIGNADO A");
             columnas.add("UBICACION");
+            columnas.add("ENTIDAD");
             columnas.add("SECTOR");
             columnas.add("UNIDAD");
             columnas.add("SERVICIO");

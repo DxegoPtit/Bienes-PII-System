@@ -142,8 +142,12 @@ public class MenuFrame extends javax.swing.JFrame {
         serviciosList = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        labelVisualizando = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        selectedLabel = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -333,7 +337,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(pplname)
                     .addComponent(jLabel20)
                     .addComponent(jButton1))
-                .addContainerGap(500, Short.MAX_VALUE))
+                .addContainerGap(534, Short.MAX_VALUE))
         );
 
         btnMODE.setBackground(new java.awt.Color(0, 204, 153));
@@ -403,6 +407,11 @@ public class MenuFrame extends javax.swing.JFrame {
 
             }
         ));
+        invTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(invTable);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -552,8 +561,8 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Viendo inventario para:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("...");
+        labelVisualizando.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelVisualizando.setText("...");
 
         jButton6.setText("Ver todo el inventario");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -562,24 +571,47 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Seleccionando:");
+
+        selectedLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        selectedLabel.setText("...");
+
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton7.setText("Totalizar todo el inventario");
+
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton8.setText("Generar Reporte");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jButton6)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelVisualizando))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(173, 173, 173)
+                                .addComponent(jButton6)
+                                .addGap(185, 185, 185)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,13 +621,25 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(labelVisualizando))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selectedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
+                .addComponent(jButton6)
                 .addContainerGap())
         );
 
@@ -651,7 +695,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 139, Short.MAX_VALUE)
+            .addGap(0, 173, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -725,7 +769,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 139, Short.MAX_VALUE)
+            .addGap(0, 173, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -770,7 +814,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("REGISTRAR FALTANTES", jPanel5);
@@ -783,7 +827,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR SERVICIOS", jPanel10);
@@ -796,7 +840,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR UNIDADES", jPanel13);
@@ -809,7 +853,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR SECTORES", jPanel15);
@@ -822,7 +866,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR ENTIDADES", jPanel16);
@@ -835,7 +879,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR TRABAJADORES", jPanel17);
@@ -976,6 +1020,8 @@ public class MenuFrame extends javax.swing.JFrame {
         
         item = entidadesList.getSelectedItem().toString();
         
+        labelVisualizando.setText("ENTIDAD " + item);
+        
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
         
@@ -996,6 +1042,8 @@ public class MenuFrame extends javax.swing.JFrame {
         
         item = sectoresList.getSelectedItem().toString();
         
+        labelVisualizando.setText("SECTOR " + item);
+        
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
         
@@ -1014,6 +1062,8 @@ public class MenuFrame extends javax.swing.JFrame {
         String idExtraido = "";
         
         item = unidadesList.getSelectedItem().toString();
+        
+        labelVisualizando.setText("UNIDAD: " + item);
         
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
@@ -1034,6 +1084,8 @@ public class MenuFrame extends javax.swing.JFrame {
         
         item = serviciosList.getSelectedItem().toString();
         
+        labelVisualizando.setText("SERVICIO " + item);
+        
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
         
@@ -1048,7 +1100,14 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         tmls = new TableModels();
         invTable.setModel(tmls.modeloInventarioByAll());
+        labelVisualizando.setText("...");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void invTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invTableMouseClicked
+        // TODO add your handling code here:
+        String data = invTable.getValueAt(invTable.getSelectedRow(), invTable.getSelectedColumn()).toString();
+        selectedLabel.setText(data);
+    }//GEN-LAST:event_invTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1086,6 +1145,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1098,9 +1159,9 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1125,6 +1186,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel labelVisualizando;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JLabel pplname;
     private javax.swing.JPasswordField pwdactual;
@@ -1135,6 +1197,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton seebtn1;
     private javax.swing.JToggleButton seebtn2;
     private javax.swing.JToggleButton seebtn3;
+    private javax.swing.JLabel selectedLabel;
     private javax.swing.JComboBox<String> serviciosList;
     private javax.swing.JComboBox<String> unidadesList;
     // End of variables declaration//GEN-END:variables

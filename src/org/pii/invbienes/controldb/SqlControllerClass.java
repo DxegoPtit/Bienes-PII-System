@@ -333,6 +333,7 @@ public class SqlControllerClass {
                     + "trabajadores.nombre AS nombre,"
                     + "xbienes.ubicacion_asig AS ubicacion, "
                     + "xbienes.fecha_inventariado AS fecha_inventariado "
+                    + "xbienes.idServicio AS servicios"
                     + "FROM bienes AS xbienes "
                     + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
@@ -412,6 +413,15 @@ public class SqlControllerClass {
             closeCon();
         }
     }
+    /*
+    public String[] totalizeAllInventory(){
+        try {
+            openCon();
+            String sql = "SELECT xbienes."
+        } catch (Exception e) {
+        }
+    }
+*/
     
     public DefaultComboBoxModel model(String filterTable) {
         try {

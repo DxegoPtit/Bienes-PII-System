@@ -5,6 +5,7 @@
  */
 package org.pii.invbienes.controldb;
 
+import com.itextpdf.text.pdf.PdfPTable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,6 +31,44 @@ public class SqlControllerClass {
     private DefaultComboBoxModel dcm;
 
     private String ip, db, user, pwd;
+    
+    private PdfPTable table;
+    /*
+    public PdfPTable fillInventoryReportByService(String IDSERV){
+        table = new PdfPTable(6);
+        
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT * from bienes WHERE idServicio = " + IDSERV);
+            
+            table.addCell("CLASIFICACION");
+            table.addCell("Nº DE BIEN");
+            table.addCell("CANTIDAD");
+            table.addCell("DESRIPCION");
+            table.addCell("COSTO DE ADQISICION (BS.)");
+            table.addCell("VALOR ESTIMADO (BS.)");
+            
+            if (rst.next()) {
+                do {                    
+                    table.addCell(rst.getString("clasificacion"));
+                    table.addCell(rst.getString("nbien"));
+                    table.addCell("1");
+                    table.addCell(rst.getString("descripcion"));
+                    table.addCell(rst.getString("monto_bs"));
+                    table.addCell("");
+                } while (rst.next());
+            }
+            
+            return table;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally{
+            closeCon();
+        }
+    }*/
+    
 
     private void getProperties() {
         try {

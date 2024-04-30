@@ -563,6 +563,11 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setText("Totalizar todo el inventario");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setText("Generar Reporte");
@@ -1172,6 +1177,12 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("BOUNDS: " + this.getSize());
     }//GEN-LAST:event_scenary1MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        BienesReportCreatorUX brcu = new BienesReportCreatorUX();
+        brcu.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

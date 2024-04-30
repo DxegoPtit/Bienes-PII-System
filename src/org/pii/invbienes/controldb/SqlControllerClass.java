@@ -204,10 +204,6 @@ public class SqlControllerClass {
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
                 row.add(rs.getString("descripcion"));
-                row.add(rs.getString("estado"));
-                row.add(rs.getString("status"));
-                row.add(rs.getString("nombre"));
-                row.add(rs.getString("ubicacion"));
                 row.add(rs.getString("sector"));
                 row.add(rs.getString("unidad"));
                 row.add(rs.getString("servicio"));
@@ -255,10 +251,6 @@ public class SqlControllerClass {
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
                 row.add(rs.getString("descripcion"));
-                row.add(rs.getString("estado"));
-                row.add(rs.getString("status"));
-                row.add(rs.getString("nombre"));
-                row.add(rs.getString("ubicacion"));
                 row.add(rs.getString("unidad"));
                 row.add(rs.getString("servicio"));
                 row.add(rs.getString("fecha_inventariado"));
@@ -303,9 +295,6 @@ public class SqlControllerClass {
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
                 row.add(rs.getString("descripcion"));
-                row.add(rs.getString("estado"));
-                row.add(rs.getString("status"));
-                row.add(rs.getString("nombre"));
                 row.add(rs.getString("ubicacion"));
                 row.add(rs.getString("servicio"));
                 row.add(rs.getString("fecha_inventariado"));
@@ -349,10 +338,6 @@ public class SqlControllerClass {
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
                 row.add(rs.getString("descripcion"));
-                row.add(rs.getString("estado"));
-                row.add(rs.getString("status"));
-                row.add(rs.getString("nombre"));
-                row.add(rs.getString("ubicacion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -393,14 +378,6 @@ public class SqlControllerClass {
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
                 row.add(rs.getString("descripcion"));
-                row.add(rs.getString("estado"));
-                row.add(rs.getString("status"));
-                row.add(rs.getString("nombre"));
-                row.add(rs.getString("ubicacion"));
-                row.add(rs.getString("entidades"));
-                row.add(rs.getString("sector"));
-                row.add(rs.getString("unidad"));
-                row.add(rs.getString("servicio"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -422,6 +399,7 @@ public class SqlControllerClass {
         }
     }
 */
+    
     
     public DefaultComboBoxModel model(String filterTable) {
         try {

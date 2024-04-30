@@ -22,10 +22,6 @@ public class TableModels {
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
             columnas.add("DESCRIPCION");
-            columnas.add("ESTADO");
-            columnas.add("STATUS");
-            columnas.add("ASIGNADO A");
-            columnas.add("UBICACION");
             columnas.add("SECTOR");
             columnas.add("UNIDAD");
             columnas.add("SERVICIO");
@@ -47,10 +43,6 @@ public class TableModels {
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
             columnas.add("DESCRIPCION");
-            columnas.add("ESTADO");
-            columnas.add("STATUS");
-            columnas.add("ASIGNADO A");
-            columnas.add("UBICACION");
             columnas.add("UNIDAD");
             columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
@@ -71,10 +63,6 @@ public class TableModels {
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
             columnas.add("DESCRIPCION");
-            columnas.add("ESTADO");
-            columnas.add("STATUS");
-            columnas.add("ASIGNADO A");
-            columnas.add("UBICACION");
             columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
@@ -94,10 +82,6 @@ public class TableModels {
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
             columnas.add("DESCRIPCION");
-            columnas.add("ESTADO");
-            columnas.add("STATUS");
-            columnas.add("ASIGNADO A");
-            columnas.add("UBICACION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
         
@@ -116,14 +100,6 @@ public class TableModels {
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
             columnas.add("DESCRIPCION");
-            columnas.add("ESTADO");
-            columnas.add("STATUS");
-            columnas.add("ASIGNADO A");
-            columnas.add("UBICACION");
-            columnas.add("ENTIDAD");
-            columnas.add("SECTOR");
-            columnas.add("UNIDAD");
-            columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByAll();
         

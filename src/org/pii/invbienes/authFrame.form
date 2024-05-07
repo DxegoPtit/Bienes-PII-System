@@ -458,7 +458,7 @@
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="49" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txt_pwd" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jToggleButton1" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>

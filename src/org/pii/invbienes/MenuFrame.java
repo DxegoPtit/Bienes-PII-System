@@ -8,6 +8,11 @@ import static com.formdev.flatlaf.FlatLaf.updateUI;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -21,8 +26,16 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 import jiconfont.icons.font_awesome.FontAwesome;
 import jiconfont.swing.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.pii.invbienes.controldb.SqlControllerClass;
 
 /**
@@ -58,6 +71,11 @@ public class MenuFrame extends javax.swing.JFrame {
         scc = new SqlControllerClass();
         setFiltersModels();
         loadDefaultTables();
+    }
+    
+    private void callReport(String FECHA){
+        
+        scc.reportInventario(FECHA);
     }
     
     private void loadDefaultTables(){
@@ -571,6 +589,11 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setText("Generar Reporte");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -1180,9 +1203,24 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        BienesReportCreatorUX brcu = new BienesReportCreatorUX();
-        brcu.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        // Obtener la fecha actual
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+        
+        callReport(fechaFormateada);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

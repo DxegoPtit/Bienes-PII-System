@@ -14,11 +14,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -31,8 +40,11 @@ public class SqlControllerClass {
     private DefaultComboBoxModel dcm;
 
     private String ip, db, user, pwd;
-    
+
     private PdfPTable table;
+
+    private JasperViewer jvw;
+
     /*
     public PdfPTable fillInventoryReportByService(String IDSERV){
         table = new PdfPTable(6);
@@ -68,8 +80,6 @@ public class SqlControllerClass {
             closeCon();
         }
     }*/
-    
-
     private void getProperties() {
         try {
             String rutaIni = new File(getClass().getResource("/org/pii/invbienes/settings.ini").getFile()).getAbsolutePath();
@@ -233,10 +243,10 @@ public class SqlControllerClass {
                     + "INNER JOIN entidades ON xbienes.idEntidad = entidades.id "
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
                     + "WHERE entidades.id = " + ID;
-            
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
@@ -249,7 +259,7 @@ public class SqlControllerClass {
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
-            
+
             return data;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -258,7 +268,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public Vector dataInventarioBySector(String ID) {
         try {
             openCon();
@@ -280,10 +290,10 @@ public class SqlControllerClass {
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
                     + "WHERE "
                     + "sectores.id = " + ID;
-            
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
@@ -295,7 +305,7 @@ public class SqlControllerClass {
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
-            
+
             return data;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -304,7 +314,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public Vector dataInventarioByUnidades(String ID) {
         try {
             openCon();
@@ -324,10 +334,10 @@ public class SqlControllerClass {
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
                     + "WHERE "
                     + "unidades.id = " + ID;
-            
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
@@ -339,7 +349,7 @@ public class SqlControllerClass {
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
-            
+
             return data;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -348,7 +358,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public Vector dataInventarioByServicios(String ID) {
         try {
             openCon();
@@ -367,10 +377,10 @@ public class SqlControllerClass {
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
                     + "WHERE "
                     + "servicios.id = " + ID;
-            
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
@@ -380,7 +390,7 @@ public class SqlControllerClass {
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
-            
+
             return data;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -407,10 +417,10 @@ public class SqlControllerClass {
                     + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
                     + "INNER JOIN entidades ON xbienes.idEntidad = entidades.id "
                     + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id";
-            
+
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
@@ -420,7 +430,7 @@ public class SqlControllerClass {
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
-            
+
             return data;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -429,6 +439,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
+
     /*
     public String[] totalizeAllInventory(){
         try {
@@ -437,9 +448,7 @@ public class SqlControllerClass {
         } catch (Exception e) {
         }
     }
-*/
-    
-    
+     */
     public DefaultComboBoxModel model(String filterTable) {
         try {
             dcm = new DefaultComboBoxModel();
@@ -459,6 +468,31 @@ public class SqlControllerClass {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
             return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportInventario(String FECHA) {
+        try {
+            if (openCon() != null) {
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ServicioInventarioBienes.jasper"));
+
+                // Crear parámetros para el informe
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("fecha", FECHA);
+
+                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                jvw = new JasperViewer(jprint, false);
+                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                jvw.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
         } finally {
             closeCon();
         }

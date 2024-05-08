@@ -485,5 +485,77 @@ public class SqlControllerClass {
             closeCon();
         }
     }
+    
+    public String[] bienData(String BID){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT "
+                    + "bienes.clasificacion AS clasif, "
+                    + "bienes.nbien AS nb, "
+                    + "bienes.descripcion AS `desc`, "
+                    + "bienes.estado AS estado, "
+                    + "bienes.`status` AS `status`, "
+                    + "bienes.ubicacion_asig AS ubic, "
+                    + "bienes.idtrabajador_asig AS idtrab, "
+                    + "bienes.monto_bs AS montobs, "
+                    + "bienes.idEntidad AS identidad, "
+                    + "bienes.idSector AS idsector, "
+                    + "bienes.idUnidad AS idunidad, "
+                    + "bienes.idServicio AS idservicio, "
+                    + "bienes.fecha_inventariado AS fecha "
+                    + "FROM bienes "
+                    + "WHERE"
+                    + " bienes.nbien = " + BID);
+            
+            System.out.println("QUERY: " + "SELECT "
+                    + "bienes.clasificacion AS clasif, "
+                    + "bienes.nbien AS nb, "
+                    + "bienes.descripcion AS `desc`, "
+                    + "bienes.estado AS estado, "
+                    + "bienes.`status` AS `status`, "
+                    + "bienes.ubicacion_asig AS ubic, "
+                    + "bienes.idtrabajador_asig AS idtrab, "
+                    + "bienes.monto_bs AS montobs, "
+                    + "bienes.idEntidad AS identidad, "
+                    + "bienes.idSector AS idsector, "
+                    + "bienes.idUnidad AS idunidad, "
+                    + "bienes.idServicio AS idservicio, "
+                    + "bienes.fecha_inventariado AS fecha "
+                    + "FROM bienes "
+                    + "WHERE"
+                    + " bienes.nbien = " + BID);
+            
+            String[] data;
+            
+            if (rst.next()) {
+                data = new String[] 
+                {
+                    rst.getString("clasif"), 
+                    rst.getString("nb"),
+                    rst.getString("desc"),
+                    rst.getString("estado"),
+                    rst.getString("status"),
+                    rst.getString("idtrab"),
+                    rst.getString("ubic"),
+                    rst.getString("montobs"),
+                    rst.getString("identidad"),
+                    rst.getString("idsector"),
+                    rst.getString("idunidad"),
+                    rst.getString("idservicio"),
+                    rst.getString("fecha")
+                };
+                return data;
+            } else {
+                return null;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
 
 }

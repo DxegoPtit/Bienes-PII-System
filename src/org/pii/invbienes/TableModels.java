@@ -21,10 +21,6 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("DESCRIPCION");
-            columnas.add("SECTOR");
-            columnas.add("UNIDAD");
-            columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByEntidad(ID);
         
@@ -42,9 +38,6 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("DESCRIPCION");
-            columnas.add("UNIDAD");
-            columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioBySector(ID);
         
@@ -62,8 +55,6 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("DESCRIPCION");
-            columnas.add("SERVICIO");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
         
@@ -99,7 +90,6 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByAll();
         

@@ -506,25 +506,7 @@ public class SqlControllerClass {
                     + "bienes.fecha_inventariado AS fecha "
                     + "FROM bienes "
                     + "WHERE"
-                    + " bienes.nbien = " + BID);
-            
-            System.out.println("QUERY: " + "SELECT "
-                    + "bienes.clasificacion AS clasif, "
-                    + "bienes.nbien AS nb, "
-                    + "bienes.descripcion AS `desc`, "
-                    + "bienes.estado AS estado, "
-                    + "bienes.`status` AS `status`, "
-                    + "bienes.ubicacion_asig AS ubic, "
-                    + "bienes.idtrabajador_asig AS idtrab, "
-                    + "bienes.monto_bs AS montobs, "
-                    + "bienes.idEntidad AS identidad, "
-                    + "bienes.idSector AS idsector, "
-                    + "bienes.idUnidad AS idunidad, "
-                    + "bienes.idServicio AS idservicio, "
-                    + "bienes.fecha_inventariado AS fecha "
-                    + "FROM bienes "
-                    + "WHERE"
-                    + " bienes.nbien = " + BID);
+                    + " bienes.nbien = '" + BID + "'");
             
             String[] data;
             
@@ -552,6 +534,130 @@ public class SqlControllerClass {
             
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public String getWorker(String ID){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT * FROM trabajadores WHERE ID = " + ID);
+            if (rst.next()) {
+                return rst.getString("nombre");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public DefaultComboBoxModel getWorkers(){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT * FROM trabajadores");
+            
+            DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+            while (rst.next()) {
+                dcm.addElement(rst.getString("id"));
+            }
+            
+            return dcm;
+        } catch (SQLException e) {
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public String[] getRutaEntes(String ID){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT "
+                    + "entidades.nombre AS Entidad,"
+                    + "sectores.nombre AS Sector,"
+                    + "unidades.nombre AS Unidad,"
+                    + "servicios.nombre AS Servicio "
+                    + "FROM unidades "
+                    + "INNER JOIN servicios ON unidades.id = servicios.idUnidadAs "
+                    + "INNER JOIN sectores ON sectores.id = unidades.idSectorAs "
+                    + "INNER JOIN entidades ON entidades.id = sectores.idEntidadAs "
+                    + "WHERE servicios.id = " + ID);
+            
+            String[] data;
+            if (rst.next()) {
+                data = new String[] 
+                {
+                    rst.getString("Entidad"), 
+                    rst.getString("Sector"),
+                    rst.getString("Unidad"),
+                    rst.getString("Servicio"),
+                };
+                return data;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public DefaultComboBoxModel getServicios(){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT * FROM servicios");
+            
+            DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+            while (rst.next()) {
+                dcm.addElement(rst.getString("id"));
+            }
+            
+            return dcm;
+        } catch (SQLException e) {
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public String getEstado(String ID){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT estado FROM bienes WHERE nbien = '" + ID + "'");
+            if (rst.next()) {
+                return rst.getString("estado");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            return null;
+        } finally{
+            closeCon();
+        }
+    }
+    
+    public String getStatus(String ID){
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT status FROM bienes WHERE nbien = '" + ID + "'");
+            if (rst.next()) {
+                return rst.getString("estado");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
             return null;
         } finally{
             closeCon();

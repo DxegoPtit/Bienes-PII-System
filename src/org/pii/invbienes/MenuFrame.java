@@ -1853,7 +1853,7 @@ public class MenuFrame extends javax.swing.JFrame {
         sgrp.setText(clasSplit(data[0])[1]);
         seccion.setText(clasSplit(data[0])[2]);
         
-        //ESTA
+        //...
         nbien.setText(data[1]);
         desc.setText(data[2]);
         

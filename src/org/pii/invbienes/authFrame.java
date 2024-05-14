@@ -366,9 +366,21 @@ public class authFrame extends javax.swing.JFrame {
         jLabel3.setIcon(IconFontSwing.buildIcon(FontAwesome.USER_CIRCLE, 20, new Color(0, 150, 0)));
         jLabel3.setText("Usuario:");
 
+        txt_user.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_userKeyPressed(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setIcon(IconFontSwing.buildIcon(FontAwesome.LOCK, 20, new Color(0, 150, 0)));
         jLabel5.setText("Contraseña:");
+
+        txt_pwd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_pwdKeyPressed(evt);
+            }
+        });
 
         jToggleButton1.setIcon(IconFontSwing.buildIcon(FontAwesome.EYE, 20, new Color(0, 150, 0)));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -636,6 +648,20 @@ public class authFrame extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
     }//GEN-LAST:event_formMouseClicked
+
+    private void txt_pwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == 10) {
+            jButton1ActionPerformed(null);
+        }
+    }//GEN-LAST:event_txt_pwdKeyPressed
+
+    private void txt_userKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_userKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == 10) {
+            txt_pwd.requestFocusInWindow();
+        }
+    }//GEN-LAST:event_txt_userKeyPressed
 
     /**
      * @param args the command line arguments

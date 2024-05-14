@@ -349,7 +349,6 @@ public class authFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Iniciar Sesión .:: Sistema de Inventario de Bienes ::.");
         setMinimumSize(new java.awt.Dimension(760, 751));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

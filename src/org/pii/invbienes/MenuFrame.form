@@ -701,6 +701,9 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="servComboItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -787,21 +790,33 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Marcar como &quot;A desincorporar&quot;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton15">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Registrar o ver entes"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="jToggleButton2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="MODIFICAR"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton2ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton16">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="CERRAR"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -812,7 +827,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Sistema de Inventario de Bienes - Men&#xfa; Principal"/>
+    <Property name="title" type="java.lang.String" value=".:: Sistema de Bienes ::."/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1136, 775]"/>
     </Property>
@@ -844,7 +859,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scenary1" alignment="0" max="32767" attributes="0"/>
+          <Component id="scenary1" min="-2" pref="722" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -932,7 +947,7 @@
                           <Component id="jButton9" min="-2" pref="36" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton10" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace pref="463" max="32767" attributes="0"/>
+                          <EmptySpace pref="410" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1093,7 +1108,7 @@
                           <Component id="jPanel24" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel23" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="47" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
@@ -1594,7 +1609,7 @@
                       <Component id="jPanel43" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel42" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="47" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanel41" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel35" min="-2" max="-2" attributes="0"/>
@@ -2185,7 +2200,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="171" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -2209,7 +2224,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="775" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -2231,7 +2246,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="775" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -2253,7 +2268,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="775" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

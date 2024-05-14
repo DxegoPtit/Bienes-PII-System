@@ -497,6 +497,11 @@ public class MenuFrame extends javax.swing.JFrame {
 
         servCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         servCombo.setEnabled(false);
+        servCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                servComboItemStateChanged(evt);
+            }
+        });
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel31.setText("Fecha inventariado:");
@@ -514,12 +519,32 @@ public class MenuFrame extends javax.swing.JFrame {
         servTxt.setEditable(false);
 
         jButton14.setText("Marcar como \"A desincorporar\"");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("Registrar o ver entes");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setText("MODIFICAR");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jButton16.setText("CERRAR");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -707,7 +732,7 @@ public class MenuFrame extends javax.swing.JFrame {
         DetailsBienes.getContentPane().add(scene, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Inventario de Bienes - Menú Principal");
+        setTitle(".:: Sistema de Bienes ::.");
         setMinimumSize(new java.awt.Dimension(1136, 775));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -783,7 +808,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
         );
 
         btnMODE.setBackground(new java.awt.Color(0, 204, 153));
@@ -1125,7 +1150,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1424,7 +1449,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1469,7 +1494,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 224, Short.MAX_VALUE)
+            .addGap(0, 171, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1514,7 +1539,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
         );
 
         scenary1.addTab("REGISTRAR FALTANTES", jPanel5);
@@ -1527,7 +1552,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
         );
 
         scenary1.addTab("REGISTRAR / VER ENTES", jPanel16);
@@ -1540,7 +1565,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 722, Short.MAX_VALUE)
         );
 
         scenary1.addTab("VER / REGISTRAR TRABAJADORES", jPanel17);
@@ -1553,7 +1578,7 @@ public class MenuFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scenary1)
+            .addComponent(scenary1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -1845,35 +1870,150 @@ public class MenuFrame extends javax.swing.JFrame {
         txtAsig.setText(scc.getWorker(comboIdAsig.getSelectedItem().toString()));
     }//GEN-LAST:event_comboIdAsigItemStateChanged
 
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+        DetailsBienes.setVisible(false);
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+
+        if (jToggleButton2.isSelected()) {
+            grupo.setEnabled(true);
+            sgrp.setEnabled(true);
+            seccion.setEnabled(true);
+            comboEstado.setEnabled(true);
+            comboStatus.setEnabled(true);
+            desc.setEnabled(true);
+            comboIdAsig.setEnabled(true);
+            ubic.setEnabled(true);
+            costo.setEnabled(true);
+            servCombo.setEnabled(true);
+            fechatxt.setEnabled(true);
+        } else {
+            grupo.setEnabled(false);
+            sgrp.setEnabled(false);
+            seccion.setEnabled(false);
+            comboEstado.setEnabled(false);
+            comboStatus.setEnabled(false);
+            desc.setEnabled(false);
+            comboIdAsig.setEnabled(false);
+            ubic.setEnabled(false);
+            costo.setEnabled(false);
+            servCombo.setEnabled(false);
+            fechatxt.setEnabled(false);
+
+            //para el grupo, subgrupo y seccion:
+            String grupost = this.grupo.getText(),
+                    subgrp = this.sgrp.getText(),
+                    sec = this.seccion.getText();
+            //para el numero de bien, status y estado:
+            String stat = this.comboStatus.getSelectedItem().toString(),
+                    est = this.comboEstado.getSelectedItem().toString(),
+                    nb = this.nbien.getText();
+            //para la descripcion:
+            String dsc = this.desc.getText();
+            //para el usuario asignado:
+            String idUser = this.comboIdAsig.getSelectedItem().toString(),
+                    ubicacion = this.ubic.getText();
+            //para el costo:
+            String costo_adq = this.costo.getText();
+            //para el servicio seleccionado:
+            String IDserv = this.servCombo.getSelectedItem().toString();
+            //para la fecha:
+            String fecha = this.fechatxt.getText();
+
+            String[] data = new String[]{
+                grupost, //0
+                subgrp, //1
+                sec, //2
+                stat, //3
+                est, //4
+                dsc, //5
+                idUser, //6
+                ubicacion, //7
+                costo_adq, //8
+                IDserv, //9
+                fecha, //10
+                nb, //11
+            }; //son 12 (o sea, el vector termina en 11)
+
+            if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                if (scc.updateBien(nb, data)) {
+                    JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                //Selecciono no
+            }
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void servComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_servComboItemStateChanged
+        // TODO add your handling code here:
+        String ID = servCombo.getSelectedItem().toString();
+        setEntesDetails(ID);
+    }//GEN-LAST:event_servComboItemStateChanged
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+        String nb = nbien.getText();
+        if (scc.updateBienSTATUS(nb, "A DESINCORPORAR")) {
+            JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        DetailsBienes.setVisible(false);
+        scenary1.setSelectedIndex(5);
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void setEntesDetails(String byID) {
+        scc = new SqlControllerClass();
+        String[] route;
+        route = scc.getRutaEntes(byID);
+
+        servTxt.setText(route[0]);
+        sectorTxt.setText(route[1]);
+        unidadTxt.setText(route[2]);
+        entidadTxt.setText(route[3]);
+    }
+
     private void seeDetails(String[] data) {
         scc = new SqlControllerClass();
-        
+
         //Establece los campos de GRUPO, SUBGRUPO Y SECCION
         grupo.setText(clasSplit(data[0])[0]);
         sgrp.setText(clasSplit(data[0])[1]);
         seccion.setText(clasSplit(data[0])[2]);
-        
+
         //...
         nbien.setText(data[1]);
         desc.setText(data[2]);
-        
+
         setEstado(data[1]);
         setStatus(data[1]);
-        
+
         comboIdAsig.setModel(scc.getWorkers());
         txtAsig.setText(scc.getWorker(comboIdAsig.getSelectedItem().toString()));
         ubic.setText(data[6]);
-        
+
         costo.setText(data[7]);
         fechatxt.setText(data[12]);
-        
+
         servCombo.setModel(scc.getServicios());
         String[] ente = scc.getRutaEntes(servCombo.getSelectedItem().toString());
         entidadTxt.setText(ente[0]);
         sectorTxt.setText(ente[1]);
         unidadTxt.setText(ente[2]);
         servTxt.setText(ente[3]);
-        
+
         //Salta la ventana de detalles
         DetailsBienes.setVisible(true);
         DetailsBienes.setLocationRelativeTo(null);
@@ -1883,38 +2023,48 @@ public class MenuFrame extends javax.swing.JFrame {
         //para separar clasificacion en 3 partes;
         return TEXT.split("-");
     }
-    
-    private void setEstado(String NBIEN){
+
+    private void setEstado(String NBIEN) {
         scc = new SqlControllerClass();
         String ESTADO = scc.getEstado(NBIEN);
-        switch(ESTADO){
-            case "EXCELENTE": comboEstado.setSelectedIndex(1);
-            break;
-            case "BUENO":comboEstado.setSelectedIndex(2);
-            break;
-            case "REGULAR":comboEstado.setSelectedIndex(3);
-            break;
-            case "MALO":comboEstado.setSelectedIndex(4);
-            break;
-            case "INSERVIBLE":comboEstado.setSelectedIndex(5);
-            break;
-            default: comboEstado.setSelectedIndex(0);
-            break;
+        switch (ESTADO) {
+            case "EXCELENTE":
+                comboEstado.setSelectedIndex(1);
+                break;
+            case "BUENO":
+                comboEstado.setSelectedIndex(2);
+                break;
+            case "REGULAR":
+                comboEstado.setSelectedIndex(3);
+                break;
+            case "MALO":
+                comboEstado.setSelectedIndex(4);
+                break;
+            case "INSERVIBLE":
+                comboEstado.setSelectedIndex(5);
+                break;
+            default:
+                comboEstado.setSelectedIndex(0);
+                break;
         }
     }
-    
-    private void setStatus(String NBIEN){
+
+    private void setStatus(String NBIEN) {
         scc = new SqlControllerClass();
-        String ESTADO = scc.getEstado(NBIEN);
-        switch(ESTADO){
-            case "A DESINCORPORAR": comboStatus.setSelectedIndex(1);
-            break;
-            case "UBICADO":comboStatus.setSelectedIndex(2);
-            break;
-            case "FALTANTE POR INVESTIGAR":comboStatus.setSelectedIndex(3);
-            break;
-            default: comboStatus.setSelectedIndex(0);
-            break;
+        String ESTADO = scc.getStatus(NBIEN);
+        switch (ESTADO) {
+            case "A DESINCORPORAR":
+                comboStatus.setSelectedIndex(1);
+                break;
+            case "UBICADO":
+                comboStatus.setSelectedIndex(2);
+                break;
+            case "FALTANTE POR INVESTIGAR":
+                comboStatus.setSelectedIndex(3);
+                break;
+            default:
+                comboStatus.setSelectedIndex(0);
+                break;
         }
     }
 

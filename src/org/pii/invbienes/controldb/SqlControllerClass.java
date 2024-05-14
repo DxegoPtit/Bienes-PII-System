@@ -485,8 +485,8 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    public String[] bienData(String BID){
+
+    public String[] bienData(String BID) {
         try {
             openCon();
             Statement stm = con.createStatement();
@@ -507,13 +507,12 @@ public class SqlControllerClass {
                     + "FROM bienes "
                     + "WHERE"
                     + " bienes.nbien = '" + BID + "'");
-            
+
             String[] data;
-            
+
             if (rst.next()) {
-                data = new String[] 
-                {
-                    rst.getString("clasif"), 
+                data = new String[]{
+                    rst.getString("clasif"),
                     rst.getString("nb"),
                     rst.getString("desc"),
                     rst.getString("estado"),
@@ -531,16 +530,16 @@ public class SqlControllerClass {
             } else {
                 return null;
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public String getWorker(String ID){
+
+    public String getWorker(String ID) {
         try {
             openCon();
             Statement stm = con.createStatement();
@@ -552,31 +551,31 @@ public class SqlControllerClass {
             }
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public DefaultComboBoxModel getWorkers(){
+
+    public DefaultComboBoxModel getWorkers() {
         try {
             openCon();
             Statement stm = con.createStatement();
             ResultSet rst = stm.executeQuery("SELECT * FROM trabajadores");
-            
+
             DefaultComboBoxModel dcm = new DefaultComboBoxModel();
             while (rst.next()) {
                 dcm.addElement(rst.getString("id"));
             }
-            
+
             return dcm;
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public String[] getRutaEntes(String ID){
+
+    public String[] getRutaEntes(String ID) {
         try {
             openCon();
             Statement stm = con.createStatement();
@@ -590,47 +589,45 @@ public class SqlControllerClass {
                     + "INNER JOIN sectores ON sectores.id = unidades.idSectorAs "
                     + "INNER JOIN entidades ON entidades.id = sectores.idEntidadAs "
                     + "WHERE servicios.id = " + ID);
-            
+
             String[] data;
             if (rst.next()) {
-                data = new String[] 
-                {
-                    rst.getString("Entidad"), 
+                data = new String[]{
+                    rst.getString("Entidad"),
                     rst.getString("Sector"),
                     rst.getString("Unidad"),
-                    rst.getString("Servicio"),
-                };
+                    rst.getString("Servicio"),};
                 return data;
             } else {
                 return null;
             }
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public DefaultComboBoxModel getServicios(){
+
+    public DefaultComboBoxModel getServicios() {
         try {
             openCon();
             Statement stm = con.createStatement();
             ResultSet rst = stm.executeQuery("SELECT * FROM servicios");
-            
+
             DefaultComboBoxModel dcm = new DefaultComboBoxModel();
             while (rst.next()) {
                 dcm.addElement(rst.getString("id"));
             }
-            
+
             return dcm;
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public String getEstado(String ID){
+
+    public String getEstado(String ID) {
         try {
             openCon();
             Statement stm = con.createStatement();
@@ -642,24 +639,85 @@ public class SqlControllerClass {
             }
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
             closeCon();
         }
     }
-    
-    public String getStatus(String ID){
+
+    public String getStatus(String ID) {
         try {
             openCon();
             Statement stm = con.createStatement();
             ResultSet rst = stm.executeQuery("SELECT status FROM bienes WHERE nbien = '" + ID + "'");
             if (rst.next()) {
-                return rst.getString("estado");
+                return rst.getString("status");
             } else {
                 return null;
             }
         } catch (SQLException e) {
             return null;
-        } finally{
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Boolean updateBien(String byNBien, String[] data) {
+        try {
+            String[] dataBien = data;
+            String clasif = dataBien[0] + "-" + dataBien[1] + "-" + dataBien[2];
+
+            String sql = "UPDATE bienes SET "
+                    + "clasificacion = '" + clasif + "',"
+                    + "descripcion = '" + dataBien[5] + "',"
+                    + "estado = '" + dataBien[4] + "',"
+                    + "status = '" + dataBien[3] + "',"
+                    + "idtrabajador_asig = " + dataBien[6] + ","
+                    + "ubicacion_asig = '" + dataBien[7] + "',"
+                    + "monto_bs = '" + dataBien[8] + "',"
+                    + "idServicio = " + dataBien[9] + ","
+                    + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+"),"
+                    + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+")), "
+                    + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+"))),"
+                    + "fecha_inventariado = '" + dataBien[10] + "' "
+                    + "WHERE bienes.nbien = '" + dataBien[11] + "'";
+            
+            System.out.println("SQL " + sql);
+            
+            openCon();
+            Statement stm = con.createStatement();
+            Integer stt = stm.executeUpdate(sql);
+            
+            if (stt != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public Boolean updateBienSTATUS(String byNBien, String STATUS) {
+        try {
+            String sql = "UPDATE bienes SET status = '" + STATUS + "' WHERE nbien = '" + byNBien + "'";
+            System.out.println("SQL " + sql);
+            
+            openCon();
+            Statement stm = con.createStatement();
+            Integer stt = stm.executeUpdate(sql);
+            
+            if (stt != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            return false;
+        } finally {
             closeCon();
         }
     }

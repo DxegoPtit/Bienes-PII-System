@@ -102,4 +102,117 @@ public class TableModels {
         
         return dtm;
     }
+    
+    //--------------------------------------------------------------------------------//
+    
+    public DefaultTableModel modeloIncorporacionesByEntidad(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByEntidad(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesBySector(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioBySector(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesByUnidades(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesByServicios(String ID){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesByAll(){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQUSICION");
+            columnas.add("Nº FACTURA");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataIncorporacionesByAll();
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel filterIncorporacionesByAll(String CONC){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQUSICION");
+            columnas.add("Nº FACTURA");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.filterIncorporacionesByAll(CONC);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
 }

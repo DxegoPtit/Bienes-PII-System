@@ -188,9 +188,6 @@
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[781, 690]"/>
         </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[781, 690]"/>
-        </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -859,7 +856,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="scenary1" min="-2" pref="722" max="-2" attributes="0"/>
+          <Component id="scenary1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -947,7 +944,7 @@
                           <Component id="jButton9" min="-2" pref="36" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton10" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace pref="410" max="32767" attributes="0"/>
+                          <EmptySpace pref="454" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1137,7 +1134,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="10" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -1542,14 +1539,14 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jLabel6" min="-2" pref="67" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel7" max="32767" attributes="0"/>
                                   <Component id="labelVisualizando" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1609,7 +1606,7 @@
                       <Component id="jPanel43" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel42" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Component id="jPanel41" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel35" min="-2" max="-2" attributes="0"/>
@@ -1624,9 +1621,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jPanel36" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton25" alignment="0" max="32767" attributes="0"/>
                               <Component id="jButton24" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
@@ -1638,17 +1635,15 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="10" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanel36" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="jButton25" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton24" min="-2" pref="52" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <Component id="jButton25" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton24" min="-2" pref="52" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPanel36" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1673,7 +1668,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane3" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane3" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -1695,23 +1690,29 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="entidadesList2" min="-2" pref="264" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="concList" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="entidadesList2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="entidadesList2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="jButton7" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="entidadesList2" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="concList" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton7" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1740,6 +1741,41 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
                               </Events>
                             </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel32">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Filtrar por concepto:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="concList">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="19">
+                                    <StringItem index="0" value="-"/>
+                                    <StringItem index="1" value="01-. Inventario inicial."/>
+                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
+                                    <StringItem index="3" value="03-. Compras. "/>
+                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
+                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
+                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
+                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
+                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
+                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
+                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
+                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
+                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
+                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
+                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
+                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
+                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
+                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
+                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel38">
@@ -1755,23 +1791,29 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="sectoresList2" min="-2" pref="264" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton21" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButton13" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="concList1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="sectoresList2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="sectoresList2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="jButton21" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="sectoresList2" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="concList1" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton13" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1792,12 +1834,47 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton21">
+                            <Component class="javax.swing.JLabel" name="jLabel33">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Filtrar por concepto:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="concList1">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="19">
+                                    <StringItem index="0" value="-"/>
+                                    <StringItem index="1" value="01-. Inventario inicial."/>
+                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
+                                    <StringItem index="3" value="03-. Compras. "/>
+                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
+                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
+                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
+                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
+                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
+                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
+                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
+                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
+                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
+                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
+                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
+                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
+                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
+                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
+                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton13">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="VISUALIZAR"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton21ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -1815,23 +1892,29 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="unidadesList2" min="-2" pref="264" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton22" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="concList2" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="unidadesList2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="unidadesList2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="jButton22" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="unidadesList2" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="concList2" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton17" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1852,12 +1935,47 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton22">
+                            <Component class="javax.swing.JLabel" name="jLabel34">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Filtrar por concepto:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="concList2">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="19">
+                                    <StringItem index="0" value="-"/>
+                                    <StringItem index="1" value="01-. Inventario inicial."/>
+                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
+                                    <StringItem index="3" value="03-. Compras. "/>
+                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
+                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
+                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
+                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
+                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
+                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
+                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
+                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
+                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
+                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
+                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
+                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
+                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
+                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
+                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton17">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="VISUALIZAR"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton22ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton17ActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -1875,23 +1993,29 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                      <Component id="serviciosList2" min="-2" pref="264" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton23" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="63" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jButton18" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="concList3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="serviciosList2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="serviciosList2" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                          <Component id="jButton23" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="serviciosList2" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="concList3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton18" min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1912,12 +2036,47 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton23">
+                            <Component class="javax.swing.JLabel" name="jLabel35">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Filtrar por concepto:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="concList3">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="19">
+                                    <StringItem index="0" value="-"/>
+                                    <StringItem index="1" value="01-. Inventario inicial."/>
+                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
+                                    <StringItem index="3" value="03-. Compras. "/>
+                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
+                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
+                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
+                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
+                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
+                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
+                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
+                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
+                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
+                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
+                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
+                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
+                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
+                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
+                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton18">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="VISUALIZAR"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton23ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -2013,14 +2172,14 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="invTable1">
+                    <Component class="javax.swing.JTable" name="inctable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="invTable1MouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inctableMouseClicked"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -2032,26 +2191,31 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelVisualizando2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="labelVisualizando2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel11" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="69" max="32767" attributes="0"/>
+                          <Component id="jPanel44" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel11" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel13" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelVisualizando2" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jPanel44" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -2080,6 +2244,21 @@
                     <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
                 </Component>
+                <Container class="javax.swing.JPanel" name="jPanel44">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="105" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -2200,7 +2379,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="171" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="215" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -2224,7 +2403,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -2246,7 +2425,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -2268,7 +2447,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="722" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="766" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

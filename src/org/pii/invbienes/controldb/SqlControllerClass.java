@@ -427,6 +427,259 @@ public class SqlControllerClass {
             closeCon();
         }
     }
+    
+    //-------------------------------------------------------------------------//
+    
+    public Vector dataIncorporacionesByEntidad(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT xbienes.nbien AS nbien, xbienes.descripcion AS descripcion, "
+                    + "xbienes.clasificacion AS clasificacion, xbienes.estado AS estado,"
+                    + "xbienes.`status` AS `status`,trabajadores.nombre AS nombre, "
+                    + "xbienes.ubicacion_asig AS ubicacion,  sectores.nombre AS sector, "
+                    + "unidades.nombre AS unidad, servicios.nombre AS servicio, "
+                    + "xbienes.fecha_inventariado AS fecha_inventariado "
+                    + "FROM bienes AS xbienes INNER JOIN sectores ON xbienes.idSector = sectores.id "
+                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
+                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
+                    + "INNER JOIN entidades ON xbienes.idEntidad = entidades.id "
+                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
+                    + "WHERE entidades.id = " + ID;
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nbien"));
+                row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("fecha_inventariado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataIncorporacionesBySector(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT xbienes.nbien AS nbien, "
+                    + "xbienes.descripcion AS descripcion, "
+                    + "xbienes.clasificacion AS clasificacion,"
+                    + "xbienes.estado AS estado, "
+                    + "xbienes.`status` AS `status`, "
+                    + "trabajadores.nombre AS nombre,"
+                    + "xbienes.ubicacion_asig AS ubicacion, "
+                    + "unidades.nombre AS unidad, "
+                    + "servicios.nombre AS servicio, "
+                    + "xbienes.fecha_inventariado AS fecha_inventariado "
+                    + "FROM bienes AS xbienes "
+                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
+                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
+                    + "INNER JOIN sectores ON xbienes.idSector = sectores.id "
+                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
+                    + "WHERE "
+                    + "sectores.id = " + ID;
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nbien"));
+                row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("fecha_inventariado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataIncorporacionesByUnidades(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT xbienes.nbien AS nbien, "
+                    + "xbienes.descripcion AS descripcion, "
+                    + "xbienes.clasificacion AS clasificacion,"
+                    + "xbienes.estado AS estado, "
+                    + "xbienes.`status` AS `status`, "
+                    + "trabajadores.nombre AS nombre,"
+                    + "xbienes.ubicacion_asig AS ubicacion, "
+                    + "servicios.nombre AS servicio, "
+                    + "xbienes.fecha_inventariado AS fecha_inventariado "
+                    + "FROM bienes AS xbienes "
+                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
+                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
+                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
+                    + "WHERE "
+                    + "unidades.id = " + ID;
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nbien"));
+                row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("fecha_inventariado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataIncorporacionesByServicios(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT xbienes.nbien AS nbien, "
+                    + "xbienes.descripcion AS descripcion, "
+                    + "xbienes.clasificacion AS clasificacion,"
+                    + "xbienes.estado AS estado, "
+                    + "xbienes.`status` AS `status`, "
+                    + "trabajadores.nombre AS nombre,"
+                    + "xbienes.ubicacion_asig AS ubicacion, "
+                    + "xbienes.fecha_inventariado AS fecha_inventariado, "
+                    + "xbienes.idServicio AS servicios "
+                    + "FROM bienes AS xbienes "
+                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
+                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
+                    + "WHERE "
+                    + "servicios.id = " + ID;
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nbien"));
+                row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("fecha_inventariado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataIncorporacionesByAll() {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+            + "clasificacion AS cls,"
+            + "nbien AS nb,"
+            + "concepto AS conc,"
+            + "descripcion AS `desc`,"
+            + "monto_bs AS monto,"
+            + "nfactura AS nfac,"
+            + "fecha_mov AS fecha "
+            + "FROM movimientos";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public Vector filterIncorporacionesByAll(String idConcepto) {
+        try {
+            openCon();
+
+            String verify = "";
+            
+            String sql = "SELECT "
+            + "clasificacion AS cls,"
+            + "nbien AS nb,"
+            + "concepto AS conc,"
+            + "descripcion AS `desc`,"
+            + "monto_bs AS monto,"
+            + "nfactura AS nfac,"
+            + "fecha_mov AS fecha "
+            + "FROM movimientos WHERE concepto = '" + idConcepto + "'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                
+                verify = rs.getString("nb");
+                
+                data.add(row);
+            }
+            
+            if (!verify.isEmpty()) {
+                return data;
+            } else {
+                JOptionPane.showMessageDialog(null, "No hubo coincidencias para el concepto seleccionado", ".::Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
 
     /*
     public String[] totalizeAllInventory(){

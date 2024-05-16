@@ -137,47 +137,91 @@ public class TableModels {
         return dtm;
     }
     
-    public DefaultTableModel modeloIncorporacionesBySector(String ID){
+    public DefaultTableModel modeloIncorporacionesBySector(String[] dataFiltro){
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioBySector(ID);
-        
-        dtm = new DefaultTableModel(data, columnas){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Hacer que todas las celdas no sean editables
-            }
-        };
-        
-        return dtm;
-    }
-    
-    public DefaultTableModel modeloIncorporacionesByUnidades(String ID){
-        Vector<String> columnas = new Vector<>();
-            columnas.add("NUMERO DE BIEN");
-            columnas.add("CLASIFICACION");
-            columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
-        
-        dtm = new DefaultTableModel(data, columnas){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Hacer que todas las celdas no sean editables
-            }
-        };
-        
-        return dtm;
-    }
-    
-    public DefaultTableModel modeloIncorporacionesByServicios(String ID){
-        Vector<String> columnas = new Vector<>();
-            columnas.add("NUMERO DE BIEN");
-            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQ.");
+            columnas.add("Nº FACTURA");
             columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataIncorporacionesBySector(dataFiltro[0], dataFiltro[1]);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesByUnidades(String[] dataFiltro){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQ.");
+            columnas.add("Nº FACTURA");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataIncorporacionesByUnidades(dataFiltro[0], dataFiltro[1]);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloIncorporacionesByServicios(String[] dataFiltro){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQ.");
+            columnas.add("Nº FACTURA");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataIncorporacionesByUnidades(dataFiltro[0], dataFiltro[1]);
         
         dtm = new DefaultTableModel(data, columnas){
             @Override

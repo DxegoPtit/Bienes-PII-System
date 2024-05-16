@@ -437,24 +437,24 @@ public class SqlControllerClass {
 
             if (filter.isEmpty()) {
                 sql = "SELECT "
-                    + "clasificacion AS cls,"
-                    + "nbien AS nb,"
-                    + "concepto AS conc,"
-                    + "descripcion AS `desc`,"
-                    + "monto_bs AS monto,"
-                    + "nfactura AS nfac,"
-                    + "fecha_mov AS fecha "
-                    + "FROM movimientos WHERE identidad = " + ID;
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE identidad = " + ID;
             } else {
                 sql = "SELECT "
-                    + "clasificacion AS cls,"
-                    + "nbien AS nb,"
-                    + "concepto AS conc,"
-                    + "descripcion AS `desc`,"
-                    + "monto_bs AS monto,"
-                    + "nfactura AS nfac,"
-                    + "fecha_mov AS fecha "
-                    + "FROM movimientos WHERE identidad = " + ID + " AND concepto = " + filter;
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto = " + filter;
             }
 
             Statement stmt = con.createStatement();
@@ -482,27 +482,33 @@ public class SqlControllerClass {
         }
     }
 
-    public Vector dataIncorporacionesBySector(String ID) {
+    public Vector dataIncorporacionesBySector(String ID, String filter) {
         try {
             openCon();
 
-            String sql = "SELECT xbienes.nbien AS nbien, "
-                    + "xbienes.descripcion AS descripcion, "
-                    + "xbienes.clasificacion AS clasificacion,"
-                    + "xbienes.estado AS estado, "
-                    + "xbienes.`status` AS `status`, "
-                    + "trabajadores.nombre AS nombre,"
-                    + "xbienes.ubicacion_asig AS ubicacion, "
-                    + "unidades.nombre AS unidad, "
-                    + "servicios.nombre AS servicio, "
-                    + "xbienes.fecha_inventariado AS fecha_inventariado "
-                    + "FROM bienes AS xbienes "
-                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
-                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
-                    + "INNER JOIN sectores ON xbienes.idSector = sectores.id "
-                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
-                    + "WHERE "
-                    + "sectores.id = " + ID;
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idsector = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idsector = " + ID + " AND concepto = " + filter;
+            }
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -510,9 +516,13 @@ public class SqlControllerClass {
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nbien"));
-                row.add(rs.getString("clasificacion"));
-                row.add(rs.getString("fecha_inventariado"));
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
                 data.add(row);
             }
 
@@ -525,25 +535,33 @@ public class SqlControllerClass {
         }
     }
 
-    public Vector dataIncorporacionesByUnidades(String ID) {
+    public Vector dataIncorporacionesByUnidades(String ID, String filter) {
         try {
             openCon();
 
-            String sql = "SELECT xbienes.nbien AS nbien, "
-                    + "xbienes.descripcion AS descripcion, "
-                    + "xbienes.clasificacion AS clasificacion,"
-                    + "xbienes.estado AS estado, "
-                    + "xbienes.`status` AS `status`, "
-                    + "trabajadores.nombre AS nombre,"
-                    + "xbienes.ubicacion_asig AS ubicacion, "
-                    + "servicios.nombre AS servicio, "
-                    + "xbienes.fecha_inventariado AS fecha_inventariado "
-                    + "FROM bienes AS xbienes "
-                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
-                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
-                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
-                    + "WHERE "
-                    + "unidades.id = " + ID;
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idunidad = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idunidad = " + ID + " AND concepto = " + filter;
+            }
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -551,9 +569,13 @@ public class SqlControllerClass {
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nbien"));
-                row.add(rs.getString("clasificacion"));
-                row.add(rs.getString("fecha_inventariado"));
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
                 data.add(row);
             }
 
@@ -566,24 +588,33 @@ public class SqlControllerClass {
         }
     }
 
-    public Vector dataIncorporacionesByServicios(String ID) {
+    public Vector dataIncorporacionesByServicios(String ID, String filter) {
         try {
             openCon();
 
-            String sql = "SELECT xbienes.nbien AS nbien, "
-                    + "xbienes.descripcion AS descripcion, "
-                    + "xbienes.clasificacion AS clasificacion,"
-                    + "xbienes.estado AS estado, "
-                    + "xbienes.`status` AS `status`, "
-                    + "trabajadores.nombre AS nombre,"
-                    + "xbienes.ubicacion_asig AS ubicacion, "
-                    + "xbienes.fecha_inventariado AS fecha_inventariado, "
-                    + "xbienes.idServicio AS servicios "
-                    + "FROM bienes AS xbienes "
-                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
-                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
-                    + "WHERE "
-                    + "servicios.id = " + ID;
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idservicio = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idservicio = " + ID + " AND concepto = " + filter;
+            }
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -591,9 +622,13 @@ public class SqlControllerClass {
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nbien"));
-                row.add(rs.getString("clasificacion"));
-                row.add(rs.getString("fecha_inventariado"));
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
                 data.add(row);
             }
 

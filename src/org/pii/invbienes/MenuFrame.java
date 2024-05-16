@@ -2056,8 +2056,6 @@ public class MenuFrame extends javax.swing.JFrame {
         
         item2 = concList.getSelectedItem().toString();
 
-        labelVisualizando2.setText("ENTIDAD " + item);
-
         patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         matcher = patron.matcher(item2);
 
@@ -2072,14 +2070,104 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
+        //Extrae el id del ente.
+        String item, idEntidadExtraido = "";
+        
+        item = sectoresList2.getSelectedItem().toString();
+
+        labelVisualizando2.setText("SECTOR " + item);
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idEntidadExtraido += matcher.group();
+        }
+        
+        //extrae el numero de concepto
+        
+        String item2, idConceptoExtraido2 = "";
+        
+        item2 = concList1.getSelectedItem().toString();
+
+        patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        matcher = patron.matcher(item2);
+
+        while (matcher.find()) {
+            idConceptoExtraido2 += matcher.group();
+        }
+        
+        String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
+        
+        inctable.setModel(tmls.modeloIncorporacionesBySector(vectorEnte));
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
+        //Extrae el id del ente.
+        String item, idEntidadExtraido = "";
+        
+        item = unidadesList2.getSelectedItem().toString();
+
+        labelVisualizando2.setText("UNIDAD " + item);
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idEntidadExtraido += matcher.group();
+        }
+        
+        //extrae el numero de concepto
+        
+        String item2, idConceptoExtraido2 = "";
+        
+        item2 = concList2.getSelectedItem().toString();
+
+        patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        matcher = patron.matcher(item2);
+
+        while (matcher.find()) {
+            idConceptoExtraido2 += matcher.group();
+        }
+        
+        String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
+        
+        inctable.setModel(tmls.modeloIncorporacionesByUnidades(vectorEnte));
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
+        //Extrae el id del ente.
+        String item, idEntidadExtraido = "";
+        
+        item = serviciosList2.getSelectedItem().toString();
+
+        labelVisualizando2.setText("SERVICIO " + item);
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idEntidadExtraido += matcher.group();
+        }
+        
+        //extrae el numero de concepto
+        
+        String item2, idConceptoExtraido2 = "";
+        
+        item2 = concList3.getSelectedItem().toString();
+
+        patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        matcher = patron.matcher(item2);
+
+        while (matcher.find()) {
+            idConceptoExtraido2 += matcher.group();
+        }
+        
+        String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
+        
+        inctable.setModel(tmls.modeloIncorporacionesByServicios(vectorEnte));
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void setEntesDetails(String byID) {

@@ -427,25 +427,35 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     //-------------------------------------------------------------------------//
-    
-    public Vector dataIncorporacionesByEntidad(String ID) {
+    public Vector dataIncorporacionesByEntidad(String ID, String filter) {
         try {
             openCon();
 
-            String sql = "SELECT xbienes.nbien AS nbien, xbienes.descripcion AS descripcion, "
-                    + "xbienes.clasificacion AS clasificacion, xbienes.estado AS estado,"
-                    + "xbienes.`status` AS `status`,trabajadores.nombre AS nombre, "
-                    + "xbienes.ubicacion_asig AS ubicacion,  sectores.nombre AS sector, "
-                    + "unidades.nombre AS unidad, servicios.nombre AS servicio, "
-                    + "xbienes.fecha_inventariado AS fecha_inventariado "
-                    + "FROM bienes AS xbienes INNER JOIN sectores ON xbienes.idSector = sectores.id "
-                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
-                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
-                    + "INNER JOIN entidades ON xbienes.idEntidad = entidades.id "
-                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
-                    + "WHERE entidades.id = " + ID;
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "nfactura AS nfac,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE identidad = " + ID;
+            } else {
+                sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "nfactura AS nfac,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE identidad = " + ID + " AND concepto = " + filter;
+            }
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -453,9 +463,13 @@ public class SqlControllerClass {
             Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
                 Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nbien"));
-                row.add(rs.getString("clasificacion"));
-                row.add(rs.getString("fecha_inventariado"));
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
                 data.add(row);
             }
 
@@ -597,14 +611,14 @@ public class SqlControllerClass {
             openCon();
 
             String sql = "SELECT "
-            + "clasificacion AS cls,"
-            + "nbien AS nb,"
-            + "concepto AS conc,"
-            + "descripcion AS `desc`,"
-            + "monto_bs AS monto,"
-            + "nfactura AS nfac,"
-            + "fecha_mov AS fecha "
-            + "FROM movimientos";
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "nfactura AS nfac,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos";
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -878,18 +892,18 @@ public class SqlControllerClass {
                     + "ubicacion_asig = '" + dataBien[7] + "',"
                     + "monto_bs = '" + dataBien[8] + "',"
                     + "idServicio = " + dataBien[9] + ","
-                    + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+"),"
-                    + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+")), "
-                    + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = "+dataBien[9]+"))),"
+                    + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[9] + "),"
+                    + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[9] + ")), "
+                    + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[9] + "))),"
                     + "fecha_inventariado = '" + dataBien[10] + "' "
                     + "WHERE bienes.nbien = '" + dataBien[11] + "'";
-            
+
             System.out.println("SQL " + sql);
-            
+
             openCon();
             Statement stm = con.createStatement();
             Integer stt = stm.executeUpdate(sql);
-            
+
             if (stt != 0) {
                 return true;
             } else {
@@ -902,16 +916,16 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public Boolean updateBienSTATUS(String byNBien, String STATUS) {
         try {
             String sql = "UPDATE bienes SET status = '" + STATUS + "' WHERE nbien = '" + byNBien + "'";
             System.out.println("SQL " + sql);
-            
+
             openCon();
             Statement stm = con.createStatement();
             Integer stt = stm.executeUpdate(sql);
-            
+
             if (stt != 0) {
                 return true;
             } else {

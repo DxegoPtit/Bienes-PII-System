@@ -105,12 +105,27 @@ public class TableModels {
     
     //--------------------------------------------------------------------------------//
     
-    public DefaultTableModel modeloIncorporacionesByEntidad(String ID){
+    public DefaultTableModel modeloIncorporacionesByEntidad(String[] dataFiltro){
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("COSTO ADQ.");
+            columnas.add("Nº FACTURA");
             columnas.add("FECHA INVENTARIADO");
-        Vector<Vector<Object>> data = scc.dataInventarioByEntidad(ID);
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataIncorporacionesByEntidad(dataFiltro[0], dataFiltro[1]);
         
         dtm = new DefaultTableModel(data, columnas){
             @Override

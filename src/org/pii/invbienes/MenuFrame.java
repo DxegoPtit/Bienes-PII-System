@@ -2067,6 +2067,7 @@ public class MenuFrame extends javax.swing.JFrame {
         
         String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
         
+        inctable.setModel(tmls.modeloIncorporacionesByEntidad(vectorEnte));
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed

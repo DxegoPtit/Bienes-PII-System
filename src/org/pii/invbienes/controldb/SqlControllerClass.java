@@ -630,56 +630,6 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    public Vector filterIncorporacionesByAll(String idConcepto) {
-        try {
-            openCon();
-
-            String verify = "";
-            
-            String sql = "SELECT "
-            + "clasificacion AS cls,"
-            + "nbien AS nb,"
-            + "concepto AS conc,"
-            + "descripcion AS `desc`,"
-            + "monto_bs AS monto,"
-            + "nfactura AS nfac,"
-            + "fecha_mov AS fecha "
-            + "FROM movimientos WHERE concepto = '" + idConcepto + "'";
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-
-            Vector<Vector<Object>> data = new Vector<>();
-            while (rs.next()) {
-                Vector<Object> row = new Vector<>();
-                row.add(rs.getString("nb"));
-                row.add(rs.getString("cls"));
-                row.add(rs.getString("conc"));
-                row.add(rs.getString("desc"));
-                row.add(rs.getString("monto"));
-                row.add(rs.getString("nfac"));
-                row.add(rs.getString("fecha"));
-                
-                verify = rs.getString("nb");
-                
-                data.add(row);
-            }
-            
-            if (!verify.isEmpty()) {
-                return data;
-            } else {
-                JOptionPane.showMessageDialog(null, "No hubo coincidencias para el concepto seleccionado", ".::Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
-                return null;
-            }
-            
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
-            return null;
-        } finally {
-            closeCon();
-        }
-    }
 
     /*
     public String[] totalizeAllInventory(){

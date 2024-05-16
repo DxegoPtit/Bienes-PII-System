@@ -194,7 +194,7 @@ public class TableModels {
         
         return dtm;
     }
-    
+    /*
     public DefaultTableModel filterIncorporacionesByAll(String CONC){
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
@@ -215,4 +215,5 @@ public class TableModels {
         
         return dtm;
     }
+*/
 }

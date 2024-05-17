@@ -672,6 +672,7 @@ public class authFrame extends javax.swing.JFrame {
         } catch (UnsupportedLookAndFeelException e) {
             JOptionPane.showMessageDialog(null, "ERROR CRÍTICO: " + e.getLocalizedMessage(), ".:: Sistema de Inventario de Bienes - ERROR ::.", JOptionPane.ERROR_MESSAGE);
         }
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

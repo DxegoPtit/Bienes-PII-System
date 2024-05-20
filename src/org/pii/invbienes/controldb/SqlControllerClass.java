@@ -716,7 +716,7 @@ public class SqlControllerClass {
     public void reportInventario(String FECHA) {
         try {
             if (openCon() != null) {
-                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/BienesReport.jasper"));
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Bienesv2.jasper"));
 
                 // Crear parámetros para el informe
                 Map<String, Object> parameters = new HashMap<>();

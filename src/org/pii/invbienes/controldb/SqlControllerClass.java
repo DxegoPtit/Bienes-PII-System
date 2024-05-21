@@ -23,10 +23,15 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -653,7 +658,7 @@ public class SqlControllerClass {
                     + "monto_bs AS monto,"
                     + "nfactura AS nfac,"
                     + "fecha_mov AS fecha "
-                    + "FROM movimientos";
+                    + "FROM movimientos WHERE concepto BETWEEN '01' AND '20'";
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -667,6 +672,258 @@ public class SqlControllerClass {
                 row.add(rs.getString("desc"));
                 row.add(rs.getString("monto"));
                 row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    //---------------------------------------------------------------------------//
+    public Vector dataDesIncorporacionesByEntidad(String ID, String filter) {
+        try {
+            openCon();
+
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE identidad = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto = " + filter;
+            }
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataDesIncorporacionesBySector(String ID, String filter) {
+        try {
+            openCon();
+
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idsector = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idsector = " + ID + " AND concepto = " + filter;
+            }
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataDesIncorporacionesByUnidades(String ID, String filter) {
+        try {
+            openCon();
+
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idunidad = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idunidad = " + ID + " AND concepto = " + filter;
+            }
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataDesIncorporacionesByServicios(String ID, String filter) {
+        try {
+            openCon();
+
+            String sql = "";
+
+            if (filter.isEmpty()) {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idservicio = " + ID;
+            } else {
+                sql = "SELECT "
+                        + "clasificacion AS cls,"
+                        + "nbien AS nb,"
+                        + "concepto AS conc,"
+                        + "descripcion AS `desc`,"
+                        + "monto_bs AS monto,"
+                        + "nfactura AS nfac,"
+                        + "fecha_mov AS fecha "
+                        + "FROM movimientos WHERE idservicio = " + ID + " AND concepto = " + filter;
+            }
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("nfac"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataDesIncorporacionesByAll() {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "actadesincorp AS des,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE concepto BETWEEN '51' AND '67'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("des"));
                 row.add(rs.getString("fecha"));
                 data.add(row);
             }
@@ -717,6 +974,235 @@ public class SqlControllerClass {
         try {
             if (openCon() != null) {
                 JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Bienesv2.jasper"));
+
+                // Crear parámetros para el informe
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("fecha", FECHA);
+
+                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                jvw = new JasperViewer(jprint, false);
+                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                jvw.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportByServicio(String FECHA, Integer TYPE, String idServicio) {
+        try {
+            if (openCon() != null) {
+                switch (TYPE) {
+                    case 0:
+                        // ESTO ES PARA BIENES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery = "SELECT "
+                                + "a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion AS ubic,"
+                                + "servicios.estado AS estado,"
+                                + "servicios.municipio AS munip,"
+                                + "servicios.parroquia AS parroq,"
+                                + "a.idServicio AS idServ,"
+                                + "( SELECT sum( monto_bs ) FROM bienes AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + "FROM"
+                                + " bienes AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id "
+                                + "LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id "
+                                + "WHERE a.idServicio = " + idServicio
+                                + " ORDER BY"
+                                + " a.idServicio ASC";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query = new JRDesignQuery();
+                        query.setText(newQuery);
+                        jasperDesign.setQuery(query);
+
+                        //-----------//
+                        JasperReport report = JasperCompileManager.compileReport(jasperDesign);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters = new HashMap<>();
+                        parameters.put("fecha", FECHA);
+
+                        JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                        jvw = new JasperViewer(jprint, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
+                    case 1:
+                        // ESTO ES PARA INCOPORACIONES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery2 = "SELECT"
+                                + " a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "a.concepto AS idConcepto,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion as ubic,"
+                                + "servicios.estado as estado,"
+                                + "servicios.municipio as munip,"
+                                + "servicios.parroquia as parroq,"
+                                + "a.idServicio as idServ,"
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + " FROM "
+                                + "movimientos AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                + " WHERE"
+                                + " a.concepto BETWEEN '1' AND '20'"
+                                + " ORDER BY"
+                                + " a.idServicio";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query2 = new JRDesignQuery();
+                        query2.setText(newQuery2);
+                        jasperDesign2.setQuery(query2);
+
+                        //-----------//
+                        JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters2 = new HashMap<>();
+                        parameters2.put("fecha", FECHA);
+
+                        JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+
+                        jvw = new JasperViewer(jprint2, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
+                    case 2:
+                        // ESTO ES PARA DESINCOPORACIONES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery3 = "SELECT"
+                                + " a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "a.concepto AS idConcepto,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion as ubic,"
+                                + "servicios.estado as estado,"
+                                + "servicios.municipio as munip,"
+                                + "servicios.parroquia as parroq,"
+                                + "a.idServicio as idServ,"
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + " FROM "
+                                + "movimientos AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                + " WHERE"
+                                + " a.concepto BETWEEN '51' AND '67'"
+                                + " ORDER BY"
+                                + " a.idServicio";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query3 = new JRDesignQuery();
+                        query3.setText(newQuery3);
+                        jasperDesign3.setQuery(query3);
+
+                        //-----------//
+                        JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters3 = new HashMap<>();
+                        parameters3.put("fecha", FECHA);
+
+                        JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+
+                        jvw = new JasperViewer(jprint3, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportIncorp(String FECHA) {
+        try {
+            if (openCon() != null) {
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Incorporaciones.jasper"));
+
+                // Crear parámetros para el informe
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("fecha", FECHA);
+
+                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                jvw = new JasperViewer(jprint, false);
+                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                jvw.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportDesIncorp(String FECHA) {
+        try {
+            if (openCon() != null) {
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/DesIncorporaciones.jasper"));
 
                 // Crear parámetros para el informe
                 Map<String, Object> parameters = new HashMap<>();

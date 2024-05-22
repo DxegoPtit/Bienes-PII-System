@@ -92,21 +92,94 @@ public class MenuFrame extends javax.swing.JFrame {
         }
     }
     
-    private void callReportByServicio(String FECHA, Integer TYPE, String idServicio) {
+    //----------------------------------------------------------------//
+    
+    private void callReportBienesByServicio(String FECHA, Integer TYPE, String idServicio) {
 
-        
         switch(TYPE){
-            case 0: scc.reportByServicio(FECHA, TYPE, idServicio); 
+            case 0: 
+                //Para bienes
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio); 
                 break;
-            case 1: scc.reportByServicio(FECHA, TYPE, idServicio); 
+            case 1: 
+                //Para incorporaciones
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio); 
                 break;
-            case 2: scc.reportByServicio(FECHA, TYPE, idServicio); 
+            case 2: 
+                //Para desincorporaciones
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio); 
                 break;
             default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
                 break;
         }
+        
+    }
+    
+    private void callReportBienesByUnidad(String FECHA, Integer TYPE, String idUnidad) {
+
+        switch(TYPE){
+            case 0: 
+                //Para bienes
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad); 
+                break;
+            case 1: 
+                //Para incorporaciones
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad); 
+                break;
+            case 2: 
+                //Para desincorporaciones
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad); 
+                break;
+            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+                break;
+        }
+        
+    }
+    
+    private void callReportBienesBySector(String FECHA, Integer TYPE, String idSector) {
+
+        switch(TYPE){
+            case 0: 
+                //Para bienes
+                scc.reportBienesBySector(FECHA, TYPE, idSector); 
+                break;
+            case 1: 
+                //Para incorporaciones
+                scc.reportBienesBySector(FECHA, TYPE, idSector); 
+                break;
+            case 2: 
+                //Para desincorporaciones
+                scc.reportBienesBySector(FECHA, TYPE, idSector); 
+                break;
+            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+                break;
+        }
+        
+    }
+    
+    private void callReportBienesByEntidades(String FECHA, Integer TYPE, String idEntidad) {
+
+        switch(TYPE){
+            case 0: 
+                //Para bienes
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad); 
+                break;
+            case 1: 
+                //Para incorporaciones
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad); 
+                break;
+            case 2: 
+                //Para desincorporaciones
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad); 
+                break;
+            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+                break;
+        }
+        
     }
 
+    //----------------------------------------------------------------//
+    
     private void loadDefaultTables() {
         tmls = new TableModels();
         invTable.setModel(tmls.modeloInventarioByAll());
@@ -233,12 +306,15 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         entidadesList = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jButton33 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         sectoresList = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        jButton32 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         unidadesList = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        jButton31 = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         serviciosList = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
@@ -956,15 +1032,25 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton33.setText("Generar Reporte");
+        jButton33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton33ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(entidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(entidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -974,7 +1060,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("POR ENTIDAD", jPanel14);
@@ -988,15 +1076,25 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton32.setText("Generar Reporte");
+        jButton32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton32ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(sectoresList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addComponent(sectoresList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
@@ -1006,7 +1104,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sectoresList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("POR SECTOR", jPanel18);
@@ -1020,15 +1120,25 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton31.setText("Generar Reporte");
+        jButton31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton31ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(unidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(unidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
@@ -1038,7 +1148,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(unidadesList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("POR UNIDAD DE TRABAJO", jPanel19);
@@ -2559,7 +2671,33 @@ public class MenuFrame extends javax.swing.JFrame {
 
         item = serviciosList.getSelectedItem().toString();
 
-        labelVisualizando.setText("SERVICIO " + item);
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesByServicio(fechaFormateada, BIENES, idExtraido);
+    }//GEN-LAST:event_jButton30ActionPerformed
+
+    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = unidadesList.getSelectedItem().toString();
 
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
@@ -2579,8 +2717,64 @@ public class MenuFrame extends javax.swing.JFrame {
         // Imprimir la fecha formateada por consola
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        callReportByServicio(fechaFormateada, BIENES, idExtraido);
-    }//GEN-LAST:event_jButton30ActionPerformed
+        callReportBienesByUnidad(fechaFormateada, BIENES, idExtraido);
+    }//GEN-LAST:event_jButton31ActionPerformed
+
+    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = sectoresList.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesBySector(fechaFormateada, BIENES, idExtraido);
+    }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = entidadesList.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesByEntidades(fechaFormateada, BIENES, idExtraido);
+    }//GEN-LAST:event_jButton33ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
@@ -2745,6 +2939,9 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
+    private javax.swing.JButton jButton31;
+    private javax.swing.JButton jButton32;
+    private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

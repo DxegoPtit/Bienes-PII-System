@@ -377,6 +377,7 @@ ORDER BY
 	</detail>
 	<columnFooter>
 		<band height="104" splitType="Stretch">
+			<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
 			<rectangle>
 				<reportElement x="663" y="0" width="89" height="20" backcolor="#CCCCCC" uuid="21846b24-313b-43eb-b70f-a816baed61cd"/>
 			</rectangle>
@@ -424,7 +425,7 @@ ORDER BY
 	</pageFooter>
 	<summary>
 		<band height="132" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1 && $V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
+			<printWhenExpression><![CDATA[$V{GROUP_COUNT} > 1 && $V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
 			<rectangle>
 				<reportElement x="536" y="0" width="107" height="20" backcolor="#CCCCCC" uuid="cec04046-d706-494d-855e-9083e5fa7d8d"/>
 			</rectangle>

@@ -375,57 +375,9 @@ ORDER BY
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="104" splitType="Stretch">
-			<printWhenExpression><![CDATA[!$V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
-			<rectangle>
-				<reportElement x="663" y="0" width="89" height="20" backcolor="#CCCCCC" uuid="21846b24-313b-43eb-b70f-a816baed61cd"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="0" y="0" width="577" height="20" backcolor="#CCCCCC" uuid="831c990b-e680-4aee-88d4-b09995c34238"/>
-			</rectangle>
-			<textField>
-				<reportElement x="663" y="0" width="89" height="20" uuid="c47a9a08-fd8c-43fd-a5e6-7562805b0135"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{costo_aq}]]></textFieldExpression>
-			</textField>
-			<rectangle>
-				<reportElement x="577" y="0" width="86" height="20" backcolor="#CCCCCC" uuid="f247f59c-081a-4e14-9ef0-b6dc00021391"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="577" y="0" width="86" height="20" uuid="99626876-bcb1-4ad3-a354-4e5cb74214be"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[SUB-TOTAL:    ]]></text>
-			</staticText>
-			<line>
-				<reportElement x="48" y="68" width="135" height="1" uuid="090728f5-a708-4813-abb9-590a0a330073"/>
-			</line>
-			<line>
-				<reportElement x="305" y="69" width="135" height="1" uuid="d377dadd-1cfc-4d1a-98be-a473acfa51b4"/>
-			</line>
-			<line>
-				<reportElement x="558" y="68" width="135" height="1" uuid="95606349-5541-49e7-8fe7-ff36b413d93e"/>
-			</line>
-			<staticText>
-				<reportElement x="526" y="70" width="195" height="26" forecolor="#333333" uuid="c3a5840e-842a-40af-8d73-415487461d09"/>
-				<textElement textAlignment="Center">
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[OFICINA DE LA UNIDAD DE TRABAJO O DEPENDENCIA
-]]></text>
-			</staticText>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
 	<summary>
 		<band height="132" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{GROUP_COUNT} > 1 && $V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 0]]></printWhenExpression>
 			<rectangle>
 				<reportElement x="536" y="0" width="107" height="20" backcolor="#CCCCCC" uuid="cec04046-d706-494d-855e-9083e5fa7d8d"/>
 			</rectangle>

@@ -262,7 +262,7 @@ public class TableModels {
             columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
             columnas.add("COSTO ADQ.");
-            columnas.add("Nº FACTURA");
+            columnas.add("ACTA DESINCORPORACION");
             columnas.add("FECHA INVENTARIADO");
             /*
             
@@ -294,7 +294,7 @@ public class TableModels {
             columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
             columnas.add("COSTO ADQ.");
-            columnas.add("Nº FACTURA");
+            columnas.add("ACTA DESINCORPORACION");
             columnas.add("FECHA INVENTARIADO");
             /*
             
@@ -326,7 +326,7 @@ public class TableModels {
             columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
             columnas.add("COSTO ADQ.");
-            columnas.add("Nº FACTURA");
+            columnas.add("ACTA DESINCORPORACION");
             columnas.add("FECHA INVENTARIADO");
             /*
             
@@ -358,7 +358,7 @@ public class TableModels {
             columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
             columnas.add("COSTO ADQ.");
-            columnas.add("Nº FACTURA");
+            columnas.add("ACTA DESINCORPORACION");
             columnas.add("FECHA INVENTARIADO");
             /*
             
@@ -390,7 +390,7 @@ public class TableModels {
             columnas.add("CONCEPTO");
             columnas.add("DESCRIPCION");
             columnas.add("COSTO ADQUSICION");
-            columnas.add("Nº FACTURA");
+            columnas.add("ACTA DESINCORPORACION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataDesIncorporacionesByAll();
         

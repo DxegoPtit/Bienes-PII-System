@@ -970,34 +970,8 @@ public class SqlControllerClass {
         }
     }
 
-    public void reportInventario(String FECHA) {
-        try {
-            if (openCon() != null) {
-                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Bienesv2.jasper"));
-
-                // Crear parámetros para el informe
-                Map<String, Object> parameters = new HashMap<>();
-                parameters.put("fecha", FECHA);
-
-                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
-
-                jvw = new JasperViewer(jprint, false);
-                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                jvw.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (JRException e) {
-            e.printStackTrace();
-        } finally {
-            closeCon();
-        }
-    }
-    
-    //------------------------------------------//
-
-    public void reportBienesByServicio(String FECHA, Integer TYPE, String idServicio) {
+    //------------------PARA GENERAR LOS REPORTES DEL INVENTARIO POR ENTE Y CONCEPTO------------------------//
+    public void reportBienesByServicio(String FECHA, Integer TYPE, String idServicio, String concNum) {
         try {
             if (openCon() != null) {
                 switch (TYPE) {
@@ -1054,112 +1028,222 @@ public class SqlControllerClass {
                         //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         break;
                     case 1:
-                        // ESTO ES PARA INCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA INCOPORACIONES (todo registro)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery2 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '1' AND '20' AND a.idServicio = " + idServicio
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '1' AND '20' AND a.idServicio = " + idServicio
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query2 = new JRDesignQuery();
-                        query2.setText(newQuery2);
-                        jasperDesign2.setQuery(query2);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
 
-                        //-----------//
-                        JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters2 = new HashMap<>();
-                        parameters2.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
 
-                        JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
 
-                        jvw = new JasperViewer(jprint2, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA INCOPORACIONES (por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND a.idServicio = " + idServicio
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
+
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
+
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     case 2:
-                        // ESTO ES PARA DESINCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA DESINCOPORACIONES (todo registro)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery3 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '51' AND '67' AND a.idServicio = " + idServicio
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '51' AND '67' AND a.idServicio = " + idServicio
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query3 = new JRDesignQuery();
-                        query3.setText(newQuery3);
-                        jasperDesign3.setQuery(query3);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
 
-                        //-----------//
-                        JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters3 = new HashMap<>();
-                        parameters3.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
 
-                        JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
 
-                        jvw = new JasperViewer(jprint3, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA DESINCOPORACIONES (por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND a.idServicio = " + idServicio
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
+
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
+
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -1175,8 +1259,8 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    public void reportBienesByUnidad(String FECHA, Integer TYPE, String idUnidad) {
+
+    public void reportBienesByUnidad(String FECHA, Integer TYPE, String idUnidad, String concNum) {
         try {
             if (openCon() != null) {
                 switch (TYPE) {
@@ -1233,112 +1317,224 @@ public class SqlControllerClass {
                         //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         break;
                     case 1:
-                        // ESTO ES PARA INCOPORACIONES!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA INCOPORACIONES (todo)!!!
 
-                        // Create a new query
-                        String newQuery2 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '1' AND '20' AND idUnidad = " + idUnidad + " "
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query2 = new JRDesignQuery();
-                        query2.setText(newQuery2);
-                        jasperDesign2.setQuery(query2);
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '1' AND '20' AND idUnidad = " + idUnidad + " "
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        //-----------//
-                        JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters2 = new HashMap<>();
-                        parameters2.put("fecha", FECHA);
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
 
-                        JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
 
-                        jvw = new JasperViewer(jprint2, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA INCOPORACIONES (por concepto)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND idUnidad = " + idUnidad + " "
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
+
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
+
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
+
                         break;
                     case 2:
-                        // ESTO ES PARA DESINCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA DESINCOPORACIONES (todo registro)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery3 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '51' AND '67' AND a.idunidad = " + idUnidad
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '51' AND '67' AND a.idunidad = " + idUnidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query3 = new JRDesignQuery();
-                        query3.setText(newQuery3);
-                        jasperDesign3.setQuery(query3);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
 
-                        //-----------//
-                        JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters3 = new HashMap<>();
-                        parameters3.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
 
-                        JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
 
-                        jvw = new JasperViewer(jprint3, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA DESINCOPORACIONES (por concepto)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = " + concNum + " AND a.idunidad = " + idUnidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
+
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
+
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -1354,8 +1550,8 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    public void reportBienesBySector(String FECHA, Integer TYPE, String idSector) {
+
+    public void reportBienesBySector(String FECHA, Integer TYPE, String idSector, String concNum) {
         try {
             if (openCon() != null) {
                 switch (TYPE) {
@@ -1412,112 +1608,222 @@ public class SqlControllerClass {
                         //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         break;
                     case 1:
-                        // ESTO ES PARA INCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA INCOPORACIONES (todo registro)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery2 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '1' AND '20' AND idSector = " + idSector + " "
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '1' AND '20' AND idSector = " + idSector + " "
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query2 = new JRDesignQuery();
-                        query2.setText(newQuery2);
-                        jasperDesign2.setQuery(query2);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
 
-                        //-----------//
-                        JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters2 = new HashMap<>();
-                        parameters2.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
 
-                        JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
 
-                        jvw = new JasperViewer(jprint2, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA INCOPORACIONES (por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND idSector = " + idSector + " "
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
+
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
+
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     case 2:
-                        // ESTO ES PARA DESINCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA DESINCOPORACIONES (todo)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery3 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '51' AND '67' AND a.idSector = " + idSector
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '51' AND '67' AND a.idSector = " + idSector
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query3 = new JRDesignQuery();
-                        query3.setText(newQuery3);
-                        jasperDesign3.setQuery(query3);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
 
-                        //-----------//
-                        JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters3 = new HashMap<>();
-                        parameters3.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
 
-                        JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
 
-                        jvw = new JasperViewer(jprint3, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA DESINCOPORACIONES (por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND a.idSector = " + idSector
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
+
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
+
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -1533,8 +1839,8 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    public void reportBienesByEntidad(String FECHA, Integer TYPE, String idEntidad) {
+
+    public void reportBienesByEntidad(String FECHA, Integer TYPE, String idEntidad, String concNum) {
         try {
             if (openCon() != null) {
                 switch (TYPE) {
@@ -1591,112 +1897,222 @@ public class SqlControllerClass {
                         //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         break;
                     case 1:
-                        // ESTO ES PARA INCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA INCOPORACIONES (todo)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery2 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '1' AND '20' AND idEntidad = " + idEntidad
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '1' AND '20' AND idEntidad = " + idEntidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query2 = new JRDesignQuery();
-                        query2.setText(newQuery2);
-                        jasperDesign2.setQuery(query2);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
 
-                        //-----------//
-                        JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters2 = new HashMap<>();
-                        parameters2.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
 
-                        JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
 
-                        jvw = new JasperViewer(jprint2, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA INCOPORACIONES(por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign2 = JRXmlLoader.load(getClass().getResource("/reportes/Incorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery2 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto = '" + concNum + "' AND idEntidad = " + idEntidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query2 = new JRDesignQuery();
+                            query2.setText(newQuery2);
+                            jasperDesign2.setQuery(query2);
+
+                            //-----------//
+                            JasperReport report2 = JasperCompileManager.compileReport(jasperDesign2);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters2 = new HashMap<>();
+                            parameters2.put("fecha", FECHA);
+
+                            JasperPrint jprint2 = JasperFillManager.fillReport(report2, parameters2, con);
+
+                            jvw = new JasperViewer(jprint2, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     case 2:
-                        // ESTO ES PARA DESINCOPORACIONES!!!
+                        if (concNum.isEmpty()) {
+                            // ESTO ES PARA DESINCOPORACIONES (todo)!!!
 
-                        // Load the JRXML file
-                        JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
 
-                        // Create a new query
-                        String newQuery3 = "SELECT"
-                                + " a.clasificacion AS clasificacion,"
-                                + "a.nbien AS nroBien,"
-                                + "a.descripcion AS descBien,"
-                                + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
-                                + "servicios.nombre AS nomServicio,"
-                                + "unidades.nombre AS nomUnidad,"
-                                + "sectores.nombre AS nomSector,"
-                                + "entidades.nombre AS nomEntidad,"
-                                + "servicios.ubicacion as ubic,"
-                                + "servicios.estado as estado,"
-                                + "servicios.municipio as munip,"
-                                + "servicios.parroquia as parroq,"
-                                + "a.idServicio as idServ,"
-                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
-                                + " FROM "
-                                + "movimientos AS a"
-                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
-                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
-                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
-                                + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
-                                + " WHERE"
-                                + " a.concepto BETWEEN '51' AND '67' AND a.idEntidad = " + idEntidad
-                                + " ORDER BY"
-                                + " a.idServicio";
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '51' AND '67' AND a.idEntidad = " + idEntidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
 
-                        // Set the new query in the JasperDesign
-                        JRDesignQuery query3 = new JRDesignQuery();
-                        query3.setText(newQuery3);
-                        jasperDesign3.setQuery(query3);
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
 
-                        //-----------//
-                        JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
 
-                        // Crear parámetros para el informe
-                        Map<String, Object> parameters3 = new HashMap<>();
-                        parameters3.put("fecha", FECHA);
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
 
-                        JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
 
-                        jvw = new JasperViewer(jprint3, false);
-                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                        jvw.setVisible(true);
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
 
-                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        } else {
+                            // ESTO ES PARA DESINCOPORACIONES(por concepto y ente)!!!
+
+                            // Load the JRXML file
+                            JasperDesign jasperDesign3 = JRXmlLoader.load(getClass().getResource("/reportes/DesIncorporaciones.jrxml").getFile());
+
+                            // Create a new query
+                            String newQuery3 = "SELECT"
+                                    + " a.clasificacion AS clasificacion,"
+                                    + "a.nbien AS nroBien,"
+                                    + "a.descripcion AS descBien,"
+                                    + "a.monto_bs AS mntBien,"
+                                    + "a.concepto AS idConcepto,"
+                                    + "servicios.nombre AS nomServicio,"
+                                    + "unidades.nombre AS nomUnidad,"
+                                    + "sectores.nombre AS nomSector,"
+                                    + "entidades.nombre AS nomEntidad,"
+                                    + "servicios.ubicacion as ubic,"
+                                    + "servicios.estado as estado,"
+                                    + "servicios.municipio as munip,"
+                                    + "servicios.parroquia as parroq,"
+                                    + "a.idServicio as idServ,"
+                                    + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                    + " FROM "
+                                    + "movimientos AS a"
+                                    + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                    + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                    + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
+                                    + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
+                                    + " WHERE"
+                                    + " a.concepto BETWEEN '" + concNum + "' AND a.idEntidad = " + idEntidad
+                                    + " ORDER BY"
+                                    + " a.idServicio";
+
+                            // Set the new query in the JasperDesign
+                            JRDesignQuery query3 = new JRDesignQuery();
+                            query3.setText(newQuery3);
+                            jasperDesign3.setQuery(query3);
+
+                            //-----------//
+                            JasperReport report3 = JasperCompileManager.compileReport(jasperDesign3);
+
+                            // Crear parámetros para el informe
+                            Map<String, Object> parameters3 = new HashMap<>();
+                            parameters3.put("fecha", FECHA);
+
+                            JasperPrint jprint3 = JasperFillManager.fillReport(report3, parameters3, con);
+
+                            jvw = new JasperViewer(jprint3, false);
+                            jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                            jvw.setVisible(true);
+
+                            //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        }
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -1712,12 +2128,13 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
-    //------------------------------------------//
+    //-----------------------------------------------------------------------------------------------------//
 
+    //-----------------PARA CARGAR LOS REPORTES CON TODOS LOS REGISTROS-------------------------//
     public void reportIncorp(String FECHA) {
         try {
             if (openCon() != null) {
+
                 JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Incorporaciones.jasper"));
 
                 // Crear parámetros para el informe
@@ -1729,6 +2146,7 @@ public class SqlControllerClass {
                 jvw = new JasperViewer(jprint, false);
                 jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 jvw.setVisible(true);
+
             } else {
                 JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
             }
@@ -1743,7 +2161,34 @@ public class SqlControllerClass {
     public void reportDesIncorp(String FECHA) {
         try {
             if (openCon() != null) {
+
                 JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/DesIncorporaciones.jasper"));
+
+                // Crear parámetros para el informe
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("fecha", FECHA);
+
+                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                jvw = new JasperViewer(jprint, false);
+                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                jvw.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportInventario(String FECHA) {
+        try {
+            if (openCon() != null) {
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Bienesv2.jasper"));
 
                 // Crear parámetros para el informe
                 Map<String, Object> parameters = new HashMap<>();
@@ -1765,6 +2210,7 @@ public class SqlControllerClass {
         }
     }
 
+    //---------------------------------------------------------------------------------------//
     public String[] bienData(String BID) {
         try {
             openCon();

@@ -449,7 +449,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE identidad = " + ID;
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '1' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -502,7 +502,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idsector = " + ID;
+                        + "FROM movimientos WHERE idSector = " + ID + " AND concepto BETWEEN '1' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -555,7 +555,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idunidad = " + ID;
+                        + "FROM movimientos WHERE idunidad = " + ID + " AND concepto BETWEEN '1' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -608,7 +608,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idservicio = " + ID;
+                        + "FROM movimientos WHERE idservicio = " + ID + " AND concepto BETWEEN '1' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -1845,6 +1845,8 @@ public class SqlControllerClass {
             if (openCon() != null) {
                 switch (TYPE) {
                     case 0:
+                        System.out.println("I'M HERE (Bienes por entidad)");
+                        
                         // ESTO ES PARA BIENES!!!
 
                         // Load the JRXML file
@@ -1898,6 +1900,7 @@ public class SqlControllerClass {
                         break;
                     case 1:
                         if (concNum.isEmpty()) {
+                            System.out.println("I'M HERE (Incorporaciones sin concepto)");
                             // ESTO ES PARA INCOPORACIONES (todo)!!!
 
                             // Load the JRXML file
@@ -1951,6 +1954,7 @@ public class SqlControllerClass {
 
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         } else {
+                            System.out.println("I'M HERE (Incorporaciones con concepto)");
                             // ESTO ES PARA INCOPORACIONES(por concepto y ente)!!!
 
                             // Load the JRXML file
@@ -2007,6 +2011,7 @@ public class SqlControllerClass {
                         break;
                     case 2:
                         if (concNum.isEmpty()) {
+                            System.out.println("I'M HERE (desincorporaciones sin concepto)");
                             // ESTO ES PARA DESINCOPORACIONES (todo)!!!
 
                             // Load the JRXML file
@@ -2060,6 +2065,7 @@ public class SqlControllerClass {
 
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         } else {
+                            System.out.println("I'M HERE (desincorporaciones con concepto)");
                             // ESTO ES PARA DESINCOPORACIONES(por concepto y ente)!!!
 
                             // Load the JRXML file

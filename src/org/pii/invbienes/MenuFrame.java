@@ -346,7 +346,6 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         concList1 = new javax.swing.JComboBox<>();
         jButton13 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
         jPanel39 = new javax.swing.JPanel();
         unidadesList2 = new javax.swing.JComboBox<>();
@@ -1403,11 +1402,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(concList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel32)
-                        .addComponent(entidadesList2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(concList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32)
+                    .addComponent(entidadesList2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
@@ -1441,8 +1439,6 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton23.setText("jButton22");
-
         jButton28.setText("Generar Reporte");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1463,11 +1459,6 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(sectoresList2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
-            .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel38Layout.createSequentialGroup()
-                    .addGap(65, 65, 65)
-                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(65, 65, 65)))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1483,11 +1474,6 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jButton28)
                 .addGap(11, 11, 11))
-            .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel38Layout.createSequentialGroup()
-                    .addGap(68, 68, 68)
-                    .addComponent(jButton23)
-                    .addContainerGap(63, Short.MAX_VALUE)))
         );
 
         jTabbedPane3.addTab("POR SECTOR", jPanel38);
@@ -1588,7 +1574,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(concList3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton18)
                 .addGap(1, 1, 1)
                 .addComponent(jButton34)
                 .addGap(11, 11, 11))
@@ -2860,10 +2846,10 @@ public class MenuFrame extends javax.swing.JFrame {
         }
         
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
-        Matcher matcher2 = patron.matcher(concNum);
+        Matcher matcher2 = patron2.matcher(concNum);
 
-        while (matcher.find()) {
-             concNumExtraido += matcher.group();
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
         }
         //------------------------------------//
         
@@ -2872,14 +2858,12 @@ public class MenuFrame extends javax.swing.JFrame {
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        System.out.println("ID: " + idExtraido + ", INCORPORACIONES, CONCEPTO: " + concNumExtraido);
+        System.out.println("ID: " + idExtraido + ", INCORPORACIONES (Entidad), CONCEPTO: " + concNumExtraido);
         
         callReportBienesByEntidades(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        // TODO add your handling code here:
-        // Obtiene el id del sector
         String item;
         String idExtraido = "";
 
@@ -2895,12 +2879,19 @@ public class MenuFrame extends javax.swing.JFrame {
         
         //Obtiene el concepto y lo formatea--//
         String conc = concList1.getSelectedItem().toString();
-        String concNum;
+        String concNum, concNumExtraido = "";
         
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
         }
         //------------------------------------//
         
@@ -2909,12 +2900,13 @@ public class MenuFrame extends javax.swing.JFrame {
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        callReportBienesBySector(fechaFormateada, INCORPORACIONES, idExtraido, conc);
+        System.out.println("ID: " + idExtraido + ", INCORPORACIONES (sector), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesBySector(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton28ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         // TODO add your handling code here:
-        // Obtiene el id de la unidad
         String item;
         String idExtraido = "";
 
@@ -2930,12 +2922,19 @@ public class MenuFrame extends javax.swing.JFrame {
         
         //Obtiene el concepto y lo formatea--//
         String conc = concList2.getSelectedItem().toString();
-        String concNum;
+        String concNum, concNumExtraido = "";
         
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
         }
         //------------------------------------//
         
@@ -2944,12 +2943,13 @@ public class MenuFrame extends javax.swing.JFrame {
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        callReportBienesByUnidad(fechaFormateada, INCORPORACIONES, idExtraido, conc);
+        System.out.println("ID: " + idExtraido + ", INCORPORACIONES (unidad), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesByUnidad(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
         // TODO add your handling code here:
-        // Obtiene el id del servicio
         String item;
         String idExtraido = "";
 
@@ -2965,12 +2965,19 @@ public class MenuFrame extends javax.swing.JFrame {
         
         //Obtiene el concepto y lo formatea--//
         String conc = concList3.getSelectedItem().toString();
-        String concNum;
+        String concNum, concNumExtraido = "";
         
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
         }
         //------------------------------------//
         
@@ -2979,7 +2986,9 @@ public class MenuFrame extends javax.swing.JFrame {
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        callReportBienesByServicio(fechaFormateada, INCORPORACIONES, idExtraido, conc);
+        System.out.println("ID: " + idExtraido + ", INCORPORACIONES (servicio), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesByServicio(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton34ActionPerformed
 
     private void setEntesDetails(String byID) {
@@ -3140,7 +3149,6 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;

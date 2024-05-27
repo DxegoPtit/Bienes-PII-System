@@ -1126,6 +1126,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButton8" max="32767" attributes="0"/>
                                   <Component id="jButton6" pref="213" max="32767" attributes="0"/>
+                                  <Component id="jButton23" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           </Group>
@@ -1142,6 +1143,8 @@
                                       <Component id="jButton8" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jButton6" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButton23" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -1501,6 +1504,14 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JButton" name="jButton23">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="A&#xf1;adir un bien"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton23ActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel22">
@@ -1683,10 +1694,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jPanel36" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="116" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton25" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton24" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                              <Component id="jButton24" alignment="0" pref="213" max="32767" attributes="0"/>
+                              <Component id="jButton35" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
@@ -1699,7 +1711,9 @@
                           <Component id="jButton25" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton24" min="-2" pref="52" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton35" min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel36" max="32767" attributes="0"/>
@@ -1842,6 +1856,7 @@
                             <Component class="javax.swing.JButton" name="jButton22">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton22ActionPerformed"/>
@@ -1954,6 +1969,7 @@
                             <Component class="javax.swing.JButton" name="jButton28">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton28ActionPerformed"/>
@@ -2066,6 +2082,7 @@
                             <Component class="javax.swing.JButton" name="jButton29">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton29ActionPerformed"/>
@@ -2207,6 +2224,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton25ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton35">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar Incorporaci&#xf3;n"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -2388,10 +2410,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jPanel45" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="116" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton27" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton26" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                              <Component id="jButton26" alignment="0" pref="213" max="32767" attributes="0"/>
+                              <Component id="jButton40" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
@@ -2404,7 +2427,9 @@
                           <Component id="jButton27" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton26" min="-2" pref="52" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jButton40" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel45" max="32767" attributes="0"/>
@@ -2461,6 +2486,7 @@
                                           <Component id="concList4" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="entidadesList3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton36" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
@@ -2476,8 +2502,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="concList4" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton12" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="jButton36" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2541,6 +2569,14 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
+                            <Component class="javax.swing.JButton" name="jButton36">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton36ActionPerformed"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel47">
@@ -2562,6 +2598,7 @@
                                           <Component id="concList5" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="sectoresList3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton37" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
@@ -2577,8 +2614,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="concList5" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton19" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="jButton19" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="jButton37" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2642,6 +2681,14 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton19ActionPerformed"/>
                               </Events>
                             </Component>
+                            <Component class="javax.swing.JButton" name="jButton37">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton37ActionPerformed"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel48">
@@ -2663,6 +2710,7 @@
                                           <Component id="concList6" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="unidadesList3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton38" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
@@ -2678,8 +2726,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="concList6" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton20" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="jButton20" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="jButton38" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2743,6 +2793,14 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton20ActionPerformed"/>
                               </Events>
                             </Component>
+                            <Component class="javax.swing.JButton" name="jButton38">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton38ActionPerformed"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="jPanel49">
@@ -2764,6 +2822,7 @@
                                           <Component id="concList7" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel39" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="serviciosList3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jButton39" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="62" max="32767" attributes="0"/>
                                   </Group>
@@ -2779,8 +2838,10 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="concList7" min="-2" pref="30" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton21" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="jButton21" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="jButton39" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2844,6 +2905,14 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton21ActionPerformed"/>
                               </Events>
                             </Component>
+                            <Component class="javax.swing.JButton" name="jButton39">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Generar Reporte"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton39ActionPerformed"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -2868,6 +2937,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton27ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton40">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Registrar Desincorporaci&#xf3;n"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

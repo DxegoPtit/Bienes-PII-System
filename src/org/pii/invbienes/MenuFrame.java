@@ -321,6 +321,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton30 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         selectedLabel = new javax.swing.JLabel();
@@ -361,6 +362,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton34 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
+        jButton35 = new javax.swing.JButton();
         jPanel41 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         selectedLabel2 = new javax.swing.JLabel();
@@ -380,23 +382,28 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
         concList4 = new javax.swing.JComboBox<>();
+        jButton36 = new javax.swing.JButton();
         jPanel47 = new javax.swing.JPanel();
         sectoresList3 = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
         concList5 = new javax.swing.JComboBox<>();
         jButton19 = new javax.swing.JButton();
+        jButton37 = new javax.swing.JButton();
         jPanel48 = new javax.swing.JPanel();
         unidadesList3 = new javax.swing.JComboBox<>();
         jLabel38 = new javax.swing.JLabel();
         concList6 = new javax.swing.JComboBox<>();
         jButton20 = new javax.swing.JButton();
+        jButton38 = new javax.swing.JButton();
         jPanel49 = new javax.swing.JPanel();
         serviciosList3 = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         concList7 = new javax.swing.JComboBox<>();
         jButton21 = new javax.swing.JButton();
+        jButton39 = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        jButton40 = new javax.swing.JButton();
         jPanel50 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         selectedLabel3 = new javax.swing.JLabel();
@@ -1229,6 +1236,13 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton23.setText("Añadir un bien");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -1239,7 +1253,8 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGap(87, 87, 87)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
         );
         jPanel21Layout.setVerticalGroup(
@@ -1252,7 +1267,9 @@ public class MenuFrame extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
 
@@ -1388,6 +1405,7 @@ public class MenuFrame extends javax.swing.JFrame {
         concList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
 
         jButton22.setText("Generar Reporte");
+        jButton22.setToolTipText("");
         jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton22ActionPerformed(evt);
@@ -1440,6 +1458,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton28.setText("Generar Reporte");
+        jButton28.setToolTipText("");
         jButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton28ActionPerformed(evt);
@@ -1492,6 +1511,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton29.setText("Generar Reporte");
+        jButton29.setToolTipText("");
         jButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton29ActionPerformed(evt);
@@ -1608,6 +1628,8 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton35.setText("Registrar Incorporación");
+
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
@@ -1615,10 +1637,11 @@ public class MenuFrame extends javax.swing.JFrame {
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(jButton35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
         );
         jPanel35Layout.setVerticalGroup(
@@ -1628,7 +1651,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1754,6 +1779,13 @@ public class MenuFrame extends javax.swing.JFrame {
 
         concList4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
 
+        jButton36.setText("Generar Reporte");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton36ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
         jPanel46.setLayout(jPanel46Layout);
         jPanel46Layout.setHorizontalGroup(
@@ -1764,7 +1796,8 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(concList4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel36)
-                    .addComponent(entidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(entidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel46Layout.setVerticalGroup(
@@ -1777,8 +1810,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(concList4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jButton12)
+                .addGap(1, 1, 1)
+                .addComponent(jButton36)
+                .addGap(13, 13, 13))
         );
 
         jTabbedPane4.addTab("POR ENTIDAD", jPanel46);
@@ -1796,6 +1831,13 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton37.setText("Generar Reporte");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel47Layout = new javax.swing.GroupLayout(jPanel47);
         jPanel47.setLayout(jPanel47Layout);
         jPanel47Layout.setHorizontalGroup(
@@ -1806,7 +1848,8 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(concList5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel37)
-                    .addComponent(sectoresList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sectoresList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel47Layout.setVerticalGroup(
@@ -1819,8 +1862,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(concList5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jButton19)
+                .addGap(1, 1, 1)
+                .addComponent(jButton37)
+                .addGap(13, 13, 13))
         );
 
         jTabbedPane4.addTab("POR SECTOR", jPanel47);
@@ -1838,6 +1883,13 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton38.setText("Generar Reporte");
+        jButton38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton38ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
         jPanel48.setLayout(jPanel48Layout);
         jPanel48Layout.setHorizontalGroup(
@@ -1848,7 +1900,8 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(concList6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel38)
-                    .addComponent(unidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(unidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel48Layout.setVerticalGroup(
@@ -1861,8 +1914,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(concList6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jButton20)
+                .addGap(1, 1, 1)
+                .addComponent(jButton38)
+                .addGap(13, 13, 13))
         );
 
         jTabbedPane4.addTab("POR UNIDAD DE TRABAJO", jPanel48);
@@ -1880,6 +1935,13 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton39.setText("Generar Reporte");
+        jButton39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton39ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
         jPanel49.setLayout(jPanel49Layout);
         jPanel49Layout.setHorizontalGroup(
@@ -1890,7 +1952,8 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(concList7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel39)
-                    .addComponent(serviciosList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(serviciosList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel49Layout.setVerticalGroup(
@@ -1903,8 +1966,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(concList7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jButton21)
+                .addGap(1, 1, 1)
+                .addComponent(jButton39)
+                .addGap(13, 13, 13))
         );
 
         jTabbedPane4.addTab("POR SERVICIO", jPanel49);
@@ -1935,6 +2000,8 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton40.setText("Registrar Desincorporación");
+
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
         jPanel44Layout.setHorizontalGroup(
@@ -1942,10 +2009,11 @@ public class MenuFrame extends javax.swing.JFrame {
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jPanel45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton26, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(jButton40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
         );
         jPanel44Layout.setVerticalGroup(
@@ -1955,7 +2023,9 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton40, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
             .addGroup(jPanel44Layout.createSequentialGroup()
                 .addComponent(jPanel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -2991,6 +3061,185 @@ public class MenuFrame extends javax.swing.JFrame {
         callReportBienesByServicio(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton34ActionPerformed
 
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+        // Obtiene el id de la entidad
+        String item;
+        String idExtraido = "";
+
+        item = entidadesList3.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        //--------------------------------------//
+        
+        //Obtiene el concepto y lo formatea--//
+        String conc = concList4.getSelectedItem().toString();
+        String concNum, concNumExtraido = "";
+        
+        if (conc.equals("-")) {
+            concNum = "";
+        } else {
+            concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
+        }
+        //------------------------------------//
+        
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        String fechaFormateada = formatoFecha.format(fechaActual);
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (Entidad), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesByEntidades(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = sectoresList3.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        //--------------------------------------//
+        
+        //Obtiene el concepto y lo formatea--//
+        String conc = concList5.getSelectedItem().toString();
+        String concNum, concNumExtraido = "";
+        
+        if (conc.equals("-")) {
+            concNum = "";
+        } else {
+            concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
+        }
+        //------------------------------------//
+        
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        String fechaFormateada = formatoFecha.format(fechaActual);
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (sector), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesBySector(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jButton38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton38ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = unidadesList3.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        //--------------------------------------//
+        
+        //Obtiene el concepto y lo formatea--//
+        String conc = concList6.getSelectedItem().toString();
+        String concNum, concNumExtraido = "";
+        
+        if (conc.equals("-")) {
+            concNum = "";
+        } else {
+            concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
+        }
+        //------------------------------------//
+        
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        String fechaFormateada = formatoFecha.format(fechaActual);
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (unidad), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesByUnidad(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
+    }//GEN-LAST:event_jButton38ActionPerformed
+
+    private void jButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton39ActionPerformed
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = serviciosList3.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+        //--------------------------------------//
+        
+        //Obtiene el concepto y lo formatea--//
+        String conc = concList7.getSelectedItem().toString();
+        String concNum, concNumExtraido = "";
+        
+        if (conc.equals("-")) {
+            concNum = "";
+        } else {
+            concNum = conc;
+        }
+        
+        Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher2 = patron2.matcher(concNum);
+
+        while (matcher2.find()) {
+             concNumExtraido += matcher2.group();
+        }
+        //------------------------------------//
+        
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+        String fechaFormateada = formatoFecha.format(fechaActual);
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (servicio), CONCEPTO: " + concNumExtraido);
+        
+        callReportBienesByServicio(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
+    }//GEN-LAST:event_jButton39ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        // TODO add your handling code here:
+        AddingBien adg = new AddingBien();
+        adg.setVisible(true);
+    }//GEN-LAST:event_jButton23ActionPerformed
+
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
         String[] route;
@@ -3149,6 +3398,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
@@ -3161,7 +3411,13 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
+    private javax.swing.JButton jButton38;
+    private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

@@ -449,7 +449,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '1' AND '20'";
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '01' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -502,7 +502,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idSector = " + ID + " AND concepto BETWEEN '1' AND '20'";
+                        + "FROM movimientos WHERE idSector = " + ID + " AND concepto BETWEEN '01' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -555,7 +555,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idunidad = " + ID + " AND concepto BETWEEN '1' AND '20'";
+                        + "FROM movimientos WHERE idunidad = " + ID + " AND concepto BETWEEN '01' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -608,7 +608,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idservicio = " + ID + " AND concepto BETWEEN '1' AND '20'";
+                        + "FROM movimientos WHERE idservicio = " + ID + " AND concepto BETWEEN '01' AND '20'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -701,7 +701,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE identidad = " + ID;
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '51' AND '67'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -754,7 +754,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idsector = " + ID;
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '51' AND '67'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -807,7 +807,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idunidad = " + ID;
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '51' AND '67'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -860,7 +860,7 @@ public class SqlControllerClass {
                         + "monto_bs AS monto,"
                         + "nfactura AS nfac,"
                         + "fecha_mov AS fecha "
-                        + "FROM movimientos WHERE idservicio = " + ID;
+                        + "FROM movimientos WHERE identidad = " + ID + " AND concepto BETWEEN '51' AND '67'";
             } else {
                 sql = "SELECT "
                         + "clasificacion AS cls,"
@@ -1058,7 +1058,7 @@ public class SqlControllerClass {
                                     + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
                                     + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
                                     + " WHERE"
-                                    + " a.concepto BETWEEN '1' AND '20' AND a.idServicio = " + idServicio
+                                    + " a.concepto BETWEEN '01' AND '20' AND a.idServicio = " + idServicio
                                     + " ORDER BY"
                                     + " a.idServicio";
 
@@ -1348,7 +1348,7 @@ public class SqlControllerClass {
                                     + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
                                     + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
                                     + " WHERE"
-                                    + " a.concepto BETWEEN '1' AND '20' AND idUnidad = " + idUnidad + " "
+                                    + " a.concepto BETWEEN '01' AND '20' AND idUnidad = " + idUnidad + " "
                                     + " ORDER BY"
                                     + " a.idServicio";
 
@@ -1638,7 +1638,7 @@ public class SqlControllerClass {
                                     + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
                                     + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
                                     + " WHERE"
-                                    + " a.concepto BETWEEN '1' AND '20' AND idSector = " + idSector + " "
+                                    + " a.concepto BETWEEN '01' AND '20' AND idSector = " + idSector + " "
                                     + " ORDER BY"
                                     + " a.idServicio";
 
@@ -1846,9 +1846,8 @@ public class SqlControllerClass {
                 switch (TYPE) {
                     case 0:
                         System.out.println("I'M HERE (Bienes por entidad)");
-                        
-                        // ESTO ES PARA BIENES!!!
 
+                        // ESTO ES PARA BIENES!!!
                         // Load the JRXML file
                         JasperDesign jasperDesign = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
 
@@ -1930,7 +1929,7 @@ public class SqlControllerClass {
                                     + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id"
                                     + " LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id"
                                     + " WHERE"
-                                    + " a.concepto BETWEEN '1' AND '20' AND idEntidad = " + idEntidad
+                                    + " a.concepto BETWEEN '01' AND '20' AND idEntidad = " + idEntidad
                                     + " ORDER BY"
                                     + " a.idServicio";
 
@@ -2450,6 +2449,92 @@ public class SqlControllerClass {
             return false;
         } finally {
             closeCon();
+        }
+    }
+
+    //------------------------------------PARA AÑADIR UN BIEN----------------------------//
+    public Boolean addBien(String nroBien, String clasif, String descripcion, String estado, String status, String idTrab, String ubic, String monto_bs, String idEntidad, String idSector, String idUnidad, String idServicio, String fecha) {
+        try {
+            if (openCon() != null) {
+                if (verifyExistencia(nroBien, 0)) {
+                    return false;
+                } else {
+                    Statement stm = con.createStatement();
+                    Integer i = 0;
+                    i = stm.executeUpdate("INSERT INTO bienes VALUES(null , '" + clasif + "', '" + nroBien + "', '" + descripcion + "', "
+                            + "'" + estado + "', '" + status + "', " + idTrab + ", '" + ubic + "', '" + monto_bs + "', " + idEntidad + ", " + idSector + ", " + idUnidad + ", " + idServicio + ", '" + fecha + "')");
+                    if (i != 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public Boolean verifyExistencia(String nroBien, Integer TYPE) {
+        try {
+            switch (TYPE) {
+                case 0:
+                    //Verifica en bienes
+                    if (openCon() != null) {
+                        Statement stm = con.createStatement();
+                        ResultSet rst = stm.executeQuery("SELECT * FROM bienes WHERE nbien = '" + nroBien + "'");
+                        if (rst.next()) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                case 1:
+                    //Verifica en incorporaciones
+                    if (openCon() != null) {
+                        if (openCon() != null) {
+                            Statement stm = con.createStatement();
+                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "'");
+                            if (rst.next()) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                case 2:
+                    //Verifica en desincorporaciones
+                    if (openCon() != null) {
+                        if (openCon() != null) {
+                            Statement stm = con.createStatement();
+                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "'");
+                            if (rst.next()) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                default:
+                    JOptionPane.showMessageDialog(null, "Tipo de consulta no válida", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                    return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 

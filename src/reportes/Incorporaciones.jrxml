@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="cf13ccce-ed5c-4cd7-be39-f0fccb54bd75">
-	<property name="ireport.zoom" value="0.9090909090909107"/>
+	<property name="ireport.zoom" value="1.1000000000000025"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="fecha" class="java.lang.String">
@@ -375,37 +375,81 @@ ORDER BY
 			</textField>
 		</band>
 	</detail>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="159" splitType="Stretch">
-			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 0]]></printWhenExpression>
+	<columnFooter>
+		<band height="103">
 			<rectangle>
-				<reportElement x="538" y="0" width="107" height="20" backcolor="#CCCCCC" uuid="cec04046-d706-494d-855e-9083e5fa7d8d"/>
+				<reportElement x="663" y="0" width="89" height="20" backcolor="#CCCCCC" uuid="a3b674fa-481a-4330-9ba0-eee72f9862a9"/>
 			</rectangle>
-			<rectangle>
-				<reportElement x="2" y="0" width="536" height="20" backcolor="#CCCCCC" uuid="e36b0960-fa56-4472-b0f5-3fdd57b3e805"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="538" y="0" width="107" height="20" uuid="f2a3a81b-0262-4cb1-a745-e89634d266bd"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[SUB-TOTAL:    ]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="645" y="0" width="109" height="20" backcolor="#CCCCCC" uuid="434c4cf6-cad8-41fd-bdb4-3fe1cbbfb7dd"/>
-			</rectangle>
+			<line>
+				<reportElement x="558" y="56" width="135" height="1" uuid="a5f5a037-e3cc-4145-97d8-fb7e0769cd74"/>
+			</line>
+			<line>
+				<reportElement x="48" y="56" width="135" height="1" uuid="7d6f9ac5-7bf9-443f-a650-6e1840d52102"/>
+			</line>
 			<textField>
-				<reportElement x="645" y="0" width="109" height="20" uuid="008a10c7-2abd-413d-a71d-6100bef39996"/>
+				<reportElement x="663" y="0" width="89" height="20" uuid="bb2f9ae4-45b4-43d5-849c-d4309ce862b4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{costo_aq}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="528" y="81" width="195" height="26" forecolor="#333333" uuid="275e2441-0267-4342-ae09-be5ff2a62c70"/>
+				<reportElement x="526" y="58" width="195" height="26" forecolor="#333333" uuid="37ac155a-88de-4608-b17b-5d472d4d9e9c"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[OFICINA DE LA UNIDAD DE TRABAJO O DEPENDENCIA
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="577" y="0" width="86" height="20" backcolor="#CCCCCC" uuid="d39abc95-1b30-4f07-85b0-16abc27e8d0a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="577" y="0" width="86" height="20" uuid="5d2f55ba-43ff-41a5-a7d7-a1f62deb3563"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL:    ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="577" height="20" backcolor="#CCCCCC" uuid="47306367-8b36-445a-8f46-dc83664a486f"/>
+			</rectangle>
+			<line>
+				<reportElement x="305" y="57" width="135" height="1" uuid="b74c3496-a8de-4e27-b80e-6955c0f693b0"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="105" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}.equals($V{PAGE_COUNT})]]></printWhenExpression>
+			<rectangle>
+				<reportElement x="577" y="0" width="86" height="20" backcolor="#CCCCCC" uuid="cec04046-d706-494d-855e-9083e5fa7d8d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="0" width="576" height="20" backcolor="#CCCCCC" uuid="e36b0960-fa56-4472-b0f5-3fdd57b3e805"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="577" y="0" width="86" height="20" uuid="f2a3a81b-0262-4cb1-a745-e89634d266bd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB-TOTAL:    ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="663" y="0" width="90" height="20" backcolor="#CCCCCC" uuid="434c4cf6-cad8-41fd-bdb4-3fe1cbbfb7dd"/>
+			</rectangle>
+			<textField>
+				<reportElement x="663" y="0" width="90" height="20" uuid="008a10c7-2abd-413d-a71d-6100bef39996"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo_aq}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="527" y="63" width="195" height="26" forecolor="#333333" uuid="275e2441-0267-4342-ae09-be5ff2a62c70"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
@@ -413,17 +457,14 @@ ORDER BY
 ]]></text>
 			</staticText>
 			<line>
-				<reportElement x="560" y="79" width="135" height="1" uuid="43d26ecb-bbfb-42f2-9b70-edc9ccc82663"/>
+				<reportElement x="559" y="61" width="135" height="1" uuid="43d26ecb-bbfb-42f2-9b70-edc9ccc82663"/>
 			</line>
 			<line>
-				<reportElement x="307" y="80" width="135" height="1" uuid="9bc1a472-6962-4316-a392-acc11b2274cd"/>
+				<reportElement x="306" y="62" width="135" height="1" uuid="9bc1a472-6962-4316-a392-acc11b2274cd"/>
 			</line>
 			<line>
-				<reportElement x="50" y="79" width="135" height="1" uuid="eba2b4d2-d16e-4e3b-99b3-a118cc9de305"/>
+				<reportElement x="49" y="61" width="135" height="1" uuid="eba2b4d2-d16e-4e3b-99b3-a118cc9de305"/>
 			</line>
-			<break>
-				<reportElement x="0" y="0" width="100" height="1" uuid="c3c7f57d-d210-4cc0-8028-c2c264b3c0b9"/>
-			</break>
 		</band>
 	</summary>
 </jasperReport>

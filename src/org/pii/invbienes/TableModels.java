@@ -72,7 +72,6 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
-            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
         

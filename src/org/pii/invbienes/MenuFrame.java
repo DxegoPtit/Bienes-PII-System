@@ -1648,6 +1648,11 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton35.setText("Registrar Incorporación");
+        jButton35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton35ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -3269,6 +3274,13 @@ public class MenuFrame extends javax.swing.JFrame {
         tmls = new TableModels();
         invTable.setModel(tmls.modeloInventarioByAll());
     }//GEN-LAST:event_jButton41ActionPerformed
+
+    private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
+        // TODO add your handling code here:
+        AddingIncorporacion adi = new AddingIncorporacion();
+        adi.setiduser(user_data[1]);
+        adi.setVisible(true);
+    }//GEN-LAST:event_jButton35ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();

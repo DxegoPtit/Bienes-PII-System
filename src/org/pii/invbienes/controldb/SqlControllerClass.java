@@ -2453,21 +2453,65 @@ public class SqlControllerClass {
     }
 
     //------------------------------------PARA AÑADIR UN BIEN----------------------------//
-    public Boolean addBien(String nroBien, String clasif, String descripcion, String estado, String status, String idTrab, String ubic, String monto_bs, String idEntidad, String idSector, String idUnidad, String idServicio, String fecha) {
+    private String[] getentsIDs(String idServ) {
         try {
             if (openCon() != null) {
-                if (verifyExistencia(nroBien, 0)) {
-                    return false;
+                Statement stm = con.createStatement();
+                ResultSet rst = stm.executeQuery("SELECT "
+                        + "entidades.id AS entidad,"
+                        + "sectores.id AS sector,"
+                        + "unidades.id AS unidad"
+                        + " FROM "
+                        + "servicios "
+                        + "INNER JOIN unidades ON servicios.idUnidadAs = unidades.id "
+                        + "INNER JOIN sectores ON sectores.id = unidades.idSectorAs "
+                        + "INNER JOIN entidades ON entidades.id = sectores.idEntidadAs "
+                        + "WHERE "
+                        + "servicios.id = " + idServ);
+
+                if (rst.next()) {
+
+                    String[] data = new String[]{
+                        rst.getString("entidad"),
+                        rst.getString("sector"),
+                        rst.getString("unidad")
+                    };
+
+                    return data;
                 } else {
-                    Statement stm = con.createStatement();
-                    Integer i = 0;
-                    i = stm.executeUpdate("INSERT INTO bienes VALUES(null , '" + clasif + "', '" + nroBien + "', '" + descripcion + "', "
-                            + "'" + estado + "', '" + status + "', " + idTrab + ", '" + ubic + "', '" + monto_bs + "', " + idEntidad + ", " + idSector + ", " + idUnidad + ", " + idServicio + ", '" + fecha + "')");
-                    if (i != 0) {
-                        return true;
-                    } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Boolean addBien(String nroBien, String clasif, String descripcion, String estado, String status, String idTrab, String ubic, String monto_bs, String idServicio, String fecha) {
+        try {
+            if (openCon() != null) {
+                if (getentsIDs(idServicio) != null) {
+                    String[] data = getentsIDs(idServicio);
+                    if (verifyExistencia(nroBien, 0)) {
                         return false;
+                    } else {
+                        Statement stm = con.createStatement();
+                        Integer i = 0;
+                        i = stm.executeUpdate("INSERT INTO bienes VALUES(null , '" + clasif + "', '" + nroBien + "', '" + descripcion + "', "
+                                + "'" + estado + "', '" + status + "', " + idTrab + ", '" + ubic + "', '" + monto_bs + "', " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
+                        if (i != 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
+                } else {
+                    return null;
                 }
             } else {
                 return false;
@@ -2475,6 +2519,8 @@ public class SqlControllerClass {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
             return false;
+        } finally {
+            closeCon();
         }
     }
 
@@ -2535,6 +2581,39 @@ public class SqlControllerClass {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
             return false;
+        }
+    }
+    
+    //-----------------------------------PARA AÑADIR UNA INCORPORACIÓN-------------------//
+    public Boolean addIncorp(String nroBien, String clasif, String descripcion, String estado, String status, String concepto, String ordCompra, String nFactura, String monto_bs, String idServicio, String fecha, String iduser) {
+        try {
+            if (openCon() != null) {
+                if (getentsIDs(idServicio) != null) {
+                    String[] data = getentsIDs(idServicio);
+                    if (verifyExistencia(nroBien, 1)) {
+                        return false;
+                    } else {
+                        Statement stm = con.createStatement();
+                        Integer i = 0;
+                        i = stm.executeUpdate("INSERT INTO movimientos VALUES(null , '" + clasif + "', '" + nroBien + "', '" + concepto + "', "
+                                + "'" + descripcion + "', '" + monto_bs + "', " + nFactura + ", '" + ordCompra + "', null, " + iduser + ",'" + monto_bs + "', " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
+                        if (i != 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                } else {
+                    return null;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } finally {
+            closeCon();
         }
     }
 

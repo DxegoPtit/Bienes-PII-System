@@ -416,6 +416,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         labelVisualizando3 = new javax.swing.JLabel();
+        jButton43 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
@@ -1815,7 +1816,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jLabel36.setText("Filtrar por concepto:");
 
-        concList4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concList4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "51-. Desincorporación por traspaso ", "52-. Venta ", "54-. Suministros de Bienes a otras entidades ", "55-. Desarme ", "56-. Inservibilidad ", "57-. Deterioro ", "58-. Demolición ", "59-. Desincorporación de semovientes ", "60-. Faltantes por investigar ", "61-. Desincorporación por permuta ", "62-. Desincorporación por donación ", "63-. Desincorporación por adscripción de Bienes Inmuebles ", "65-. Desincorporación por cambio de subgrupo ", "66-. Corrección de incorporaciones ", "67-. Desincorporación por otros conceptos" }));
 
         jButton36.setText("Generar Reporte");
         jButton36.addActionListener(new java.awt.event.ActionListener() {
@@ -1836,7 +1837,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jLabel36)
                     .addComponent(entidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel46Layout.setVerticalGroup(
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1860,7 +1861,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jLabel37.setText("Filtrar por concepto:");
 
-        concList5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concList5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "51-. Desincorporación por traspaso ", "52-. Venta ", "54-. Suministros de Bienes a otras entidades ", "55-. Desarme ", "56-. Inservibilidad ", "57-. Deterioro ", "58-. Demolición ", "59-. Desincorporación de semovientes ", "60-. Faltantes por investigar ", "61-. Desincorporación por permuta ", "62-. Desincorporación por donación ", "63-. Desincorporación por adscripción de Bienes Inmuebles ", "65-. Desincorporación por cambio de subgrupo ", "66-. Corrección de incorporaciones ", "67-. Desincorporación por otros conceptos" }));
 
         jButton19.setText("VISUALIZAR");
         jButton19.addActionListener(new java.awt.event.ActionListener() {
@@ -1888,7 +1889,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jLabel37)
                     .addComponent(sectoresList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel47Layout.setVerticalGroup(
             jPanel47Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1912,7 +1913,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jLabel38.setText("Filtrar por concepto:");
 
-        concList6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concList6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "51-. Desincorporación por traspaso ", "52-. Venta ", "54-. Suministros de Bienes a otras entidades ", "55-. Desarme ", "56-. Inservibilidad ", "57-. Deterioro ", "58-. Demolición ", "59-. Desincorporación de semovientes ", "60-. Faltantes por investigar ", "61-. Desincorporación por permuta ", "62-. Desincorporación por donación ", "63-. Desincorporación por adscripción de Bienes Inmuebles ", "65-. Desincorporación por cambio de subgrupo ", "66-. Corrección de incorporaciones ", "67-. Desincorporación por otros conceptos" }));
 
         jButton20.setText("VISUALIZAR");
         jButton20.addActionListener(new java.awt.event.ActionListener() {
@@ -1940,7 +1941,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jLabel38)
                     .addComponent(unidadesList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel48Layout.setVerticalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1964,7 +1965,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         jLabel39.setText("Filtrar por concepto:");
 
-        concList7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concList7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "51-. Desincorporación por traspaso ", "52-. Venta ", "54-. Suministros de Bienes a otras entidades ", "55-. Desarme ", "56-. Inservibilidad ", "57-. Deterioro ", "58-. Demolición ", "59-. Desincorporación de semovientes ", "60-. Faltantes por investigar ", "61-. Desincorporación por permuta ", "62-. Desincorporación por donación ", "63-. Desincorporación por adscripción de Bienes Inmuebles ", "65-. Desincorporación por cambio de subgrupo ", "66-. Corrección de incorporaciones ", "67-. Desincorporación por otros conceptos" }));
 
         jButton21.setText("VISUALIZAR");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
@@ -1992,7 +1993,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jLabel39)
                     .addComponent(serviciosList3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel49Layout.setVerticalGroup(
             jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2039,6 +2040,11 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton40.setText("Registrar Desincorporación");
+        jButton40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton40ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
@@ -2129,6 +2135,13 @@ public class MenuFrame extends javax.swing.JFrame {
         labelVisualizando3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelVisualizando3.setText("...");
 
+        jButton43.setText("ACTUALIZAR TABLA");
+        jButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton43ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
         jPanel52.setLayout(jPanel52Layout);
         jPanel52Layout.setHorizontalGroup(
@@ -2137,13 +2150,19 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addComponent(jLabel42)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelVisualizando3)
-                .addContainerGap(755, Short.MAX_VALUE))
-            .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel52Layout.createSequentialGroup()
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton43)
+                .addGap(82, 82, 82))
         );
         jPanel52Layout.setVerticalGroup(
             jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel52Layout.createSequentialGroup()
-                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel52Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2484,7 +2503,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         // TODO add your handling code here:
         tmls = new TableModels();
-        desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
+        inctable.setModel(tmls.modeloIncorporacionesByAll());
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
@@ -2513,7 +2532,7 @@ public class MenuFrame extends javax.swing.JFrame {
 
         if (evt.getClickCount() <= 1) {
             String data = inctable.getValueAt(inctable.getSelectedRow(), inctable.getSelectedColumn()).toString();
-            selectedLabel.setText(data);
+            selectedLabel2.setText(data);
         } else {
             /*
             String BID = invTable.getValueAt(invTable.getSelectedRow(), 0).toString();
@@ -2794,6 +2813,8 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         // TODO add your handling code here:
+        tmls = new TableModels();
+        desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -2813,7 +2834,25 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void desinctableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desinctableMouseClicked
-        // TODO add your handling code here:
+        
+        scc = new SqlControllerClass();
+
+        System.out.println("Clicks: " + evt.getClickCount());
+
+        if (evt.getClickCount() <= 1) {
+            String data = desinctable.getValueAt(desinctable.getSelectedRow(), desinctable.getSelectedColumn()).toString();
+            selectedLabel3.setText(data);
+        } else {
+            /*
+            String BID = invTable.getValueAt(invTable.getSelectedRow(), 0).toString();
+            System.out.println(BID);
+            String[] data = scc.bienData(BID);
+//            String cls = data[2];
+//            System.out.println("cls " + cls);
+            seeDetails(data);
+            */
+            JOptionPane.showMessageDialog(null, "¡Esta función aún no está disponible!", ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_desinctableMouseClicked
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
@@ -3302,6 +3341,19 @@ public class MenuFrame extends javax.swing.JFrame {
         inctable.setModel(tmls.modeloIncorporacionesByAll());
     }//GEN-LAST:event_jButton42ActionPerformed
 
+    private void jButton40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton40ActionPerformed
+        // TODO add your handling code here:
+        AddingDesincorporacion ads = new AddingDesincorporacion();
+        ads.setVisible(true);
+        ads.setiduser(user_data[1]);
+    }//GEN-LAST:event_jButton40ActionPerformed
+
+    private void jButton43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton43ActionPerformed
+        // TODO add your handling code here:
+        tmls = new TableModels();
+        desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
+    }//GEN-LAST:event_jButton43ActionPerformed
+
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
         String[] route;
@@ -3482,6 +3534,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

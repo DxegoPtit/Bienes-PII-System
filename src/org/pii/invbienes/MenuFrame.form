@@ -2524,7 +2524,7 @@
                                           <Component id="entidadesList3" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButton36" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                                      <EmptySpace pref="72" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2578,26 +2578,23 @@
                             <Component class="javax.swing.JComboBox" name="concList4">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="19">
+                                  <StringArray count="16">
                                     <StringItem index="0" value="-"/>
-                                    <StringItem index="1" value="01-. Inventario inicial."/>
-                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
-                                    <StringItem index="3" value="03-. Compras. "/>
-                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
-                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
-                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
-                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
-                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
-                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
-                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
-                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
-                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
-                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
-                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
-                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
-                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
-                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
-                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                    <StringItem index="1" value="51-. Desincorporaci&#xf3;n por traspaso "/>
+                                    <StringItem index="2" value="52-. Venta "/>
+                                    <StringItem index="3" value="54-. Suministros de Bienes a otras entidades "/>
+                                    <StringItem index="4" value="55-. Desarme "/>
+                                    <StringItem index="5" value="56-. Inservibilidad "/>
+                                    <StringItem index="6" value="57-. Deterioro "/>
+                                    <StringItem index="7" value="58-. Demolici&#xf3;n "/>
+                                    <StringItem index="8" value="59-. Desincorporaci&#xf3;n de semovientes "/>
+                                    <StringItem index="9" value="60-. Faltantes por investigar "/>
+                                    <StringItem index="10" value="61-. Desincorporaci&#xf3;n por permuta "/>
+                                    <StringItem index="11" value="62-. Desincorporaci&#xf3;n por donaci&#xf3;n "/>
+                                    <StringItem index="12" value="63-. Desincorporaci&#xf3;n por adscripci&#xf3;n de Bienes Inmuebles "/>
+                                    <StringItem index="13" value="65-. Desincorporaci&#xf3;n por cambio de subgrupo "/>
+                                    <StringItem index="14" value="66-. Correcci&#xf3;n de incorporaciones "/>
+                                    <StringItem index="15" value="67-. Desincorporaci&#xf3;n por otros conceptos"/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -2636,7 +2633,7 @@
                                           <Component id="sectoresList3" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButton37" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                                      <EmptySpace pref="72" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2682,26 +2679,23 @@
                             <Component class="javax.swing.JComboBox" name="concList5">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="19">
+                                  <StringArray count="16">
                                     <StringItem index="0" value="-"/>
-                                    <StringItem index="1" value="01-. Inventario inicial."/>
-                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
-                                    <StringItem index="3" value="03-. Compras. "/>
-                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
-                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
-                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
-                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
-                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
-                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
-                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
-                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
-                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
-                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
-                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
-                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
-                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
-                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
-                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                    <StringItem index="1" value="51-. Desincorporaci&#xf3;n por traspaso "/>
+                                    <StringItem index="2" value="52-. Venta "/>
+                                    <StringItem index="3" value="54-. Suministros de Bienes a otras entidades "/>
+                                    <StringItem index="4" value="55-. Desarme "/>
+                                    <StringItem index="5" value="56-. Inservibilidad "/>
+                                    <StringItem index="6" value="57-. Deterioro "/>
+                                    <StringItem index="7" value="58-. Demolici&#xf3;n "/>
+                                    <StringItem index="8" value="59-. Desincorporaci&#xf3;n de semovientes "/>
+                                    <StringItem index="9" value="60-. Faltantes por investigar "/>
+                                    <StringItem index="10" value="61-. Desincorporaci&#xf3;n por permuta "/>
+                                    <StringItem index="11" value="62-. Desincorporaci&#xf3;n por donaci&#xf3;n "/>
+                                    <StringItem index="12" value="63-. Desincorporaci&#xf3;n por adscripci&#xf3;n de Bienes Inmuebles "/>
+                                    <StringItem index="13" value="65-. Desincorporaci&#xf3;n por cambio de subgrupo "/>
+                                    <StringItem index="14" value="66-. Correcci&#xf3;n de incorporaciones "/>
+                                    <StringItem index="15" value="67-. Desincorporaci&#xf3;n por otros conceptos"/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -2748,7 +2742,7 @@
                                           <Component id="unidadesList3" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButton38" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                                      <EmptySpace pref="72" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2794,26 +2788,23 @@
                             <Component class="javax.swing.JComboBox" name="concList6">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="19">
+                                  <StringArray count="16">
                                     <StringItem index="0" value="-"/>
-                                    <StringItem index="1" value="01-. Inventario inicial."/>
-                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
-                                    <StringItem index="3" value="03-. Compras. "/>
-                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
-                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
-                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
-                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
-                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
-                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
-                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
-                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
-                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
-                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
-                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
-                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
-                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
-                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
-                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                    <StringItem index="1" value="51-. Desincorporaci&#xf3;n por traspaso "/>
+                                    <StringItem index="2" value="52-. Venta "/>
+                                    <StringItem index="3" value="54-. Suministros de Bienes a otras entidades "/>
+                                    <StringItem index="4" value="55-. Desarme "/>
+                                    <StringItem index="5" value="56-. Inservibilidad "/>
+                                    <StringItem index="6" value="57-. Deterioro "/>
+                                    <StringItem index="7" value="58-. Demolici&#xf3;n "/>
+                                    <StringItem index="8" value="59-. Desincorporaci&#xf3;n de semovientes "/>
+                                    <StringItem index="9" value="60-. Faltantes por investigar "/>
+                                    <StringItem index="10" value="61-. Desincorporaci&#xf3;n por permuta "/>
+                                    <StringItem index="11" value="62-. Desincorporaci&#xf3;n por donaci&#xf3;n "/>
+                                    <StringItem index="12" value="63-. Desincorporaci&#xf3;n por adscripci&#xf3;n de Bienes Inmuebles "/>
+                                    <StringItem index="13" value="65-. Desincorporaci&#xf3;n por cambio de subgrupo "/>
+                                    <StringItem index="14" value="66-. Correcci&#xf3;n de incorporaciones "/>
+                                    <StringItem index="15" value="67-. Desincorporaci&#xf3;n por otros conceptos"/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -2860,7 +2851,7 @@
                                           <Component id="serviciosList3" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jButton39" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                                      <EmptySpace pref="72" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2906,26 +2897,23 @@
                             <Component class="javax.swing.JComboBox" name="concList7">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="19">
+                                  <StringArray count="16">
                                     <StringItem index="0" value="-"/>
-                                    <StringItem index="1" value="01-. Inventario inicial."/>
-                                    <StringItem index="2" value="02-. Incorporaciones por traspaso. "/>
-                                    <StringItem index="3" value="03-. Compras. "/>
-                                    <StringItem index="4" value="04-. Construcci&#xf3;n de Inmuebles. "/>
-                                    <StringItem index="5" value="05-. Adiciones mejoras. "/>
-                                    <StringItem index="6" value="06-. Producci&#xf3;n de elementos (muebles). "/>
-                                    <StringItem index="7" value="07-. Suministro de Bienes de otras entidades. "/>
-                                    <StringItem index="8" value="09-. Incorporaci&#xf3;n de semovientes. "/>
-                                    <StringItem index="9" value="10-. Reconstrucci&#xf3;n de equipos. "/>
-                                    <StringItem index="10" value="11-. Incorporaci&#xf3;n por donaci&#xf3;n. "/>
-                                    <StringItem index="11" value="12-. Incorporaci&#xf3;n por permuta. "/>
-                                    <StringItem index="12" value="13-. Adscripci&#xf3;n de Bienes Inmuebles."/>
-                                    <StringItem index="13" value="14-. Omisi&#xf3;n en inventario. "/>
-                                    <StringItem index="14" value="16-. Incorporaci&#xf3;n por cambio de subgrupo. "/>
-                                    <StringItem index="15" value="17-. Correcci&#xf3;n de desincorporaci&#xf3;n."/>
-                                    <StringItem index="16" value="18-. Incorporaci&#xf3;n por otros conceptos."/>
-                                    <StringItem index="17" value="19-. Incorporaci&#xf3;n de muebles procedentes de los almacenes."/>
-                                    <StringItem index="18" value="20-. Herencia vacantes."/>
+                                    <StringItem index="1" value="51-. Desincorporaci&#xf3;n por traspaso "/>
+                                    <StringItem index="2" value="52-. Venta "/>
+                                    <StringItem index="3" value="54-. Suministros de Bienes a otras entidades "/>
+                                    <StringItem index="4" value="55-. Desarme "/>
+                                    <StringItem index="5" value="56-. Inservibilidad "/>
+                                    <StringItem index="6" value="57-. Deterioro "/>
+                                    <StringItem index="7" value="58-. Demolici&#xf3;n "/>
+                                    <StringItem index="8" value="59-. Desincorporaci&#xf3;n de semovientes "/>
+                                    <StringItem index="9" value="60-. Faltantes por investigar "/>
+                                    <StringItem index="10" value="61-. Desincorporaci&#xf3;n por permuta "/>
+                                    <StringItem index="11" value="62-. Desincorporaci&#xf3;n por donaci&#xf3;n "/>
+                                    <StringItem index="12" value="63-. Desincorporaci&#xf3;n por adscripci&#xf3;n de Bienes Inmuebles "/>
+                                    <StringItem index="13" value="65-. Desincorporaci&#xf3;n por cambio de subgrupo "/>
+                                    <StringItem index="14" value="66-. Correcci&#xf3;n de incorporaciones "/>
+                                    <StringItem index="15" value="67-. Desincorporaci&#xf3;n por otros conceptos"/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -2978,6 +2966,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Registrar Desincorporaci&#xf3;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton40ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -3066,19 +3057,27 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="labelVisualizando3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="755" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jLabel41" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel41" min="-2" pref="645" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jButton43" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel41" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel41" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                              <Component id="jButton43" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel42" alignment="0" max="32767" attributes="0"/>
@@ -3113,6 +3112,14 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="..."/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton43">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="ACTUALIZAR TABLA"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton43ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

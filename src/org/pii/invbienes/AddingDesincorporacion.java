@@ -16,7 +16,7 @@ import org.pii.invbienes.controldb.SqlControllerClass;
  *
  * @author PASANTIA
  */
-public class AddingIncorporacion extends javax.swing.JFrame {
+public class AddingDesincorporacion extends javax.swing.JFrame {
 
     /**
      * Creates new form AddingBien
@@ -24,7 +24,7 @@ public class AddingIncorporacion extends javax.swing.JFrame {
     private SqlControllerClass scc;
     private String iduser;
     
-    public AddingIncorporacion() {
+    public AddingDesincorporacion() {
         initComponents();
         this.setLocationRelativeTo(null);
         scc = new SqlControllerClass();
@@ -70,8 +70,6 @@ public class AddingIncorporacion extends javax.swing.JFrame {
         concList = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         ordCompraTxt = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        nFactoTxt = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         estList = new javax.swing.JComboBox<>();
@@ -221,9 +219,7 @@ public class AddingIncorporacion extends javax.swing.JFrame {
         concList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Orden de Compra:");
-
-        jLabel10.setText("Nº de Factura:");
+        jLabel9.setText("Nº Acta:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -231,7 +227,7 @@ public class AddingIncorporacion extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,12 +235,8 @@ public class AddingIncorporacion extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ordCompraTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nFactoTxt)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ordCompraTxt)))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,10 +249,6 @@ public class AddingIncorporacion extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ordCompraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nFactoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -547,8 +535,8 @@ public class AddingIncorporacion extends javax.swing.JFrame {
         }
         
         String ordenCompra, nFacto;
-        ordenCompra = ordCompraTxt.getText();
-        nFacto = nFactoTxt.getText();
+        ordenCompra = "";
+        nFacto = ordCompraTxt.getText(); //En realidad es el nº de acta de desincorporacion, solo se ahorró codigo
         
         String Estado, Status;
         if (estList.getSelectedItem().toString().equals("-")) {
@@ -573,12 +561,12 @@ public class AddingIncorporacion extends javax.swing.JFrame {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fecha = formatoFecha.format(fechaActual);
         
-        if (scc.addIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2,ordenCompra, nFacto, valor, idServicio, fecha, iduser)) {
-            JOptionPane.showMessageDialog(null, "¡Éxito al añadir la incorporación, Bien Nº " + nrobien + " a la base de datos!\n"
+        if (scc.addDesIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2,ordenCompra, nFacto, valor, idServicio, fecha, iduser, true)) {
+            JOptionPane.showMessageDialog(null, "¡Éxito al añadir la desincorporación, Bien Nº " + nrobien + " a la base de datos!\n"
                     + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA INCORPORACION DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA DESINCORPORACIÓN DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -603,21 +591,23 @@ public class AddingIncorporacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddingIncorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddingDesincorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddingIncorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddingDesincorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddingIncorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddingDesincorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddingIncorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddingDesincorporacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddingIncorporacion().setVisible(true);
+                new AddingDesincorporacion().setVisible(true);
             }
         });
     }
@@ -631,7 +621,6 @@ public class AddingIncorporacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -656,7 +645,6 @@ public class AddingIncorporacion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nFactoTxt;
     private javax.swing.JTextField nbientxt;
     private javax.swing.JTextField ordCompraTxt;
     private javax.swing.JComboBox<String> secc;

@@ -2596,7 +2596,7 @@ public class SqlControllerClass {
                         Statement stm = con.createStatement();
                         Integer i = 0;
                         i = stm.executeUpdate("INSERT INTO piibienes.movimientos (clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, "
-                                + "idunidad, idservicio, fecha_mov) VALUES (" + clasif + ", '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '" + nFactura + "', "
+                                + "idunidad, idservicio, fecha_mov) VALUES ('" + clasif + "', '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '" + nFactura + "', "
                                 + "'" + ordCompra + "', '', " + iduser + ", " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
                         if (i != 0) {
                             return true;
@@ -2631,7 +2631,7 @@ public class SqlControllerClass {
                             Statement stm = con.createStatement();
                             Integer i = 0;
                             i = stm.executeUpdate("INSERT INTO piibienes.movimientos (clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, "
-                                    + "idunidad, idservicio, fecha_mov) VALUES (" + clasif + ", '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '', "
+                                    + "idunidad, idservicio, fecha_mov) VALUES ('" + clasif + "', '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '', "
                                     + "'', '" + nFactura + "', " + iduser + ", " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
                             if (i != 0) {
                                 return true;

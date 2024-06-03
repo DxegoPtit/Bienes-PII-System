@@ -23,15 +23,15 @@ public class AddingIncorporacion extends javax.swing.JFrame {
      */
     private SqlControllerClass scc;
     private String iduser;
-    
+
     public AddingIncorporacion() {
         initComponents();
         this.setLocationRelativeTo(null);
         scc = new SqlControllerClass();
         fillFields();
     }
-    
-    private void fillFields(){
+
+    private void fillFields() {
         serviciosID.setModel(scc.getServicios());
         String[] ente = scc.getRutaEntes(serviciosID.getSelectedItem().toString());
         entidadTxt.setText(ente[0]);
@@ -519,7 +519,7 @@ public class AddingIncorporacion extends javax.swing.JFrame {
     }//GEN-LAST:event_serviciosIDItemStateChanged
 
     private void serviciosIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviciosIDActionPerformed
-        
+
     }//GEN-LAST:event_serviciosIDActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -529,63 +529,70 @@ public class AddingIncorporacion extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        //Llama a una funcion en sqlcontrollerclass
-        String clasif, nrobien, descrip;
-        clasif = grp.getSelectedItem().toString() + "-" + sgrp.getSelectedItem().toString() + "-" + secc.getSelectedItem().toString();
-        nrobien = nbientxt.getText();
-        descrip = desc.getText();
-        
-        
-        
-        String item2, idConceptoExtraido2 = "";
-        item2 = concList.getSelectedItem().toString();
-        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
-        Matcher matcher = patron.matcher(item2);
-        while (matcher.find()) {
-            idConceptoExtraido2 += matcher.group();
-        }
-        
-        String ordenCompra, nFacto;
-        ordenCompra = ordCompraTxt.getText();
-        nFacto = nFactoTxt.getText();
-        
-        String Estado, Status;
-        if (estList.getSelectedItem().toString().equals("-")) {
-            Estado = "";
+
+        String estLiTxt = estList.getSelectedItem().toString(), statLiTxt = estList.getSelectedItem().toString();
+        String nbien_txt = nbientxt.getText();
+
+        if (estLiTxt.equals("-") || statLiTxt.equals("-") || nbien_txt.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "¡Hay campos vacíos!", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         } else {
-            Estado = estList.getSelectedItem().toString();
-        }
+            //Llama a una funcion en sqlcontrollerclass
         
-        if (statList.getSelectedItem().toString().equals("-")) {
-            Status = "";
-        } else {
-            Status = statList.getSelectedItem().toString();
-        }
-        
-        String valor;
-        valor = valorTxt.getText();
-        
-        String idServicio;
-        idServicio = serviciosID.getSelectedItem().toString();
-        
-        Date fechaActual = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
-        String fecha = formatoFecha.format(fechaActual);
-        
-        if (scc.addIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2,ordenCompra, nFacto, valor, idServicio, fecha, iduser)) {
-            JOptionPane.showMessageDialog(null, "¡Éxito al añadir la incorporación, Bien Nº " + nrobien + " a la base de datos!\n"
-                    + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA INCORPORACION DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            String clasif, nrobien, descrip;
+            clasif = grp.getSelectedItem().toString() + "-" + sgrp.getSelectedItem().toString() + "-" + secc.getSelectedItem().toString();
+            System.out.println(clasif);
+            nrobien = nbientxt.getText();
+            descrip = desc.getText();
+
+            String item2, idConceptoExtraido2 = "";
+            item2 = concList.getSelectedItem().toString();
+            Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+            Matcher matcher = patron.matcher(item2);
+            while (matcher.find()) {
+                idConceptoExtraido2 += matcher.group();
+            }
+
+            String ordenCompra, nFacto;
+            ordenCompra = ordCompraTxt.getText();
+            nFacto = nFactoTxt.getText();
+
+            String Estado, Status;
+            if (estList.getSelectedItem().toString().equals("-")) {
+                Estado = "";
+            } else {
+                Estado = estList.getSelectedItem().toString();
+            }
+
+            if (statList.getSelectedItem().toString().equals("-")) {
+                Status = "";
+            } else {
+                Status = statList.getSelectedItem().toString();
+            }
+
+            String valor;
+            valor = valorTxt.getText();
+
+            String idServicio;
+            idServicio = serviciosID.getSelectedItem().toString();
+
+            Date fechaActual = new Date();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+            String fecha = formatoFecha.format(fechaActual);
+
+            if (scc.addIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2, ordenCompra, nFacto, valor, idServicio, fecha, iduser)) {
+                JOptionPane.showMessageDialog(null, "¡Éxito al añadir la incorporación, Bien Nº " + nrobien + " a la base de datos!\n"
+                        + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA INCORPORACION DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    public void setiduser(String iduser){
+    public void setiduser(String iduser) {
         this.iduser = iduser;
     }
-    
+
     /**
      * @param args the command line arguments
      */

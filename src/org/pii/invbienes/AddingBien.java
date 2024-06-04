@@ -20,22 +20,22 @@ public class AddingBien extends javax.swing.JFrame {
      * Creates new form AddingBien
      */
     private SqlControllerClass scc;
-    
+
     public AddingBien() {
         initComponents();
         this.setLocationRelativeTo(null);
         scc = new SqlControllerClass();
         fillFields();
     }
-    
-    private void fillFields(){
+
+    private void fillFields() {
         serviciosID.setModel(scc.getServicios());
         String[] ente = scc.getRutaEntes(serviciosID.getSelectedItem().toString());
         entidadTxt.setText(ente[0]);
         sectorTxt.setText(ente[1]);
         unidadTxt.setText(ente[2]);
         servicioTxt.setText(ente[3]);
-        
+
         trabID.setModel(scc.getWorkers());
         txtTrabajador.setText(scc.getWorker(trabID.getSelectedItem().toString()));
     }
@@ -517,7 +517,7 @@ public class AddingBien extends javax.swing.JFrame {
     }//GEN-LAST:event_serviciosIDItemStateChanged
 
     private void serviciosIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviciosIDActionPerformed
-        
+
     }//GEN-LAST:event_serviciosIDActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -527,47 +527,56 @@ public class AddingBien extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        //Llama a una funcion en sqlcontrollerclass
-        String clasif, nrobien, descrip;
-        clasif = grp.getSelectedItem().toString() + "-" + sgrp.getSelectedItem().toString() + "-" + secc.getSelectedItem().toString();
-        nrobien = nbientxt.getText();
-        descrip = desc.getText();
-        
-        String ID_trabajador, ubicacn;
-        ID_trabajador = trabID.getSelectedItem().toString();
-        ubicacn = ubTxt.getText();
-        
-        String Estado, Status;
-        if (estList.getSelectedItem().toString().equals("-")) {
-            Estado = "";
+
+        String estLiTxt = estList.getSelectedItem().toString(), statLiTxt = estList.getSelectedItem().toString();
+        String nbien_txt = nbientxt.getText();
+
+        if (estLiTxt.equals("-") || statLiTxt.equals("-") || nbien_txt.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "¡Hay campos vacíos!", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         } else {
-            Estado = estList.getSelectedItem().toString();
+            //Llama a una funcion en sqlcontrollerclass
+            String clasif, nrobien, descrip;
+            clasif = grp.getSelectedItem().toString() + "-" + sgrp.getSelectedItem().toString() + "-" + secc.getSelectedItem().toString();
+            nrobien = nbientxt.getText();
+            descrip = desc.getText();
+
+            String ID_trabajador, ubicacn;
+            ID_trabajador = trabID.getSelectedItem().toString();
+            ubicacn = ubTxt.getText();
+
+            String Estado, Status;
+            if (estList.getSelectedItem().toString().equals("-")) {
+                Estado = "";
+            } else {
+                Estado = estList.getSelectedItem().toString();
+            }
+
+            if (statList.getSelectedItem().toString().equals("-")) {
+                Status = "";
+            } else {
+                Status = statList.getSelectedItem().toString();
+            }
+
+            String valor;
+            valor = valorTxt.getText();
+
+            String idServicio;
+            idServicio = serviciosID.getSelectedItem().toString();
+
+            Date fechaActual = new Date();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+            String fecha = formatoFecha.format(fechaActual);
+
+            if (scc.addBien(nrobien, clasif, descrip, Estado, Status, ID_trabajador, ubicacn, valor, idServicio, fecha)) {
+                JOptionPane.showMessageDialog(null, "¡Éxito al añadir al bien " + nrobien + " a la base de datos!\n"
+                        + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR EL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
-        if (statList.getSelectedItem().toString().equals("-")) {
-            Status = "";
-        } else {
-            Status = statList.getSelectedItem().toString();
-        }
-        
-        String valor;
-        valor = valorTxt.getText();
-        
-        String idServicio;
-        idServicio = serviciosID.getSelectedItem().toString();
-        
-        Date fechaActual = new Date();
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
-        String fecha = formatoFecha.format(fechaActual);
-        
-        if (scc.addBien(nrobien, clasif, descrip, Estado, Status, ID_trabajador, ubicacn, valor, idServicio, fecha)) {
-            JOptionPane.showMessageDialog(null, "¡Éxito al añadir al bien " + nrobien + " a la base de datos!\n"
-                    + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR EL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
-        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

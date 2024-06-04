@@ -59,9 +59,9 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private JTextField uiText;
     private JPasswordField uiPwd;
-    
+
     private Integer BIENES = 0, INCORPORACIONES = 1, DESINCORPORACIONES = 2;
-    
+
     private String ENTIDAD, SECTOR, UNIDAD, SERVICIO;
 
     private ListModels lmodels;
@@ -79,107 +79,117 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void callReport(String FECHA, Integer TYPE) {
 
-        
-        switch(TYPE){
-            case 0: scc.reportInventario(FECHA); 
+        switch (TYPE) {
+            case 0:
+                scc.reportInventario(FECHA);
                 break;
-            case 1: scc.reportIncorp(FECHA); 
+            case 1:
+                scc.reportIncorp(FECHA);
                 break;
-            case 2: scc.reportDesIncorp(FECHA); 
+            case 2:
+                scc.reportDesIncorp(FECHA);
                 break;
-            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+            default:
+                JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                ;
                 break;
         }
     }
-    
+
     //----------------------------------------------------------------//
-    
     private void callReportBienesByServicio(String FECHA, Integer TYPE, String idServicio, String conceptoNro) {
 
-        switch(TYPE){
-            case 0: 
+        switch (TYPE) {
+            case 0:
                 //Para bienes
-                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro); 
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro);
                 break;
-            case 1: 
+            case 1:
                 //Para incorporaciones
-                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro); 
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro);
                 break;
-            case 2: 
+            case 2:
                 //Para desincorporaciones
-                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro); 
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro);
                 break;
-            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+            default:
+                JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                ;
                 break;
         }
-        
+
     }
-    
+
     private void callReportBienesByUnidad(String FECHA, Integer TYPE, String idUnidad, String conceptoNro) {
 
-        switch(TYPE){
-            case 0: 
+        switch (TYPE) {
+            case 0:
                 //Para bienes
-                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro); 
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro);
                 break;
-            case 1: 
+            case 1:
                 //Para incorporaciones
-                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro); 
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro);
                 break;
-            case 2: 
+            case 2:
                 //Para desincorporaciones
-                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro); 
+                scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro);
                 break;
-            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+            default:
+                JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                ;
                 break;
         }
-        
+
     }
-    
+
     private void callReportBienesBySector(String FECHA, Integer TYPE, String idSector, String conceptoNro) {
 
-        switch(TYPE){
-            case 0: 
+        switch (TYPE) {
+            case 0:
                 //Para bienes
-                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro); 
+                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro);
                 break;
-            case 1: 
+            case 1:
                 //Para incorporaciones
-                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro); 
+                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro);
                 break;
-            case 2: 
+            case 2:
                 //Para desincorporaciones
-                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro); 
+                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro);
                 break;
-            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+            default:
+                JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                ;
                 break;
         }
-        
+
     }
-    
+
     private void callReportBienesByEntidades(String FECHA, Integer TYPE, String idEntidad, String conceptoNro) {
 
-        switch(TYPE){
-            case 0: 
+        switch (TYPE) {
+            case 0:
                 //Para bienes
-                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro); 
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro);
                 break;
-            case 1: 
+            case 1:
                 //Para incorporaciones
-                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro); 
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro);
                 break;
-            case 2: 
+            case 2:
                 //Para desincorporaciones
-                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro); 
+                scc.reportBienesByEntidad(FECHA, TYPE, idEntidad, conceptoNro);
                 break;
-            default: JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);;
+            default:
+                JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                ;
                 break;
         }
-        
+
     }
 
     //----------------------------------------------------------------//
-    
     private void loadDefaultTables() {
         tmls = new TableModels();
         invTable.setModel(tmls.modeloInventarioByAll());
@@ -194,7 +204,7 @@ public class MenuFrame extends javax.swing.JFrame {
         sectoresList.setModel(lmodels.getFilterSectores());
         unidadesList.setModel(lmodels.getFilterUnidades());
         serviciosList.setModel(lmodels.getFilterServicios());
-        
+
         //--- DE INCORPORACIONES:
         entidadesList2.setModel(lmodels.getFilterEntidades());
         sectoresList2.setModel(lmodels.getFilterSectores());
@@ -285,6 +295,88 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jButton16 = new javax.swing.JButton();
+        DetailsIncorporaciones = new javax.swing.JFrame();
+        titlebar1 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        scene1 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        grupo1 = new javax.swing.JTextField();
+        sgrp1 = new javax.swing.JTextField();
+        seccion1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        desc1 = new javax.swing.JTextArea();
+        jLabel45 = new javax.swing.JLabel();
+        nbien1 = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        costo1 = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        servCombo1 = new javax.swing.JComboBox<>();
+        jLabel55 = new javax.swing.JLabel();
+        fechatxt1 = new javax.swing.JTextField();
+        entidadTxt1 = new javax.swing.JTextField();
+        unidadTxt1 = new javax.swing.JTextField();
+        sectorTxt1 = new javax.swing.JTextField();
+        servTxt1 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jButton47 = new javax.swing.JButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jLabel56 = new javax.swing.JLabel();
+        nf_txt = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        ordc_txt = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        concLista = new javax.swing.JComboBox<>();
+        DetailsDesIncorporaciones = new javax.swing.JFrame();
+        titlebar2 = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        scene2 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        grupo4 = new javax.swing.JTextField();
+        sgrp2 = new javax.swing.JTextField();
+        seccion2 = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        desc2 = new javax.swing.JTextArea();
+        jLabel62 = new javax.swing.JLabel();
+        nbien2 = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        comboEstado3 = new javax.swing.JComboBox<>();
+        jLabel64 = new javax.swing.JLabel();
+        comboStatus2 = new javax.swing.JComboBox<>();
+        jLabel65 = new javax.swing.JLabel();
+        costo2 = new javax.swing.JTextField();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        servCombo2 = new javax.swing.JComboBox<>();
+        jLabel70 = new javax.swing.JLabel();
+        fechatxt2 = new javax.swing.JTextField();
+        entidadTxt2 = new javax.swing.JTextField();
+        unidadTxt2 = new javax.swing.JTextField();
+        sectorTxt2 = new javax.swing.JTextField();
+        servTxt2 = new javax.swing.JTextField();
+        jPanel28 = new javax.swing.JPanel();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jButton48 = new javax.swing.JButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jLabel71 = new javax.swing.JLabel();
+        nActa = new javax.swing.JTextField();
+        jLabel73 = new javax.swing.JLabel();
+        concLista2 = new javax.swing.JComboBox<>();
         scenary1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -900,6 +992,658 @@ public class MenuFrame extends javax.swing.JFrame {
         );
 
         DetailsBienes.getContentPane().add(scene, java.awt.BorderLayout.CENTER);
+
+        DetailsIncorporaciones.setMinimumSize(new java.awt.Dimension(781, 690));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel14.setText("Detalles de la incorporación");
+
+        javax.swing.GroupLayout titlebar1Layout = new javax.swing.GroupLayout(titlebar1);
+        titlebar1.setLayout(titlebar1Layout);
+        titlebar1Layout.setHorizontalGroup(
+            titlebar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlebar1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel14)
+                .addContainerGap(502, Short.MAX_VALUE))
+        );
+        titlebar1Layout.setVerticalGroup(
+            titlebar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlebar1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel14)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        DetailsIncorporaciones.getContentPane().add(titlebar1, java.awt.BorderLayout.PAGE_START);
+
+        scene1.setPreferredSize(new java.awt.Dimension(781, 653));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setText("Clasificación:");
+
+        grupo1.setEnabled(false);
+
+        sgrp1.setEnabled(false);
+
+        seccion1.setEnabled(false);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("-");
+
+        jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("-");
+
+        jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel44.setText("Descripción:");
+
+        desc1.setColumns(20);
+        desc1.setRows(5);
+        desc1.setWrapStyleWord(true);
+        desc1.setEnabled(false);
+        jScrollPane6.setViewportView(desc1);
+
+        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel45.setText("Nº de Bien:");
+
+        nbien1.setEnabled(false);
+
+        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel50.setText("Costo (Bs.):");
+
+        costo1.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel51.setText("Entidad:");
+
+        jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel52.setText("Sector:");
+
+        jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel53.setText("Unidad:");
+
+        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel54.setText("Servicio:");
+
+        servCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        servCombo1.setEnabled(false);
+        servCombo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                servCombo1ItemStateChanged(evt);
+            }
+        });
+        servCombo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servCombo1ActionPerformed(evt);
+            }
+        });
+
+        jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel55.setText("Fecha inventariado:");
+
+        fechatxt1.setEnabled(false);
+
+        entidadTxt1.setEditable(false);
+
+        unidadTxt1.setEditable(false);
+
+        sectorTxt1.setEditable(false);
+
+        servTxt1.setEditable(false);
+
+        jToggleButton3.setText("MODIFICAR");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton47.setText("CERRAR");
+        jButton47.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton47ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton4.setText("Eliminar Registro");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+
+        jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel56.setText("Nº Factura:");
+
+        nf_txt.setEnabled(false);
+
+        jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel57.setText("Orden de Compra:");
+
+        ordc_txt.setEnabled(false);
+
+        jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel58.setText("Concepto:");
+
+        concLista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concLista.setEnabled(false);
+
+        javax.swing.GroupLayout scene1Layout = new javax.swing.GroupLayout(scene1);
+        scene1.setLayout(scene1Layout);
+        scene1Layout.setHorizontalGroup(
+            scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scene1Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scene1Layout.createSequentialGroup()
+                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, scene1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(scene1Layout.createSequentialGroup()
+                                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(nbien1)
+                                            .addGroup(scene1Layout.createSequentialGroup()
+                                                .addComponent(grupo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(sgrp1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(seccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(223, 223, 223))
+                                    .addGroup(scene1Layout.createSequentialGroup()
+                                        .addComponent(costo1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(scene1Layout.createSequentialGroup()
+                                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(entidadTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(fechatxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(scene1Layout.createSequentialGroup()
+                                                .addComponent(unidadTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(servCombo1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(servTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(scene1Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(scene1Layout.createSequentialGroup()
+                                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(scene1Layout.createSequentialGroup()
+                                                .addComponent(nf_txt)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(concLista, 0, 337, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ordc_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scene1Layout.createSequentialGroup()
+                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sectorTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        scene1Layout.setVerticalGroup(
+            scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scene1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(scene1Layout.createSequentialGroup()
+                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(grupo1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sgrp1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nbien1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane6)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nf_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ordc_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(concLista, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(costo1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(entidadTxt1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sectorTxt1))
+                .addGap(10, 10, 10)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(servTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unidadTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(servCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechatxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        DetailsIncorporaciones.getContentPane().add(scene1, java.awt.BorderLayout.CENTER);
+
+        DetailsDesIncorporaciones.setMinimumSize(new java.awt.Dimension(781, 690));
+
+        jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel48.setText("Detalles de la desincorporación");
+
+        javax.swing.GroupLayout titlebar2Layout = new javax.swing.GroupLayout(titlebar2);
+        titlebar2.setLayout(titlebar2Layout);
+        titlebar2Layout.setHorizontalGroup(
+            titlebar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlebar2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel48)
+                .addContainerGap(474, Short.MAX_VALUE))
+        );
+        titlebar2Layout.setVerticalGroup(
+            titlebar2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlebar2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel48)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        DetailsDesIncorporaciones.getContentPane().add(titlebar2, java.awt.BorderLayout.PAGE_START);
+
+        scene2.setPreferredSize(new java.awt.Dimension(781, 653));
+
+        jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel49.setText("Clasificación:");
+
+        grupo4.setEnabled(false);
+
+        sgrp2.setEnabled(false);
+
+        seccion2.setEnabled(false);
+
+        jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel59.setText("-");
+
+        jLabel60.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel60.setText("-");
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel61.setText("Descripción:");
+
+        desc2.setColumns(20);
+        desc2.setRows(5);
+        desc2.setWrapStyleWord(true);
+        desc2.setEnabled(false);
+        jScrollPane7.setViewportView(desc2);
+
+        jLabel62.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel62.setText("Nº de Bien:");
+
+        nbien2.setEnabled(false);
+
+        jLabel63.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel63.setText("Estado:");
+
+        comboEstado3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "EXCELENTE", "BUENO", "REGULAR", "MALO", "INSERVIBLE" }));
+        comboEstado3.setEnabled(false);
+
+        jLabel64.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel64.setText("Status:");
+
+        comboStatus2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "A DESINCORPORAR", "UBICADO", "FALTANTE" }));
+        comboStatus2.setEnabled(false);
+
+        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel65.setText("Costo (Bs.):");
+
+        costo2.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel66.setText("Entidad:");
+
+        jLabel67.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel67.setText("Sector:");
+
+        jLabel68.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel68.setText("Unidad:");
+
+        jLabel69.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel69.setText("Servicio:");
+
+        servCombo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        servCombo2.setEnabled(false);
+        servCombo2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                servCombo2ItemStateChanged(evt);
+            }
+        });
+        servCombo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servCombo2ActionPerformed(evt);
+            }
+        });
+
+        jLabel70.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel70.setText("Fecha inventariado:");
+
+        fechatxt2.setEnabled(false);
+
+        entidadTxt2.setEditable(false);
+
+        unidadTxt2.setEditable(false);
+
+        sectorTxt2.setEditable(false);
+
+        servTxt2.setEditable(false);
+
+        jToggleButton5.setText("MODIFICAR");
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton48.setText("CERRAR");
+        jButton48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton48ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton6.setText("Eliminar Registro");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+
+        jLabel71.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel71.setText("Nº Acta:");
+
+        nActa.setEnabled(false);
+
+        jLabel73.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel73.setText("Concepto:");
+
+        concLista2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01-. Inventario inicial.", "02-. Incorporaciones por traspaso. ", "03-. Compras. ", "04-. Construcción de Inmuebles. ", "05-. Adiciones mejoras. ", "06-. Producción de elementos (muebles). ", "07-. Suministro de Bienes de otras entidades. ", "09-. Incorporación de semovientes. ", "10-. Reconstrucción de equipos. ", "11-. Incorporación por donación. ", "12-. Incorporación por permuta. ", "13-. Adscripción de Bienes Inmuebles.", "14-. Omisión en inventario. ", "16-. Incorporación por cambio de subgrupo. ", "17-. Corrección de desincorporación.", "18-. Incorporación por otros conceptos.", "19-. Incorporación de muebles procedentes de los almacenes.", "20-. Herencia vacantes." }));
+        concLista2.setEnabled(false);
+
+        javax.swing.GroupLayout scene2Layout = new javax.swing.GroupLayout(scene2);
+        scene2.setLayout(scene2Layout);
+        scene2Layout.setHorizontalGroup(
+            scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scene2Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scene2Layout.createSequentialGroup()
+                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, scene2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(scene2Layout.createSequentialGroup()
+                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(nbien2)
+                                            .addGroup(scene2Layout.createSequentialGroup()
+                                                .addComponent(grupo4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(sgrp2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(seccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(comboEstado3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(scene2Layout.createSequentialGroup()
+                                        .addComponent(costo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(scene2Layout.createSequentialGroup()
+                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(entidadTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(fechatxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(scene2Layout.createSequentialGroup()
+                                                .addComponent(unidadTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(servCombo2, 0, 79, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(servTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(scene2Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                                    .addComponent(concLista2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nActa)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, scene2Layout.createSequentialGroup()
+                        .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sectorTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        scene2Layout.setVerticalGroup(
+            scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(scene2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(scene2Layout.createSequentialGroup()
+                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(grupo4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sgrp2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(seccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nbien2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(scene2Layout.createSequentialGroup()
+                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboEstado3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane7)
+                    .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nActa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(concLista2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(costo2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(entidadTxt2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sectorTxt2))
+                .addGap(10, 10, 10)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(servTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unidadTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(servCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechatxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        DetailsDesIncorporaciones.getContentPane().add(scene2, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(".:: Sistema de Bienes ::.");
@@ -2333,7 +3077,7 @@ public class MenuFrame extends javax.swing.JFrame {
             String[] data = scc.bienData(BID);
 //            String cls = data[2];
 //            System.out.println("cls " + cls);
-            seeDetails(data);
+            seeDetails(data, 0);
 
         }
     }//GEN-LAST:event_invTableMouseClicked
@@ -2353,8 +3097,8 @@ public class MenuFrame extends javax.swing.JFrame {
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         callReport(fechaFormateada, BIENES);
-        
-        
+
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -2520,7 +3264,7 @@ public class MenuFrame extends javax.swing.JFrame {
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         callReport(fechaFormateada, INCORPORACIONES);
-        
+
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void inctableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inctableMouseClicked
@@ -2534,17 +3278,17 @@ public class MenuFrame extends javax.swing.JFrame {
             String data = inctable.getValueAt(inctable.getSelectedRow(), inctable.getSelectedColumn()).toString();
             selectedLabel2.setText(data);
         } else {
-            /*
-            String BID = invTable.getValueAt(invTable.getSelectedRow(), 0).toString();
+
+            String BID = inctable.getValueAt(inctable.getSelectedRow(), 0).toString();
             System.out.println(BID);
-            String[] data = scc.bienData(BID);
+            String[] data = scc.IncorpData(BID);
 //            String cls = data[2];
 //            System.out.println("cls " + cls);
-            seeDetails(data);
-            */
+            seeDetails(data, 1);
+
             JOptionPane.showMessageDialog(null, "¡Esta función aún no está disponible!", ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_inctableMouseClicked
 
     private void comboIdAsigItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboIdAsigItemStateChanged
@@ -2659,11 +3403,10 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
-        
+
         //Extrae el id del ente.
         String item, idEntidadExtraido = "";
-        
+
         item = entidadesList2.getSelectedItem().toString();
 
         labelVisualizando2.setText("ENTIDAD " + item);
@@ -2674,11 +3417,10 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idEntidadExtraido += matcher.group();
         }
-        
+
         //extrae el numero de concepto
-        
         String item2, idConceptoExtraido2 = "";
-        
+
         item2 = concList.getSelectedItem().toString();
 
         patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
@@ -2687,9 +3429,9 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idConceptoExtraido2 += matcher.group();
         }
-        
+
         String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
-        
+
         inctable.setModel(tmls.modeloIncorporacionesByEntidad(vectorEnte));
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -2697,7 +3439,7 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Extrae el id del ente.
         String item, idEntidadExtraido = "";
-        
+
         item = sectoresList2.getSelectedItem().toString();
 
         labelVisualizando2.setText("SECTOR " + item);
@@ -2708,11 +3450,10 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idEntidadExtraido += matcher.group();
         }
-        
+
         //extrae el numero de concepto
-        
         String item2, idConceptoExtraido2 = "";
-        
+
         item2 = concList1.getSelectedItem().toString();
 
         patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
@@ -2721,9 +3462,9 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idConceptoExtraido2 += matcher.group();
         }
-        
+
         String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
-        
+
         inctable.setModel(tmls.modeloIncorporacionesBySector(vectorEnte));
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -2731,7 +3472,7 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Extrae el id del ente.
         String item, idEntidadExtraido = "";
-        
+
         item = unidadesList2.getSelectedItem().toString();
 
         labelVisualizando2.setText("UNIDAD " + item);
@@ -2742,11 +3483,10 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idEntidadExtraido += matcher.group();
         }
-        
+
         //extrae el numero de concepto
-        
         String item2, idConceptoExtraido2 = "";
-        
+
         item2 = concList2.getSelectedItem().toString();
 
         patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
@@ -2755,9 +3495,9 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idConceptoExtraido2 += matcher.group();
         }
-        
+
         String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
-        
+
         inctable.setModel(tmls.modeloIncorporacionesByUnidades(vectorEnte));
     }//GEN-LAST:event_jButton17ActionPerformed
 
@@ -2765,7 +3505,7 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Extrae el id del ente.
         String item, idEntidadExtraido = "";
-        
+
         item = serviciosList2.getSelectedItem().toString();
 
         labelVisualizando2.setText("SERVICIO " + item);
@@ -2776,11 +3516,10 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idEntidadExtraido += matcher.group();
         }
-        
+
         //extrae el numero de concepto
-        
         String item2, idConceptoExtraido2 = "";
-        
+
         item2 = concList3.getSelectedItem().toString();
 
         patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
@@ -2789,9 +3528,9 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idConceptoExtraido2 += matcher.group();
         }
-        
+
         String[] vectorEnte = new String[]{idEntidadExtraido, idConceptoExtraido2};
-        
+
         inctable.setModel(tmls.modeloIncorporacionesByServicios(vectorEnte));
     }//GEN-LAST:event_jButton18ActionPerformed
 
@@ -2834,7 +3573,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void desinctableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desinctableMouseClicked
-        
+
         scc = new SqlControllerClass();
 
         System.out.println("Clicks: " + evt.getClickCount());
@@ -2843,15 +3582,15 @@ public class MenuFrame extends javax.swing.JFrame {
             String data = desinctable.getValueAt(desinctable.getSelectedRow(), desinctable.getSelectedColumn()).toString();
             selectedLabel3.setText(data);
         } else {
-            /*
-            String BID = invTable.getValueAt(invTable.getSelectedRow(), 0).toString();
+            
+            String BID = desinctable.getValueAt(desinctable.getSelectedRow(), 0).toString();
             System.out.println(BID);
-            String[] data = scc.bienData(BID);
+            String[] data = scc.DesIncorpData(BID);
 //            String cls = data[2];
 //            System.out.println("cls " + cls);
-            seeDetails(data);
-            */
-            JOptionPane.showMessageDialog(null, "¡Esta función aún no está disponible!", ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.INFORMATION_MESSAGE);
+            seeDetails(data, 2);
+            
+            
         }
     }//GEN-LAST:event_desinctableMouseClicked
 
@@ -2868,7 +3607,7 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
-        
+
         Date fechaActual = new Date();
 
         // Crear un formato de fecha personalizado
@@ -2896,7 +3635,7 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
-        
+
         Date fechaActual = new Date();
 
         // Crear un formato de fecha personalizado
@@ -2924,7 +3663,7 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
-        
+
         Date fechaActual = new Date();
 
         // Crear un formato de fecha personalizado
@@ -2952,7 +3691,7 @@ public class MenuFrame extends javax.swing.JFrame {
         while (matcher.find()) {
             idExtraido += matcher.group();
         }
-        
+
         Date fechaActual = new Date();
 
         // Crear un formato de fecha personalizado
@@ -2981,32 +3720,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", INCORPORACIONES (Entidad), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByEntidades(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton22ActionPerformed
 
@@ -3023,32 +3762,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList1.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", INCORPORACIONES (sector), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesBySector(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton28ActionPerformed
 
@@ -3066,32 +3805,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList2.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", INCORPORACIONES (unidad), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByUnidad(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton29ActionPerformed
 
@@ -3109,32 +3848,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList3.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", INCORPORACIONES (servicio), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByServicio(fechaFormateada, INCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton34ActionPerformed
 
@@ -3153,32 +3892,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList4.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (Entidad), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByEntidades(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton36ActionPerformed
 
@@ -3196,32 +3935,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList5.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (sector), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesBySector(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton37ActionPerformed
 
@@ -3239,32 +3978,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList6.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (unidad), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByUnidad(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton38ActionPerformed
 
@@ -3282,32 +4021,32 @@ public class MenuFrame extends javax.swing.JFrame {
             idExtraido += matcher.group();
         }
         //--------------------------------------//
-        
+
         //Obtiene el concepto y lo formatea--//
         String conc = concList7.getSelectedItem().toString();
         String concNum, concNumExtraido = "";
-        
+
         if (conc.equals("-")) {
             concNum = "";
         } else {
             concNum = conc;
         }
-        
+
         Pattern patron2 = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher2 = patron2.matcher(concNum);
 
         while (matcher2.find()) {
-             concNumExtraido += matcher2.group();
+            concNumExtraido += matcher2.group();
         }
         //------------------------------------//
-        
+
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
         String fechaFormateada = formatoFecha.format(fechaActual);
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
         System.out.println("ID: " + idExtraido + ", DESINCORPORACIONES (servicio), CONCEPTO: " + concNumExtraido);
-        
+
         callReportBienesByServicio(fechaFormateada, DESINCORPORACIONES, idExtraido, concNumExtraido);
     }//GEN-LAST:event_jButton39ActionPerformed
 
@@ -3317,7 +4056,7 @@ public class MenuFrame extends javax.swing.JFrame {
         adg.setVisible(true);
     }//GEN-LAST:event_jButton23ActionPerformed
 
-    
+
     private void servComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_servComboActionPerformed
@@ -3354,6 +4093,46 @@ public class MenuFrame extends javax.swing.JFrame {
         desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
     }//GEN-LAST:event_jButton43ActionPerformed
 
+    private void servCombo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_servCombo1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servCombo1ItemStateChanged
+
+    private void servCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servCombo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servCombo1ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton47ActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    private void servCombo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_servCombo2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servCombo2ItemStateChanged
+
+    private void servCombo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servCombo2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_servCombo2ActionPerformed
+
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton48ActionPerformed
+
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
+
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
         String[] route;
@@ -3365,7 +4144,23 @@ public class MenuFrame extends javax.swing.JFrame {
         entidadTxt.setText(route[3]);
     }
 
-    private void seeDetails(String[] data) {
+    private void seeDetails(String[] data, Integer destino) {
+
+        switch (destino) {
+            case 0:
+                verBien(data);
+                break;
+            case 1:
+                verIncorp(data);
+                break;
+            case 2:
+                verDesIncorp(data);
+                break;
+        }
+
+    }
+
+    private void verBien(String[] data) {
         scc = new SqlControllerClass();
 
         //Establece los campos de GRUPO, SUBGRUPO Y SECCION
@@ -3397,6 +4192,150 @@ public class MenuFrame extends javax.swing.JFrame {
         //Salta la ventana de detalles
         DetailsBienes.setVisible(true);
         DetailsBienes.setLocationRelativeTo(null);
+    }
+
+    private void verIncorp(String[] data) {
+        /*
+        
+        data = new String[]{
+                    rst.getString("clasif"), 0
+                    rst.getString("nb"), 1
+                    rst.getString("desc"), 2
+                    rst.getString("nfacto"), 3
+                    rst.getString("ordcompra") 4,
+                    rst.getString("montobs"), 5
+                    rst.getString("identidad"), 6
+                    rst.getString("idsector"), 7
+                    rst.getString("idunidad"), 8
+                    rst.getString("idservicio"), 9
+                    rst.getString("fecha"), 10
+                    rst.getString("conc") 11
+                };
+        
+         */
+
+        scc = new SqlControllerClass();
+
+        //Establece los campos de GRUPO, SUBGRUPO Y SECCION
+        grupo1.setText(clasSplit(data[0])[0]);
+        sgrp1.setText(clasSplit(data[0])[1]);
+        seccion1.setText(clasSplit(data[0])[2]);
+
+        //...
+        nbien1.setText(data[1]);
+        desc1.setText(data[2]);
+
+        String CONCEPTO = data[11];//falta por acomodar!!!!!!!!
+
+        costo1.setText(data[5]);
+        fechatxt1.setText(data[10]);
+
+        String nFacto = data[3], ordCompra = data[4];
+        nf_txt.setText(nFacto);
+        ordc_txt.setText(ordCompra);
+
+        servCombo1.setModel(scc.getServicios());
+        String[] ente = scc.getRutaEntes(servCombo1.getSelectedItem().toString());
+        entidadTxt1.setText(ente[0]);
+        sectorTxt1.setText(ente[1]);
+        unidadTxt1.setText(ente[2]);
+        servTxt1.setText(ente[3]);
+
+        //Salta la ventana de detalles
+        DetailsIncorporaciones.setVisible(true);
+        DetailsIncorporaciones.setLocationRelativeTo(null);
+    }
+
+    private void verDesIncorp(String[] data) {
+        /*
+        
+        data = new String[]{
+                    rst.getString("clasif"), 0
+                    rst.getString("nb"), 1
+                    rst.getString("desc"), 2
+                    rst.getString("estado"),3
+                    rst.getString("status"),4
+                    rst.getString("desincActa"),5
+                    rst.getString("montobs"),6
+                    rst.getString("identidad"),7
+                    rst.getString("idsector"),8
+                    rst.getString("idunidad"),9
+                    rst.getString("idservicio"),10
+                    rst.getString("fecha"),11
+                    rst.getString("conc")12
+                };
+        
+         */
+
+        scc = new SqlControllerClass();
+
+        //Establece los campos de GRUPO, SUBGRUPO Y SECCION
+        grupo4.setText(clasSplit(data[0])[0]);
+        sgrp2.setText(clasSplit(data[0])[1]);
+        seccion2.setText(clasSplit(data[0])[2]);
+
+        //...
+        nbien2.setText(data[1]);
+        desc2.setText(data[2]);
+
+        String ESTADO = data[3], STATUS = data[4];
+
+        switch (ESTADO) {
+            case "EXCELENTE":
+                comboEstado3.setSelectedIndex(1);
+                break;
+            case "BUENO":
+                comboEstado3.setSelectedIndex(2);
+                break;
+            case "REGULAR":
+                comboEstado3.setSelectedIndex(3);
+                break;
+            case "MALO":
+                comboEstado3.setSelectedIndex(4);
+                break;
+            case "INSERVIBLE":
+                comboEstado3.setSelectedIndex(5);
+                break;
+            default:
+                comboEstado3.setSelectedIndex(0);
+                break;
+        }
+
+        switch (STATUS) {
+            case "A DESINCORPORAR":
+                comboStatus2.setSelectedIndex(1);
+                break;
+            case "UBICADO":
+                comboStatus2.setSelectedIndex(2);
+                break;
+            case "FALTANTE POR INVESTIGAR":
+                comboStatus2.setSelectedIndex(3);
+                break;
+            default:
+                comboStatus2.setSelectedIndex(0);
+                break;
+        }
+
+        String actaDes = data[5];
+        nActa.setText(actaDes);
+
+        String CONCEPTO = data[12];
+        Integer conc = Integer.getInteger(CONCEPTO);
+        concLista2.setSelectedIndex(conc - 1);
+
+        costo2.setText(data[6]);
+        fechatxt2.setText(data[11]);
+
+        servCombo2.setModel(scc.getServicios());
+        String[] ente = scc.getRutaEntes(servCombo2.getSelectedItem().toString());
+        entidadTxt2.setText(ente[0]);
+        sectorTxt2.setText(ente[1]);
+        unidadTxt2.setText(ente[2]);
+        servTxt2.setText(ente[3]);
+
+        //Salta la ventana de detalles
+        DetailsDesIncorporaciones.setVisible(true);
+        DetailsDesIncorporaciones.setLocationRelativeTo(null);
     }
 
     private String[] clasSplit(String TEXT) {
@@ -3431,8 +4370,8 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void setStatus(String NBIEN) {
         scc = new SqlControllerClass();
-        String ESTADO = scc.getStatus(NBIEN);
-        switch (ESTADO) {
+        String STATUS = scc.getStatus(NBIEN);
+        switch (STATUS) {
             case "A DESINCORPORAR":
                 comboStatus.setSelectedIndex(1);
                 break;
@@ -3472,12 +4411,16 @@ public class MenuFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame AccountMgr;
     private javax.swing.JFrame DetailsBienes;
+    private javax.swing.JFrame DetailsDesIncorporaciones;
+    private javax.swing.JFrame DetailsIncorporaciones;
     private javax.swing.JButton btnBACK;
     private javax.swing.JButton btnMODE;
     private javax.swing.JButton btnOK;
     private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JComboBox<String> comboEstado3;
     private javax.swing.JComboBox<String> comboIdAsig;
     private javax.swing.JComboBox<String> comboStatus;
+    private javax.swing.JComboBox<String> comboStatus2;
     private javax.swing.JComboBox<String> concList;
     private javax.swing.JComboBox<String> concList1;
     private javax.swing.JComboBox<String> concList2;
@@ -3486,15 +4429,27 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> concList5;
     private javax.swing.JComboBox<String> concList6;
     private javax.swing.JComboBox<String> concList7;
+    private javax.swing.JComboBox<String> concLista;
+    private javax.swing.JComboBox<String> concLista2;
     private javax.swing.JTextField costo;
+    private javax.swing.JTextField costo1;
+    private javax.swing.JTextField costo2;
     private javax.swing.JTextArea desc;
+    private javax.swing.JTextArea desc1;
+    private javax.swing.JTextArea desc2;
     private javax.swing.JTable desinctable;
     private javax.swing.JTextField entidadTxt;
+    private javax.swing.JTextField entidadTxt1;
+    private javax.swing.JTextField entidadTxt2;
     private javax.swing.JComboBox<String> entidadesList;
     private javax.swing.JComboBox<String> entidadesList2;
     private javax.swing.JComboBox<String> entidadesList3;
     private javax.swing.JTextField fechatxt;
+    private javax.swing.JTextField fechatxt1;
+    private javax.swing.JTextField fechatxt2;
     private javax.swing.JTextField grupo;
+    private javax.swing.JTextField grupo1;
+    private javax.swing.JTextField grupo4;
     private javax.swing.JTable inctable;
     private javax.swing.JTable invTable;
     private javax.swing.JButton jButton1;
@@ -3535,6 +4490,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
     private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton47;
+    private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -3545,6 +4502,9 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -3574,14 +4534,43 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -3595,12 +4584,17 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
@@ -3623,23 +4617,40 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JLabel labelVisualizando;
     private javax.swing.JLabel labelVisualizando2;
     private javax.swing.JLabel labelVisualizando3;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JTextField nActa;
     private javax.swing.JTextField nbien;
+    private javax.swing.JTextField nbien1;
+    private javax.swing.JTextField nbien2;
+    private javax.swing.JTextField nf_txt;
+    private javax.swing.JTextField ordc_txt;
     private javax.swing.JLabel pplname;
     private javax.swing.JPasswordField pwdactual;
     private javax.swing.JPasswordField pwdnueva;
     private javax.swing.JPasswordField pwdnueva2;
     private javax.swing.JTabbedPane scenary1;
     private javax.swing.JPanel scene;
+    private javax.swing.JPanel scene1;
+    private javax.swing.JPanel scene2;
     private javax.swing.JTextField seccion;
+    private javax.swing.JTextField seccion1;
+    private javax.swing.JTextField seccion2;
     private javax.swing.JTextField sectorTxt;
+    private javax.swing.JTextField sectorTxt1;
+    private javax.swing.JTextField sectorTxt2;
     private javax.swing.JComboBox<String> sectoresList;
     private javax.swing.JComboBox<String> sectoresList2;
     private javax.swing.JComboBox<String> sectoresList3;
@@ -3650,15 +4661,25 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel selectedLabel2;
     private javax.swing.JLabel selectedLabel3;
     private javax.swing.JComboBox<String> servCombo;
+    private javax.swing.JComboBox<String> servCombo1;
+    private javax.swing.JComboBox<String> servCombo2;
     private javax.swing.JTextField servTxt;
+    private javax.swing.JTextField servTxt1;
+    private javax.swing.JTextField servTxt2;
     private javax.swing.JComboBox<String> serviciosList;
     private javax.swing.JComboBox<String> serviciosList2;
     private javax.swing.JComboBox<String> serviciosList3;
     private javax.swing.JTextField sgrp;
+    private javax.swing.JTextField sgrp1;
+    private javax.swing.JTextField sgrp2;
     private javax.swing.JPanel titlebar;
+    private javax.swing.JPanel titlebar1;
+    private javax.swing.JPanel titlebar2;
     private javax.swing.JTextField txtAsig;
     private javax.swing.JTextField ubic;
     private javax.swing.JTextField unidadTxt;
+    private javax.swing.JTextField unidadTxt1;
+    private javax.swing.JTextField unidadTxt2;
     private javax.swing.JComboBox<String> unidadesList;
     private javax.swing.JComboBox<String> unidadesList2;
     private javax.swing.JComboBox<String> unidadesList3;

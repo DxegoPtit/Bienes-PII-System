@@ -2268,6 +2268,106 @@ public class SqlControllerClass {
             closeCon();
         }
     }
+    
+    public String[] IncorpData(String BID) {
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT "
+                    + "movimientos.clasificacion AS clasif, "
+                    + "movimientos.nbien AS nb, "
+                    + "movimientos.descripcion AS `desc`,"
+                    + "movimientos.monto_bs AS montobs,"
+                    + "movimientos.nfactura AS nfacto,"
+                    + "movimientos.ordencompra AS ordcompra, "
+                    + "movimientos.idEntidad AS identidad, "
+                    + "movimientos.idSector AS idsector, "
+                    + "movimientos.idUnidad AS idunidad, "
+                    + "movimientos.idServicio AS idservicio, "
+                    + "movimientos.fecha_mov AS fecha,"
+                    + "movimientos.concepto AS conc "
+                    + "FROM movimientos "
+                    + "WHERE"
+                    + " movimientos.nbien = '" + BID + "'");
+
+            String[] data;
+
+            if (rst.next()) {
+                data = new String[]{
+                    rst.getString("clasif"),
+                    rst.getString("nb"),
+                    rst.getString("desc"),
+                    rst.getString("nfacto"),
+                    rst.getString("ordcompra"),
+                    rst.getString("montobs"),
+                    rst.getString("identidad"),
+                    rst.getString("idsector"),
+                    rst.getString("idunidad"),
+                    rst.getString("idservicio"),
+                    rst.getString("fecha"),
+                    rst.getString("conc")
+                };
+                return data;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public String[] DesIncorpData(String BID) {
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT "
+                    + "movimientos.clasificacion AS clasif, "
+                    + "movimientos.nbien AS nb, "
+                    + "movimientos.descripcion AS `desc`, "
+                    + "movimientos.monto_bs AS montobs,"
+                    + "movimientos.actadesincorp AS desincActa,"
+                    + "movimientos.idEntidad AS identidad, "
+                    + "movimientos.idSector AS idsector, "
+                    + "movimientos.idUnidad AS idunidad, "
+                    + "movimientos.idServicio AS idservicio, "
+                    + "movimientos.fecha_mov AS fecha,"
+                    + "movimientos.concepto AS conc "
+                    + "FROM movimientos "
+                    + "WHERE"
+                    + " movimientos.nbien = '" + BID + "'");
+
+            String[] data;
+
+            if (rst.next()) {
+                data = new String[]{
+                    rst.getString("clasif"),
+                    rst.getString("nb"),
+                    rst.getString("desc"),
+                    rst.getString("desincActa"),
+                    rst.getString("montobs"),
+                    rst.getString("identidad"),
+                    rst.getString("idsector"),
+                    rst.getString("idunidad"),
+                    rst.getString("idservicio"),
+                    rst.getString("fecha"),
+                    rst.getString("conc")
+                };
+                return data;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
 
     public String getWorker(String ID) {
         try {

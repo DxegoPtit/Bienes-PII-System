@@ -38,6 +38,7 @@ public class AddingIncorporacion extends javax.swing.JFrame {
         sectorTxt.setText(ente[1]);
         unidadTxt.setText(ente[2]);
         servicioTxt.setText(ente[3]);
+        jPanel6.setVisible(false);
     }
 
     /**

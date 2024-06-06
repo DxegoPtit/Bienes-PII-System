@@ -29,6 +29,7 @@ public class AddingDesincorporacion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         scc = new SqlControllerClass();
         fillFields();
+        jPanel6.setVisible(false);
     }
 
     private void fillFields() {
@@ -516,10 +517,9 @@ public class AddingDesincorporacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String estLiTxt = estList.getSelectedItem().toString(), statLiTxt = estList.getSelectedItem().toString();
         String nbien_txt = nbientxt.getText();
 
-        if (estLiTxt.equals("-") || statLiTxt.equals("-") || nbien_txt.isEmpty()) {
+        if (nbien_txt.isEmpty()) {
             JOptionPane.showMessageDialog(null, "¡Hay campos vacíos!", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         } else {
             //Llama a una funcion en sqlcontrollerclass

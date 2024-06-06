@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -2268,7 +2269,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public String[] IncorpData(String BID) {
         try {
             openCon();
@@ -2319,7 +2320,7 @@ public class SqlControllerClass {
             closeCon();
         }
     }
-    
+
     public String[] DesIncorpData(String BID) {
         try {
             openCon();
@@ -2597,7 +2598,7 @@ public class SqlControllerClass {
             if (openCon() != null) {
                 if (getentsIDs(idServicio) != null) {
                     String[] data = getentsIDs(idServicio);
-                    if (verifyExistencia(nroBien, 0)) {
+                    if (verifyExistencia(nroBien, 0, "")) {
                         return false;
                     } else {
                         Statement stm = con.createStatement();
@@ -2624,7 +2625,7 @@ public class SqlControllerClass {
         }
     }
 
-    public Boolean verifyExistencia(String nroBien, Integer TYPE) {
+    public Boolean verifyExistencia(String nroBien, Integer TYPE, String CONCEPTO) {
         try {
             switch (TYPE) {
                 case 0:
@@ -2645,10 +2646,12 @@ public class SqlControllerClass {
                     if (openCon() != null) {
                         if (openCon() != null) {
                             Statement stm = con.createStatement();
-                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "'");
+                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "' AND concepto = '" + CONCEPTO + "'");
                             if (rst.next()) {
+                                System.out.println("EXISTENCIA DE INCORPORACION ENCONTRADA");
                                 return true;
                             } else {
+                                System.out.println("EXISTENCIA DE INCORPORACION NO ENCONTRADA");
                                 return false;
                             }
                         } else {
@@ -2662,10 +2665,12 @@ public class SqlControllerClass {
                     if (openCon() != null) {
                         if (openCon() != null) {
                             Statement stm = con.createStatement();
-                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "'");
+                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "' AND concepto = '" + CONCEPTO + "'");
                             if (rst.next()) {
+                                System.out.println("EXISTENCIA DE DESINCORPORACION ENCONTRADA");
                                 return true;
                             } else {
+                                System.out.println("EXISTENCIA DE DESINCORPORACION NO ENCONTRADA");
                                 return false;
                             }
                         } else {
@@ -2690,7 +2695,7 @@ public class SqlControllerClass {
             if (openCon() != null) {
                 if (getentsIDs(idServicio) != null) {
                     String[] data = getentsIDs(idServicio);
-                    if (verifyExistencia(nroBien, 1)) {
+                    if (verifyExistencia(nroBien, 1, concepto)) {
                         return false;
                     } else {
                         Statement stm = con.createStatement();
@@ -2718,75 +2723,84 @@ public class SqlControllerClass {
         }
     }
 
-    //-----------------------------------PARA AÑADIR UNA DESINCORPORACIÓN-------------------//
-    public Boolean addDesIncorp(String nroBien, String clasif, String descripcion, String estado, String status, String concepto, String ordCompra, String nFactura, String monto_bs, String idServicio, String fecha, String iduser, Boolean isWithNumeroActa) {
+    //---------------AÑADIR UNA DESINCORPORACION--------------------------------------//
+    
+    public boolean addDesIncorp(String nroBien, String clasif, String descripcion, String estado, String status, String concepto, String ordCompra, String nFactura, String monto_bs, String idServicio, String fecha, String iduser, boolean isWithNumeroActa) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
         try {
-            if (openCon() != null) {
-                if (isWithNumeroActa) {
-                    if (getentsIDs(idServicio) != null) {
-                        String[] data = getentsIDs(idServicio);
-                        if (verifyExistencia(nroBien, 1)) {
-                            return false;
-                        } else {
-                            Statement stm = con.createStatement();
-                            Integer i = 0;
-                            i = stm.executeUpdate("INSERT INTO piibienes.movimientos (clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, "
-                                    + "idunidad, idservicio, fecha_mov) VALUES ('" + clasif + "', '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '', "
-                                    + "'', '" + nFactura + "', " + iduser + ", " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
-                            if (i != 0) {
+            con = openCon();
+            if (con != null) {
+                String[] data = getentsIDs(idServicio);
+                if (data != null) {
+                    if (verifyExistencia(nroBien, 2, concepto)) {
+                        return false;
+                    } else {
+                        String sql = "INSERT INTO piibienes.movimientos (clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, idunidad, idservicio, fecha_mov) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        pstmt = con.prepareStatement(sql);
+                        pstmt.setString(1, clasif);
+                        pstmt.setString(2, nroBien);
+                        pstmt.setString(3, concepto);
+                        pstmt.setString(4, descripcion);
+                        pstmt.setString(5, monto_bs);
+                        pstmt.setString(6, "");
+                        pstmt.setString(7, "");
+                        pstmt.setString(8, nFactura);
+                        pstmt.setString(9, iduser);
+                        pstmt.setString(10, data[0]);
+                        pstmt.setString(11, data[1]);
+                        pstmt.setString(12, data[2]);
+                        pstmt.setString(13, idServicio);
+                        pstmt.setString(14, fecha);
+                        int i = pstmt.executeUpdate();
+                        if (i != 0) {
+                            if (isWithNumeroActa) {
                                 return true;
                             } else {
-                                return false;
-                            }
-                        }
-                    } else {
-                        return null;
-                    }
-                } else {
-                    if (getentsIDs(idServicio) != null) {
-                        String[] data = getentsIDs(idServicio);
-                        if (verifyExistencia(nroBien, 1)) {
-                            return false;
-                        } else {
-                            Statement stm = con.createStatement();
-                            Integer i = 0;
-                            i = stm.executeUpdate("INSERT INTO piibienes.movimientos (clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, "
-                                    + "idunidad, idservicio, fecha_mov) VALUES (" + clasif + ", '" + nroBien + "', '" + concepto + "', '" + descripcion + "', '" + monto_bs + "', '', "
-                                    + "'', '" + nFactura + "', " + iduser + ", " + data[0] + ", " + data[1] + ", " + data[2] + ", " + idServicio + ", '" + fecha + "')");
-                            if (i != 0) {
                                 if (setAsDesincorporar(nroBien)) {
                                     return true;
                                 } else {
                                     return false;
                                 }
-                            } else {
-                                return false;
                             }
+                        } else {
+                            return false;
                         }
-                    } else {
-                        return null;
                     }
+                } else {
+                    return false;
                 }
             } else {
                 return false;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
             return false;
         } finally {
             closeCon();
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
-    private Boolean setAsDesincorporar(String nroBien) {
+    private boolean setAsDesincorporar(String nroBien) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
         try {
-            if (openCon() != null) {
-                if (verifyExistencia(nroBien, 1)) {
+            con = openCon();
+            if (con != null) {
+                if (verifyExistencia(nroBien, 0, "")) {
                     return false;
                 } else {
-                    Statement stm = con.createStatement();
-                    Integer i = 0;
-                    i = stm.executeUpdate("UPDATE piibienes.bienes SET `status` = 'A DESINCORPORAR' WHERE nbien = '" + nroBien + "'");
+                    String sql = "UPDATE piibienes.bienes SET `status` = 'A DESINCORPORAR' WHERE nbien = '?'";
+                    pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, nroBien);
+                    int i = pstmt.executeUpdate();
                     if (i != 0) {
                         return true;
                     } else {
@@ -2797,11 +2811,17 @@ public class SqlControllerClass {
                 return false;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL CONECTAR\n ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
             return false;
         } finally {
-            this.closeCon();
+            closeCon();
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
-
 }

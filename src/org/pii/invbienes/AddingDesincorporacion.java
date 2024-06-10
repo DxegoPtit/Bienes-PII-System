@@ -519,7 +519,7 @@ public class AddingDesincorporacion extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String nbien_txt = nbientxt.getText();
 
-        if (nbien_txt.isEmpty()) {
+        if (nbien_txt.equals("")) {
             JOptionPane.showMessageDialog(null, "¡Hay campos vacíos!", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         } else {
             //Llama a una funcion en sqlcontrollerclass
@@ -563,13 +563,24 @@ public class AddingDesincorporacion extends javax.swing.JFrame {
             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
             String fecha = formatoFecha.format(fechaActual);
 
-            if (scc.addDesIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2, ordenCompra, nFacto, valor, idServicio, fecha, iduser, true)) {
-                JOptionPane.showMessageDialog(null, "¡Éxito al añadir la desincorporación, Bien Nº " + nrobien + " a la base de datos!\n"
-                        + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
-                this.setVisible(false);
+            if (nFacto.equals("")) {
+                if (scc.addDesIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2, ordenCompra, nFacto, valor, idServicio, fecha, iduser, false)) {
+                    JOptionPane.showMessageDialog(null, "¡Éxito al añadir la desincorporación, Bien Nº " + nrobien + " a la base de datos!\n"
+                            + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA DESINCORPORACIÓN DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA DESINCORPORACIÓN DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                if (scc.addDesIncorp(nrobien, clasif, descrip, Estado, Status, idConceptoExtraido2, ordenCompra, nFacto, valor, idServicio, fecha, iduser, true)) {
+                    JOptionPane.showMessageDialog(null, "¡Éxito al añadir la desincorporación, Bien Nº " + nrobien + " a la base de datos!\n"
+                            + "Operación realizada con éxito para la fecha: " + fecha, ".::ÉXITO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.INFORMATION_MESSAGE);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERROR AL AÑADIR LA DESINCORPORACIÓN DEL BIEN NRO. " + nrobien + " A LA BASE DE DATOS.", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                }
             }
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

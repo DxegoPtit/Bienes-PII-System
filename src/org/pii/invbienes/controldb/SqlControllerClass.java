@@ -2724,7 +2724,6 @@ public class SqlControllerClass {
     }
 
     //---------------AÑADIR UNA DESINCORPORACION--------------------------------------//
-    
     public boolean addDesIncorp(String nroBien, String clasif, String descripcion, String estado, String status, String concepto, String ordCompra, String nFactura, String monto_bs, String idServicio, String fecha, String iduser, boolean isWithNumeroActa) {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -2757,7 +2756,11 @@ public class SqlControllerClass {
                             if (isWithNumeroActa) {
                                 return true;
                             } else {
-                                if (setAsDesincorporar(nroBien)) {
+                                String sqli = "UPDATE piibienes.bienes SET status = 'A DESINCORPORAR' WHERE nbien = '"+nroBien+"'";
+                                Statement stm = con.createStatement();
+                                int rowsUpdated = stm.executeUpdate(sql);
+                                
+                                if (rowsUpdated != 0) {
                                     return true;
                                 } else {
                                     return false;
@@ -2787,32 +2790,27 @@ public class SqlControllerClass {
             }
         }
     }
-
-    private boolean setAsDesincorporar(String nroBien) {
-        Connection con = null;
+    /*
+    public boolean setAsDesincorporar(String nroBien) {
         PreparedStatement pstmt = null;
         try {
             con = openCon();
             if (con != null) {
                 if (verifyExistencia(nroBien, 0, "")) {
-                    return false;
-                } else {
-                    String sql = "UPDATE piibienes.bienes SET `status` = 'A DESINCORPORAR' WHERE nbien = '?'";
+                    String sql = "UPDATE piibienes.bienes SET status = 'A DESINCORPORAR' WHERE nbien = '?'";
                     pstmt = con.prepareStatement(sql);
                     pstmt.setString(1, nroBien);
-                    int i = pstmt.executeUpdate();
-                    if (i != 0) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    int rowsUpdated = pstmt.executeUpdate();
+                    return rowsUpdated > 0;
+                } else {
+                    return false; // El bien ya existe
                 }
             } else {
-                return false;
+                return false; // Error en la conexión
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return false; // Error en la ejecución de la consulta
         } finally {
             closeCon();
             if (pstmt != null) {
@@ -2824,4 +2822,5 @@ public class SqlControllerClass {
             }
         }
     }
+     */
 }

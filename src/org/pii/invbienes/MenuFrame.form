@@ -1481,16 +1481,7 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jPanel27" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel63" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel64" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="comboEstado3" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="comboStatus2" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="costo2" min="-2" pref="130" max="-2" attributes="0"/>
@@ -1540,32 +1531,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel49" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="grupo4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="sgrp2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="seccion2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jLabel59" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jLabel60" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel62" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="nbien2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel49" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="grupo4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="sgrp2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="seccion2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="jLabel59" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="jLabel60" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel63" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="comboEstado3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel64" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="comboStatus2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel62" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="nbien2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jPanel27" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1700,56 +1678,6 @@
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel63">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Estado:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboEstado3">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="-"/>
-                    <StringItem index="1" value="EXCELENTE"/>
-                    <StringItem index="2" value="BUENO"/>
-                    <StringItem index="3" value="REGULAR"/>
-                    <StringItem index="4" value="MALO"/>
-                    <StringItem index="5" value="INSERVIBLE"/>
-                  </StringArray>
-                </Property>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel64">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="12" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Status:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboStatus2">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="-"/>
-                    <StringItem index="1" value="A DESINCORPORAR"/>
-                    <StringItem index="2" value="UBICADO"/>
-                    <StringItem index="3" value="FALTANTE"/>
-                  </StringArray>
-                </Property>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel65">
               <Properties>

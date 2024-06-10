@@ -350,10 +350,6 @@ public class MenuFrame extends javax.swing.JFrame {
         desc2 = new javax.swing.JTextArea();
         jLabel62 = new javax.swing.JLabel();
         nbien2 = new javax.swing.JTextField();
-        jLabel63 = new javax.swing.JLabel();
-        comboEstado3 = new javax.swing.JComboBox<>();
-        jLabel64 = new javax.swing.JLabel();
-        comboStatus2 = new javax.swing.JComboBox<>();
         jLabel65 = new javax.swing.JLabel();
         costo2 = new javax.swing.JTextField();
         jPanel26 = new javax.swing.JPanel();
@@ -1369,18 +1365,6 @@ public class MenuFrame extends javax.swing.JFrame {
 
         nbien2.setEnabled(false);
 
-        jLabel63.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel63.setText("Estado:");
-
-        comboEstado3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "EXCELENTE", "BUENO", "REGULAR", "MALO", "INSERVIBLE" }));
-        comboEstado3.setEnabled(false);
-
-        jLabel64.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel64.setText("Status:");
-
-        comboStatus2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "A DESINCORPORAR", "UBICADO", "FALTANTE" }));
-        comboStatus2.setEnabled(false);
-
         jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel65.setText("Costo (Bs.):");
 
@@ -1539,14 +1523,7 @@ public class MenuFrame extends javax.swing.JFrame {
                                                 .addComponent(seccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(comboEstado3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(comboStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(223, 223, 223))
                                     .addGroup(scene2Layout.createSequentialGroup()
                                         .addComponent(costo2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1581,27 +1558,18 @@ public class MenuFrame extends javax.swing.JFrame {
             .addGroup(scene2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(scene2Layout.createSequentialGroup()
-                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(grupo4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sgrp2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(seccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nbien2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(scene2Layout.createSequentialGroup()
-                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboEstado3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(scene2Layout.createSequentialGroup()
+                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(grupo4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sgrp2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nbien2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(scene2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -4250,19 +4218,17 @@ public class MenuFrame extends javax.swing.JFrame {
         /*
         
         data = new String[]{
-                    rst.getString("clasif"), 0
-                    rst.getString("nb"), 1
-                    rst.getString("desc"), 2
-                    rst.getString("estado"),3
-                    rst.getString("status"),4
-                    rst.getString("desincActa"),5
-                    rst.getString("montobs"),6
-                    rst.getString("identidad"),7
-                    rst.getString("idsector"),8
-                    rst.getString("idunidad"),9
-                    rst.getString("idservicio"),10
-                    rst.getString("fecha"),11
-                    rst.getString("conc")12
+                    rst.getString("clasif"),0
+                    rst.getString("nb"),1
+                    rst.getString("desc"),2
+                    rst.getString("desincActa"),3
+                    rst.getString("montobs"),4
+                    rst.getString("identidad"),5
+                    rst.getString("idsector"),6
+                    rst.getString("idunidad"),7
+                    rst.getString("idservicio"),8
+                    rst.getString("fecha"),9
+                    rst.getString("conc")10
                 };
         
          */
@@ -4278,53 +4244,16 @@ public class MenuFrame extends javax.swing.JFrame {
         nbien2.setText(data[1]);
         desc2.setText(data[2]);
 
-        String ESTADO = data[3], STATUS = data[4];
 
-        switch (ESTADO) {
-            case "EXCELENTE":
-                comboEstado3.setSelectedIndex(1);
-                break;
-            case "BUENO":
-                comboEstado3.setSelectedIndex(2);
-                break;
-            case "REGULAR":
-                comboEstado3.setSelectedIndex(3);
-                break;
-            case "MALO":
-                comboEstado3.setSelectedIndex(4);
-                break;
-            case "INSERVIBLE":
-                comboEstado3.setSelectedIndex(5);
-                break;
-            default:
-                comboEstado3.setSelectedIndex(0);
-                break;
-        }
-
-        switch (STATUS) {
-            case "A DESINCORPORAR":
-                comboStatus2.setSelectedIndex(1);
-                break;
-            case "UBICADO":
-                comboStatus2.setSelectedIndex(2);
-                break;
-            case "FALTANTE POR INVESTIGAR":
-                comboStatus2.setSelectedIndex(3);
-                break;
-            default:
-                comboStatus2.setSelectedIndex(0);
-                break;
-        }
-
-        String actaDes = data[5];
+        String actaDes = data[3];
         nActa.setText(actaDes);
 
-        String CONCEPTO = data[12];
+        String CONCEPTO = data[10];
         Integer conc = Integer.getInteger(CONCEPTO);
-        concLista2.setSelectedIndex(conc - 1);
+        System.out.println("CONC: " + CONCEPTO);
 
-        costo2.setText(data[6]);
-        fechatxt2.setText(data[11]);
+        costo2.setText(data[4]);
+        fechatxt2.setText(data[9]);
 
         servCombo2.setModel(scc.getServicios());
         String[] ente = scc.getRutaEntes(servCombo2.getSelectedItem().toString());
@@ -4417,10 +4346,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMODE;
     private javax.swing.JButton btnOK;
     private javax.swing.JComboBox<String> comboEstado;
-    private javax.swing.JComboBox<String> comboEstado3;
     private javax.swing.JComboBox<String> comboIdAsig;
     private javax.swing.JComboBox<String> comboStatus;
-    private javax.swing.JComboBox<String> comboStatus2;
     private javax.swing.JComboBox<String> concList;
     private javax.swing.JComboBox<String> concList1;
     private javax.swing.JComboBox<String> concList2;
@@ -4554,8 +4481,6 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;

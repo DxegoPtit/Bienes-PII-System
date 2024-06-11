@@ -220,7 +220,7 @@ public class TableModels {
                 row.add(rs.getString("fecha"));
             
             */
-        Vector<Vector<Object>> data = scc.dataIncorporacionesByUnidades(dataFiltro[0], dataFiltro[1]);
+        Vector<Vector<Object>> data = scc.dataIncorporacionesByServicios(dataFiltro[0], dataFiltro[1]);
         
         dtm = new DefaultTableModel(data, columnas){
             @Override
@@ -425,4 +425,156 @@ public class TableModels {
         return dtm;
     }
 */
+    
+    //----------------------------------------------------------------------//
+    
+    public DefaultTableModel modeloFaltantesByEntidad(String idEntidad){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("VALOR TOTAL (Bs.)");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataFaltantesByEntidad(idEntidad);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloFaltantesBySector(String idEntidad){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("VALOR TOTAL (Bs.)");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataFaltantesBySector(idEntidad);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloFaltantesByUnidades(String idEntidad){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("VALOR TOTAL (Bs.)");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataFaltantesByUnidades(idEntidad);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloFaltantesByServicios(String idEntidad){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("VALOR TOTAL (Bs.)");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataFaltantesByServicios(idEntidad);
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloFaltantesByAll(){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("CONCEPTO");
+            columnas.add("DESCRIPCION");
+            columnas.add("VALOR TOTAL (Bs.)");
+            columnas.add("FECHA INVENTARIADO");
+            /*
+            
+            row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+            
+            */
+        Vector<Vector<Object>> data = scc.dataFaltantesByAll();
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
 }

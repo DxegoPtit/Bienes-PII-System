@@ -5,7 +5,6 @@
  */
 package org.pii.invbienes.controldb;
 
-import com.itextpdf.text.pdf.PdfPTable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,7 +24,6 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -47,45 +45,8 @@ public class SqlControllerClass {
 
     private String ip, db, user, pwd;
 
-    private PdfPTable table;
-
     private JasperViewer jvw;
 
-    /*
-    public PdfPTable fillInventoryReportByService(String IDSERV){
-        table = new PdfPTable(6);
-        
-        try {
-            openCon();
-            Statement stm = con.createStatement();
-            ResultSet rst = stm.executeQuery("SELECT * from bienes WHERE idServicio = " + IDSERV);
-            
-            table.addCell("CLASIFICACION");
-            table.addCell("Nº DE BIEN");
-            table.addCell("CANTIDAD");
-            table.addCell("DESRIPCION");
-            table.addCell("COSTO DE ADQISICION (BS.)");
-            table.addCell("VALOR ESTIMADO (BS.)");
-            
-            if (rst.next()) {
-                do {                    
-                    table.addCell(rst.getString("clasificacion"));
-                    table.addCell(rst.getString("nbien"));
-                    table.addCell("1");
-                    table.addCell(rst.getString("descripcion"));
-                    table.addCell(rst.getString("monto_bs"));
-                    table.addCell("");
-                } while (rst.next());
-            }
-            
-            return table;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.ERROR_MESSAGE);
-            return null;
-        } finally{
-            closeCon();
-        }
-    }*/
     private void getProperties() {
         try {
             String rutaIni = new File(getClass().getResource("/org/pii/invbienes/settings.ini").getFile()).getAbsolutePath();
@@ -925,6 +886,191 @@ public class SqlControllerClass {
                 row.add(rs.getString("desc"));
                 row.add(rs.getString("monto"));
                 row.add(rs.getString("des"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    //----------------------------------------------------------------------------//
+    public Vector dataFaltantesByEntidad(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE identidad = " + ID + " AND concepto = '60'";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataFaltantesBySector(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE idSector = " + ID + " AND concepto = '60'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataFaltantesByUnidades(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE idunidad = " + ID + " AND concepto = '60'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataFaltantesByServicios(String ID) {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE idservicio = " + ID + " AND concepto = '60'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
+                row.add(rs.getString("fecha"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataFaltantesByAll() {
+        try {
+            openCon();
+
+            String sql = "SELECT "
+                    + "clasificacion AS cls,"
+                    + "nbien AS nb,"
+                    + "concepto AS conc,"
+                    + "descripcion AS `desc`,"
+                    + "monto_bs AS monto,"
+                    + "fecha_mov AS fecha "
+                    + "FROM movimientos WHERE concepto = '60'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nb"));
+                row.add(rs.getString("cls"));
+                row.add(rs.getString("conc"));
+                row.add(rs.getString("desc"));
+                row.add(rs.getString("monto"));
                 row.add(rs.getString("fecha"));
                 data.add(row);
             }
@@ -2756,10 +2902,10 @@ public class SqlControllerClass {
                             if (isWithNumeroActa) {
                                 return true;
                             } else {
-                                String sqli = "UPDATE piibienes.bienes SET status = 'A DESINCORPORAR' WHERE nbien = '"+nroBien+"'";
+                                String sqli = "UPDATE piibienes.bienes SET status = 'A DESINCORPORAR' WHERE nbien = '" + nroBien + "'";
                                 Statement stm = con.createStatement();
                                 int rowsUpdated = stm.executeUpdate(sql);
-                                
+
                                 if (rowsUpdated != 0) {
                                     return true;
                                 } else {
@@ -2790,37 +2936,6 @@ public class SqlControllerClass {
             }
         }
     }
-    /*
-    public boolean setAsDesincorporar(String nroBien) {
-        PreparedStatement pstmt = null;
-        try {
-            con = openCon();
-            if (con != null) {
-                if (verifyExistencia(nroBien, 0, "")) {
-                    String sql = "UPDATE piibienes.bienes SET status = 'A DESINCORPORAR' WHERE nbien = '?'";
-                    pstmt = con.prepareStatement(sql);
-                    pstmt.setString(1, nroBien);
-                    int rowsUpdated = pstmt.executeUpdate();
-                    return rowsUpdated > 0;
-                } else {
-                    return false; // El bien ya existe
-                }
-            } else {
-                return false; // Error en la conexión
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // Error en la ejecución de la consulta
-        } finally {
-            closeCon();
-            if (pstmt != null) {
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-     */
+
+    //---------------------------------------------------------------------------------//
 }

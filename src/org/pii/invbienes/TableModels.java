@@ -577,4 +577,24 @@ public class TableModels {
         
         return dtm;
     }
+    
+    //--------------------------------------------------------------------------//
+    
+    public DefaultTableModel modeloEntes(){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("ID DEL ENTE");
+            columnas.add("DESCRIPCION");
+            columnas.add("TIPO DE ENTE");
+            columnas.add("ASOCIADO A");
+        Vector<Vector<Object>> data = scc.dataEntes();
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
 }

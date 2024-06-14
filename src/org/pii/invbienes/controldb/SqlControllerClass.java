@@ -5,6 +5,7 @@
  */
 package org.pii.invbienes.controldb;
 
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -2938,4 +2939,427 @@ public class SqlControllerClass {
     }
 
     //---------------------------------------------------------------------------------//
+    /*
+    SELECT
+	idGeneral,
+	nombreGeneral,
+	tipo,
+	COALESCE (
+		( SELECT nombre FROM entidades WHERE id = idEntidadAs ),
+		( SELECT nombre FROM sectores WHERE id = idSectorAs ),
+		( SELECT nombre FROM unidades WHERE id = idUnidadAs ) 
+	) AS nombreAsociado 
+FROM
+	(
+	SELECT
+		entidades.id AS idGeneral,
+		entidades.nombre AS nombreGeneral,
+		'ENTIDAD' AS tipo,
+		NULL AS idEntidadAs,
+		NULL AS idSectorAs,
+		NULL AS idUnidadAs 
+	FROM
+		entidades UNION ALL
+	SELECT
+		sectores.id AS idGeneral,
+		sectores.nombre AS nombreGeneral,
+		'SECTOR' AS tipo,
+		sectores.idEntidadAs,
+		NULL AS idSectorAs,
+		NULL AS idUnidadAs 
+	FROM
+		sectores UNION ALL
+	SELECT
+		unidades.id AS idGeneral,
+		unidades.nombre AS nombreGeneral,
+		'UNIDAD' AS tipo,
+		NULL AS idEntidadAs,
+		unidades.idSectorAs,
+		NULL AS idUnidadAs 
+	FROM
+		unidades UNION ALL
+	SELECT
+		servicios.id AS idGeneral,
+		servicios.nombre AS nombreGeneral,
+		'SERVICIO' AS tipo,
+		NULL AS idEntidadAs,
+		NULL AS idSectorAs,
+		servicios.idUnidadAs 
+	FROM
+	servicios 
+	) AS combinedResults;
+    
+    Osea idGeneral, nombreGeneral, tipo, nombreAsociado
+     */
+    public Vector dataEntes() {
+        try {
+            openCon();
+
+            String sql = "SELECT\n"
+                    + "	idGeneral,\n"
+                    + "	nombreGeneral,\n"
+                    + "	tipo,\n"
+                    + "	COALESCE (\n"
+                    + "		( SELECT nombre FROM entidades WHERE id = idEntidadAs ),\n"
+                    + "		( SELECT nombre FROM sectores WHERE id = idSectorAs ),\n"
+                    + "		( SELECT nombre FROM unidades WHERE id = idUnidadAs ) \n"
+                    + "	) AS nombreAsociado \n"
+                    + "FROM\n"
+                    + "	(\n"
+                    + "	SELECT\n"
+                    + "		entidades.id AS idGeneral,\n"
+                    + "		entidades.nombre AS nombreGeneral,\n"
+                    + "		'ENTIDAD' AS tipo,\n"
+                    + "		NULL AS idEntidadAs,\n"
+                    + "		NULL AS idSectorAs,\n"
+                    + "		NULL AS idUnidadAs \n"
+                    + "	FROM\n"
+                    + "		entidades UNION ALL\n"
+                    + "	SELECT\n"
+                    + "		sectores.id AS idGeneral,\n"
+                    + "		sectores.nombre AS nombreGeneral,\n"
+                    + "		'SECTOR' AS tipo,\n"
+                    + "		sectores.idEntidadAs,\n"
+                    + "		NULL AS idSectorAs,\n"
+                    + "		NULL AS idUnidadAs \n"
+                    + "	FROM\n"
+                    + "		sectores UNION ALL\n"
+                    + "	SELECT\n"
+                    + "		unidades.id AS idGeneral,\n"
+                    + "		unidades.nombre AS nombreGeneral,\n"
+                    + "		'UNIDAD' AS tipo,\n"
+                    + "		NULL AS idEntidadAs,\n"
+                    + "		unidades.idSectorAs,\n"
+                    + "		NULL AS idUnidadAs \n"
+                    + "	FROM\n"
+                    + "		unidades UNION ALL\n"
+                    + "	SELECT\n"
+                    + "		servicios.id AS idGeneral,\n"
+                    + "		servicios.nombre AS nombreGeneral,\n"
+                    + "		'SERVICIO' AS tipo,\n"
+                    + "		NULL AS idEntidadAs,\n"
+                    + "		NULL AS idSectorAs,\n"
+                    + "		servicios.idUnidadAs \n"
+                    + "	FROM\n"
+                    + "	servicios \n"
+                    + "	) AS combinedResults;";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("idGeneral"));
+                row.add(rs.getString("nombreGeneral"));
+                row.add(rs.getString("tipo"));
+                row.add(rs.getString("nombreAsociado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public String[] detailsEnte(String ID, Integer TYPE) {
+        try {
+            openCon();
+
+            String sql = "";
+            if (TYPE != null) {
+                switch (TYPE) {
+                    //Es entidad
+                    case 0:
+                        sql = "SELECT "
+                                + "entidades.id,"
+                                + "entidades.nombre,"
+                                + "entidades.estado,"
+                                + "entidades.municipio,"
+                                + "entidades.parroquia,"
+                                + "entidades.ubicacion "
+                                + "FROM entidades "
+                                + "WHERE entidades.id = " + ID;
+                        break;
+
+                    //Es sector
+                    case 1:
+                        sql = "SELECT "
+                                + "sectores.id AS id, "
+                                + "sectores.nombre AS nombre, "
+                                + "sectores.estado AS estado, "
+                                + "sectores.municipio AS municipio, "
+                                + "sectores.parroquia AS parroquia, "
+                                + "sectores.ubicacion AS ubicacion, "
+                                + "sectores.idEntidadAs AS idAsoc, "
+                                + "entidades.nombre AS nombreAsoc "
+                                + "FROM "
+                                + "entidades "
+                                + "INNER JOIN sectores ON entidades.id = sectores.idEntidadAs "
+                                + "WHERE sectores.id = " + ID;
+                        break;
+
+                    //Es unidad
+                    case 2:
+                        sql = "SELECT "
+                                + "unidades.id AS id, "
+                                + "unidades.nombre AS nombre, "
+                                + "unidades.estado AS estado, "
+                                + "unidades.municipio AS municipio, "
+                                + "unidades.parroquia AS parroquia, "
+                                + "unidades.ubicacion AS ubicacion, "
+                                + "unidades.idSectorAs AS idAsoc, "
+                                + "sectores.nombre AS nombreAsoc "
+                                + "FROM "
+                                + "sectores "
+                                + "INNER JOIN unidades ON sectores.id = unidades.idSectorAs "
+                                + "WHERE unidades.id = " + ID;
+                        break;
+
+                    //Es servicio
+                    case 3:
+                        sql = "SELECT "
+                                + "servicios.id AS id, "
+                                + "servicios.nombre AS nombre, "
+                                + "servicios.estado AS estado, "
+                                + "servicios.municipio AS municipio, "
+                                + "servicios.parroquia AS parroquia, "
+                                + "servicios.ubicacion AS ubicacion, "
+                                + "servicios.idUnidadAs AS idAsoc, "
+                                + "unidades.nombre AS nombreAsoc "
+                                + "FROM "
+                                + "servicios "
+                                + "INNER JOIN unidades ON servicios.idUnidadAs = unidades.id  "
+                                + "WHERE servicios.id = " + ID;
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        sql = null;
+                }
+
+                if (sql != null) {
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+
+                    String[] data;
+
+                    if (rs.next()) {
+
+                        if (TYPE == 0) {
+                            data = new String[]{
+                                rs.getString("id"),
+                                rs.getString("nombre"),
+                                rs.getString("estado"),
+                                rs.getString("municipio"),
+                                rs.getString("parroquia"),
+                                rs.getString("ubicacion")
+                            };
+                        } else {
+                            data = new String[]{
+                                rs.getString("id"),
+                                rs.getString("nombre"),
+                                rs.getString("estado"),
+                                rs.getString("municipio"),
+                                rs.getString("parroquia"),
+                                rs.getString("ubicacion"),
+                                rs.getString("idAsoc"),
+                                rs.getString("nombreAsoc")
+                            };
+                        }
+                    } else {
+                        data = null;
+                    }
+                    return data;
+                } else {
+                    return null;
+                }
+            } else{
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public DefaultComboBoxModel comboEntes(Integer TYPE){
+        try {
+            openCon();
+
+            String sql = "";
+            if (TYPE != null) {
+                switch (TYPE) {
+                    //Es entidad
+                    case 0:
+                        sql = "SELECT id FROM entidades";
+                        break;
+
+                    //Es sector
+                    case 1:
+                        sql = "SELECT id FROM sectores";
+                        break;
+
+                    //Es unidad
+                    case 2:
+                        sql = "SELECT id FROM unidades";
+                        break;
+
+                    //Es servicio
+                    case 3:
+                        sql = "SELECT id FROM servicios";
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        sql = null;
+                }
+
+                if (sql != null) {
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+                    DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+                    
+                    while (rs.next()) {
+                        dcm.addElement(rs.getString("id"));
+                    }
+                    
+                    return dcm;
+                } else {
+                    return null;
+                }
+            } else{
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public String getEnteName(String ID, Integer TYPE){
+        try {
+            openCon();
+
+            String sql = "";
+            if (TYPE != null) {
+                switch (TYPE) {
+                    //Es entidad
+                    case 0:
+                        sql = "SELECT nombre FROM entidades WHERE id = " + ID;
+                        break;
+
+                    //Es sector
+                    case 1:
+                        sql = "SELECT nombre FROM sectores WHERE id = " + ID;
+                        break;
+
+                    //Es unidad
+                    case 2:
+                        sql = "SELECT nombre FROM unidades WHERE id = " + ID;
+                        break;
+
+                    //Es servicio
+                    case 3:
+                        sql = "SELECT nombre FROM servicios WHERE id = " + ID;
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        sql = null;
+                }
+
+                if (sql != null) {
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(sql);
+                    
+                    if (rs.next()) {
+                        return rs.getString("nombre");
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            } else{
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+    
+    public Boolean updateEnte(String[] newData, Integer TYPE){
+        try {
+            openCon();
+
+            String sql = "";
+            if (TYPE != null) {
+                switch (TYPE) {
+                    //Es entidad
+                    case 0:
+                        sql = "UPDATE entidades SET nombre = '"+newData[0]+"', "
+                                + "estado = '"+newData[1]+"', "
+                                + "municipio = '"+newData[2]+"', "
+                                + "parroquia = '"+newData[3]+"'";
+                        break;
+
+                    //Es sector
+                    case 1:
+                        sql = "UPDATE sectores SET nombre = '"+newData[0]+"', "
+                                + "estado = '"+newData[1]+"', "
+                                + "municipio = '"+newData[2]+"', "
+                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        break;
+
+                    //Es unidad
+                    case 2:
+                        sql = "UPDATE unidades SET nombre = '"+newData[0]+"', "
+                                + "estado = '"+newData[1]+"', "
+                                + "municipio = '"+newData[2]+"', "
+                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        break;
+
+                    //Es servicio
+                    case 3:
+                        sql = "UPDATE servicios SET nombre = '"+newData[0]+"', "
+                                + "estado = '"+newData[1]+"', "
+                                + "municipio = '"+newData[2]+"', "
+                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        sql = null;
+                }
+
+                if (sql != null) {
+                    Statement stmt = con.createStatement();
+                    Integer a = stmt.executeUpdate(sql);
+                    
+                    if (a != 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return null;
+                }
+            } else{
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
 }

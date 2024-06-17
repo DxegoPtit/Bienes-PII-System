@@ -342,7 +342,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jButton47 = new javax.swing.JButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        jButton45 = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
         nf_txt = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
@@ -408,7 +408,6 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jToggleButton7 = new javax.swing.JToggleButton();
         jButton49 = new javax.swing.JButton();
-        jButton50 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         labl_asoc = new javax.swing.JLabel();
         comboID = new javax.swing.JComboBox<>();
@@ -461,6 +460,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         labelVisualizando = new javax.swing.JLabel();
         jButton41 = new javax.swing.JButton();
+        jButton44 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
@@ -1212,10 +1212,10 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton4.setText("Eliminar Registro");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton45.setText("ELIMINAR REGISTRO");
+        jButton45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                jButton45ActionPerformed(evt);
             }
         });
 
@@ -1224,9 +1224,9 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(89, 89, 89)
+                .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1235,11 +1235,14 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 1, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton47, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30))
         );
 
@@ -1389,7 +1392,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(scene1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechatxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1785,35 +1788,25 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton50.setText("ELIMINAR ENTE");
-        jButton50.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton50ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jButton50, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
+                .addGap(170, 170, 170)
                 .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
+                .addGap(233, 233, 233))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton50, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         labl_asoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -1909,11 +1902,12 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane10)
                     .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(scene3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(munip, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(scene3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(estado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(scene3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(munip, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(scene3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel85, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
@@ -2377,19 +2371,28 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton44.setText("VER \"A DESINCORPORAR\"");
+        jButton44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton44ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelVisualizando)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelVisualizando)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton41)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
         );
         jPanel24Layout.setVerticalGroup(
@@ -2399,10 +2402,12 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelVisualizando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(7, 7, 7))
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelVisualizando, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton44))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -4066,8 +4071,6 @@ public class MenuFrame extends javax.swing.JFrame {
 //            String cls = data[2];
 //            System.out.println("cls " + cls);
             seeDetails(data, 1);
-
-            JOptionPane.showMessageDialog(null, "¡Esta función aún no está disponible!", ".:: Sistema de Inventario de Bienes del Programa de Informática Integral ::.", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_inctableMouseClicked
@@ -5007,15 +5010,70 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
+        scc = new SqlControllerClass();
+
+        if (jToggleButton3.isSelected()) {
+            grupo1.setEnabled(true);
+            sgrp1.setEnabled(true);
+            seccion1.setEnabled(true);
+            desc1.setEnabled(true);
+            nf_txt.setEnabled(true);
+            ordc_txt.setEnabled(true);
+            concLista.setEnabled(true);
+            costo1.setEnabled(true);
+            servCombo1.setEnabled(true);
+            fechatxt1.setEnabled(true);
+        } else {
+            grupo1.setEnabled(false);
+            sgrp1.setEnabled(false);
+            seccion1.setEnabled(false);
+            desc1.setEnabled(false);
+            nf_txt.setEnabled(false);
+            ordc_txt.setEnabled(false);
+            concLista.setEnabled(false);
+            costo1.setEnabled(false);
+            servCombo1.setEnabled(false);
+            fechatxt1.setEnabled(false);
+
+            String item2, idConceptoExtraido2 = "";
+            item2 = concLista.getSelectedItem().toString();
+            Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+            Matcher matcher = patron.matcher(item2);
+            while (matcher.find()) {
+                idConceptoExtraido2 += matcher.group();
+            }
+            
+            String[] data = new String[]{
+                grupo1.getText(), //0
+                sgrp1.getText(), //1
+                seccion1.getText(), //2
+                desc1.getText(), //3
+                nf_txt.getText(), //4
+                ordc_txt.getText(), //5
+                idConceptoExtraido2, //6
+                costo1.getText(), //7
+                servCombo1.getSelectedItem().toString(),//8
+                fechatxt1.getText(),};
+
+            String noBien = nbien1.getText();
+
+            if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                if (scc.updateMvmt(noBien, data, 0)) {
+                    JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                //Selecciono no
+            }
+        }
+
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
         // TODO add your handling code here:
+        DetailsIncorporaciones.setVisible(false);
     }//GEN-LAST:event_jButton47ActionPerformed
-
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void servCombo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_servCombo2ItemStateChanged
         // TODO add your handling code here:
@@ -5233,7 +5291,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_entableMouseClicked
 
     Integer tipo;
-    
+
     private void setEnteWizard(String[] data, Integer tipo) {
         DetailsEnte.setLocationRelativeTo(null);
 
@@ -5262,7 +5320,6 @@ public class MenuFrame extends javax.swing.JFrame {
         }
         
          */
-        
         if (null != tipo) {
             if (null != data) {
                 switch (tipo) {
@@ -5271,21 +5328,21 @@ public class MenuFrame extends javax.swing.JFrame {
                         label_detalles.setText("Detalles de la Entidad");
                         labl_asoc.setText("Asociado a (No aplica):");
                         DetailsEnte.setVisible(true);
-                        
+
                         nEnte.setText(data[0]);
                         desEnte.setText(data[1]);
                         estado.setText(data[2]);
                         munip.setText(data[3]);
                         pquia.setText(data[4]);
                         ubic_larga.setText(data[5]);
-                        
+
                         break;
                     //Es sector
                     case 1:
                         label_detalles.setText("Detalles del Sector Presupuestario");
                         labl_asoc.setText("Asociado a (Entidad):");
                         DetailsEnte.setVisible(true);
-                        
+
                         nEnte.setText(data[0]);
                         desEnte.setText(data[1]);
                         estado.setText(data[2]);
@@ -5300,7 +5357,7 @@ public class MenuFrame extends javax.swing.JFrame {
                         label_detalles.setText("Detalles de la Unidad de Trabajo");
                         labl_asoc.setText("Asociado a (Sector):");
                         DetailsEnte.setVisible(true);
-                        
+
                         nEnte.setText(data[0]);
                         desEnte.setText(data[1]);
                         estado.setText(data[2]);
@@ -5315,7 +5372,7 @@ public class MenuFrame extends javax.swing.JFrame {
                         label_detalles.setText("Detalles del Servicio");
                         labl_asoc.setText("Asociado a (Unidad):");
                         DetailsEnte.setVisible(true);
-                        
+
                         nEnte.setText(data[0]);
                         desEnte.setText(data[1]);
                         estado.setText(data[2]);
@@ -5331,10 +5388,10 @@ public class MenuFrame extends javax.swing.JFrame {
                         DetailsEnte.setVisible(true);
                         break;
                 }
-            } else{
+            } else {
                 //err
             }
-        } else{
+        } else {
             //err
         }
     }
@@ -5368,7 +5425,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
         // TODO add your handling code here:
         scc = new SqlControllerClass();
-        
+
         if (jToggleButton7.isSelected()) {
             desEnte.setEnabled(true);
             estado.setEnabled(true);
@@ -5376,7 +5433,7 @@ public class MenuFrame extends javax.swing.JFrame {
             pquia.setEnabled(true);
             comboID.setEnabled(true);
         } else {
-            
+
             String[] data = new String[]{
                 desEnte.getText(), //0
                 estado.getText(), //1
@@ -5384,7 +5441,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 pquia.getText(), //3
                 comboID.getSelectedItem().toString()
             };
-            
+
             if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                 if (scc.updateEnte(data, tipo)) {
                     JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
@@ -5394,7 +5451,7 @@ public class MenuFrame extends javax.swing.JFrame {
             } else {
                 //Selecciono no
             }
-            
+
             desEnte.setEnabled(false);
             estado.setEnabled(false);
             munip.setEnabled(false);
@@ -5408,9 +5465,22 @@ public class MenuFrame extends javax.swing.JFrame {
         DetailsEnte.setVisible(false);
     }//GEN-LAST:event_jButton49ActionPerformed
 
-    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+    private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton50ActionPerformed
+        tmls = new TableModels();
+        invTable.setModel(tmls.modeloInventarioByDesincorporar());
+
+    }//GEN-LAST:event_jButton44ActionPerformed
+
+    private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+        if (scc.deleteMovimiento(nbien1.getText(), 0)) {
+            JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton45ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
@@ -5735,11 +5805,12 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton41;
     private javax.swing.JButton jButton42;
     private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
     private javax.swing.JButton jButton47;
     private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton49;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton50;
     private javax.swing.JButton jButton54;
     private javax.swing.JButton jButton55;
     private javax.swing.JButton jButton56;
@@ -5917,7 +5988,6 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;

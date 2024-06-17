@@ -530,11 +530,9 @@ public class AddingIncorporacion extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
-        String estLiTxt = estList.getSelectedItem().toString(), statLiTxt = estList.getSelectedItem().toString();
         String nbien_txt = nbientxt.getText();
 
-        if (estLiTxt.equals("-") || statLiTxt.equals("-") || nbien_txt.isEmpty()) {
+        if (nbien_txt.isEmpty()) {
             JOptionPane.showMessageDialog(null, "¡Hay campos vacíos!", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
         } else {
             //Llama a una funcion en sqlcontrollerclass

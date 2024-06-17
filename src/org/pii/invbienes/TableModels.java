@@ -21,6 +21,7 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByEntidad(ID);
         
@@ -38,6 +39,7 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioBySector(ID);
         
@@ -55,6 +57,7 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByUnidades(ID);
         
@@ -72,6 +75,7 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByServicios(ID);
         
@@ -89,8 +93,27 @@ public class TableModels {
         Vector<String> columnas = new Vector<>();
             columnas.add("NUMERO DE BIEN");
             columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
             columnas.add("FECHA INVENTARIADO");
         Vector<Vector<Object>> data = scc.dataInventarioByAll();
+        
+        dtm = new DefaultTableModel(data, columnas){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas no sean editables
+            }
+        };
+        
+        return dtm;
+    }
+    
+    public DefaultTableModel modeloInventarioByDesincorporar(){
+        Vector<String> columnas = new Vector<>();
+            columnas.add("NUMERO DE BIEN");
+            columnas.add("CLASIFICACION");
+            columnas.add("DESCRIPCION");
+            columnas.add("FECHA INVENTARIADO");
+        Vector<Vector<Object>> data = scc.dataInventarioByDesincorporar();
         
         dtm = new DefaultTableModel(data, columnas){
             @Override

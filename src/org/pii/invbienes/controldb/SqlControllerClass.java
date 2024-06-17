@@ -220,6 +220,7 @@ public class SqlControllerClass {
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -263,6 +264,7 @@ public class SqlControllerClass {
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -304,6 +306,7 @@ public class SqlControllerClass {
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -344,6 +347,7 @@ public class SqlControllerClass {
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -383,6 +387,48 @@ public class SqlControllerClass {
                 Vector<Object> row = new Vector<>();
                 row.add(rs.getString("nbien"));
                 row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
+                row.add(rs.getString("fecha_inventariado"));
+                data.add(row);
+            }
+
+            return data;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Vector dataInventarioByDesincorporar() {
+        try {
+            openCon();
+
+            String sql = "SELECT xbienes.nbien AS nbien, xbienes.descripcion AS descripcion, "
+                    + "xbienes.clasificacion AS clasificacion, xbienes.estado AS estado,"
+                    + "xbienes.`status` AS `status`,trabajadores.nombre AS nombre, "
+                    + "xbienes.ubicacion_asig AS ubicacion,  sectores.nombre AS sector, "
+                    + "unidades.nombre AS unidad, "
+                    + "servicios.nombre AS servicio, "
+                    + "entidades.nombre AS entidades, "
+                    + "xbienes.fecha_inventariado AS fecha_inventariado "
+                    + "FROM bienes AS xbienes INNER JOIN sectores ON xbienes.idSector = sectores.id "
+                    + "INNER JOIN unidades ON xbienes.idUnidad = unidades.id "
+                    + "INNER JOIN servicios ON xbienes.idServicio = servicios.id "
+                    + "INNER JOIN entidades ON xbienes.idEntidad = entidades.id "
+                    + "INNER JOIN trabajadores AS trabajadores ON xbienes.idtrabajador_asig = trabajadores.id "
+                    + "WHERE `status` = 'A DESINCORPORAR'";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            Vector<Vector<Object>> data = new Vector<>();
+            while (rs.next()) {
+                Vector<Object> row = new Vector<>();
+                row.add(rs.getString("nbien"));
+                row.add(rs.getString("clasificacion"));
+                row.add(rs.getString("descripcion"));
                 row.add(rs.getString("fecha_inventariado"));
                 data.add(row);
             }
@@ -2678,6 +2724,63 @@ public class SqlControllerClass {
         }
     }
 
+    public Boolean updateMvmt(String byNBien, String[] data, Integer TYPE) {
+        try {
+            openCon();
+            
+            String[] dataBien = data;
+            String clasif = dataBien[0] + "-" + dataBien[1] + "-" + dataBien[2];
+            String sql = "";
+
+            if (TYPE == 0) {
+                //Para modificar una incorporacion
+                sql = "UPDATE movimientos SET "
+                        + "clasificacion = '" + clasif + "',"
+                        + "descripcion = '" + dataBien[3] + "',"
+                        + "concepto = '" + dataBien[6] + "',"
+                        + "monto_bs = '" + dataBien[7] + "',"
+                        + "nfactura = '" + dataBien[4] + "',"
+                        + "ordencompra = '" + dataBien[5] + "',"
+                        + "actadesincorp = '',"
+                        + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "),"
+                        + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + ")), "
+                        + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "))),"
+                        + "fecha_mov = '" + dataBien[9] + "' "
+                        + "WHERE movimientos.nbien = '" + byNBien + "'";
+            } else if (TYPE == 1) {
+                //Para modificar una desincorporacion
+                sql = "UPDATE movimientos SET "
+                        + "clasificacion = '" + clasif + "',"
+                        + "descripcion = '" + dataBien[3] + "',"
+                        + "concepto = '" + dataBien[6] + "',"
+                        + "monto_bs = '" + dataBien[7] + "',"
+                        + "nfactura = '',"
+                        + "ordencompra = '',"
+                        + "actadesincorp = '"+ dataBien[5] +"',"
+                        + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "),"
+                        + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + ")), "
+                        + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "))),"
+                        + "fecha_mov = '" + dataBien[9] + "' "
+                        + "WHERE movimientos.nbien = '" + byNBien + "'";
+            }
+
+            openCon();
+            Statement stm = con.createStatement();
+            Integer stt = stm.executeUpdate(sql);
+
+            if (stt != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            closeCon();
+        }
+    }
+
     public Boolean updateBienSTATUS(String byNBien, String STATUS) {
         try {
             String sql = "UPDATE bienes SET status = '" + STATUS + "' WHERE nbien = '" + byNBien + "'";
@@ -3177,7 +3280,7 @@ FROM
                 } else {
                     return null;
                 }
-            } else{
+            } else {
                 return null;
             }
         } catch (HeadlessException | SQLException e) {
@@ -3187,8 +3290,8 @@ FROM
             closeCon();
         }
     }
-    
-    public DefaultComboBoxModel comboEntes(Integer TYPE){
+
+    public DefaultComboBoxModel comboEntes(Integer TYPE) {
         try {
             openCon();
 
@@ -3223,16 +3326,16 @@ FROM
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
                     DefaultComboBoxModel dcm = new DefaultComboBoxModel();
-                    
+
                     while (rs.next()) {
                         dcm.addElement(rs.getString("id"));
                     }
-                    
+
                     return dcm;
                 } else {
                     return null;
                 }
-            } else{
+            } else {
                 return null;
             }
         } catch (HeadlessException | SQLException e) {
@@ -3242,8 +3345,8 @@ FROM
             closeCon();
         }
     }
-    
-    public String getEnteName(String ID, Integer TYPE){
+
+    public String getEnteName(String ID, Integer TYPE) {
         try {
             openCon();
 
@@ -3277,7 +3380,7 @@ FROM
                 if (sql != null) {
                     Statement stmt = con.createStatement();
                     ResultSet rs = stmt.executeQuery(sql);
-                    
+
                     if (rs.next()) {
                         return rs.getString("nombre");
                     } else {
@@ -3286,7 +3389,7 @@ FROM
                 } else {
                     return null;
                 }
-            } else{
+            } else {
                 return null;
             }
         } catch (HeadlessException | SQLException e) {
@@ -3296,8 +3399,8 @@ FROM
             closeCon();
         }
     }
-    
-    public Boolean updateEnte(String[] newData, Integer TYPE){
+
+    public Boolean updateEnte(String[] newData, Integer TYPE) {
         try {
             openCon();
 
@@ -3306,34 +3409,34 @@ FROM
                 switch (TYPE) {
                     //Es entidad
                     case 0:
-                        sql = "UPDATE entidades SET nombre = '"+newData[0]+"', "
-                                + "estado = '"+newData[1]+"', "
-                                + "municipio = '"+newData[2]+"', "
-                                + "parroquia = '"+newData[3]+"'";
+                        sql = "UPDATE entidades SET nombre = '" + newData[0] + "', "
+                                + "estado = '" + newData[1] + "', "
+                                + "municipio = '" + newData[2] + "', "
+                                + "parroquia = '" + newData[3] + "'";
                         break;
 
                     //Es sector
                     case 1:
-                        sql = "UPDATE sectores SET nombre = '"+newData[0]+"', "
-                                + "estado = '"+newData[1]+"', "
-                                + "municipio = '"+newData[2]+"', "
-                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        sql = "UPDATE sectores SET nombre = '" + newData[0] + "', "
+                                + "estado = '" + newData[1] + "', "
+                                + "municipio = '" + newData[2] + "', "
+                                + "parroquia = '" + newData[3] + "', idEntidadAs = " + newData[4];
                         break;
 
                     //Es unidad
                     case 2:
-                        sql = "UPDATE unidades SET nombre = '"+newData[0]+"', "
-                                + "estado = '"+newData[1]+"', "
-                                + "municipio = '"+newData[2]+"', "
-                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        sql = "UPDATE unidades SET nombre = '" + newData[0] + "', "
+                                + "estado = '" + newData[1] + "', "
+                                + "municipio = '" + newData[2] + "', "
+                                + "parroquia = '" + newData[3] + "', idSectorAs = " + newData[4];
                         break;
 
                     //Es servicio
                     case 3:
-                        sql = "UPDATE servicios SET nombre = '"+newData[0]+"', "
-                                + "estado = '"+newData[1]+"', "
-                                + "municipio = '"+newData[2]+"', "
-                                + "parroquia = '"+newData[3]+"', idEntidadAs = " +newData[4];
+                        sql = "UPDATE servicios SET nombre = '" + newData[0] + "', "
+                                + "estado = '" + newData[1] + "', "
+                                + "municipio = '" + newData[2] + "', "
+                                + "parroquia = '" + newData[3] + "', idUnidadAs = " + newData[4];
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -3343,7 +3446,7 @@ FROM
                 if (sql != null) {
                     Statement stmt = con.createStatement();
                     Integer a = stmt.executeUpdate(sql);
-                    
+
                     if (a != 0) {
                         return true;
                     } else {
@@ -3352,7 +3455,7 @@ FROM
                 } else {
                     return null;
                 }
-            } else{
+            } else {
                 return null;
             }
         } catch (HeadlessException | SQLException e) {
@@ -3362,4 +3465,50 @@ FROM
             closeCon();
         }
     }
+
+    
+    public Boolean deleteMovimiento(String nBien, Integer TYPE) {
+        try {
+            openCon();
+
+            String sql = "";
+            if (TYPE != null) {
+                switch (TYPE) {
+                    //Es incp
+                    case 0:
+                        sql = "DELETE FROM movimientos WHERE nbien = '" + nBien + "'";
+                        break;
+
+                    //Es desincp
+                    case 1:
+                        sql = "DELETE FROM movimientos WHERE nbien = '" + nBien + "'";
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "ERROR: El tipo de movimiento es inválido", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+                        sql = null;
+                }
+
+                if (sql != null) {
+                    Statement stmt = con.createStatement();
+                    Integer a = stmt.executeUpdate(sql);
+
+                    if (a != 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
 }

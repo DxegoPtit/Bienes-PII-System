@@ -2727,7 +2727,7 @@ public class SqlControllerClass {
     public Boolean updateMvmt(String byNBien, String[] data, Integer TYPE) {
         try {
             openCon();
-            
+
             String[] dataBien = data;
             String clasif = dataBien[0] + "-" + dataBien[1] + "-" + dataBien[2];
             String sql = "";
@@ -2756,7 +2756,7 @@ public class SqlControllerClass {
                         + "monto_bs = '" + dataBien[7] + "',"
                         + "nfactura = '',"
                         + "ordencompra = '',"
-                        + "actadesincorp = '"+ dataBien[5] +"',"
+                        + "actadesincorp = '" + dataBien[5] + "',"
                         + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "),"
                         + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + ")), "
                         + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "))),"
@@ -3466,7 +3466,6 @@ FROM
         }
     }
 
-    
     public Boolean deleteMovimiento(String nBien, Integer TYPE) {
         try {
             openCon();
@@ -3500,6 +3499,28 @@ FROM
                 } else {
                     return null;
                 }
+            } else {
+                return null;
+            }
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getLocalizedMessage(), ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
+    public Boolean deleteBien(String nBien) {
+        try {
+            openCon();
+
+            String sql = "DELETE FROM bienes WHERE nbien = '" + nBien + "'";
+
+            if (sql != null) {
+                Statement stmt = con.createStatement();
+                Integer a = stmt.executeUpdate(sql);
+
+                return a != 0;
             } else {
                 return null;
             }

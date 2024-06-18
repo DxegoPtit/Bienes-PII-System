@@ -267,6 +267,7 @@ public class MenuFrame extends javax.swing.JFrame {
         DetailsBienes = new javax.swing.JFrame();
         titlebar = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jButton46 = new javax.swing.JButton();
         scene = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         grupo = new javax.swing.JTextField();
@@ -714,6 +715,13 @@ public class MenuFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Detalles del bien");
 
+        jButton46.setText("Eliminar Registro");
+        jButton46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton46ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout titlebarLayout = new javax.swing.GroupLayout(titlebar);
         titlebar.setLayout(titlebarLayout);
         titlebarLayout.setHorizontalGroup(
@@ -721,13 +729,17 @@ public class MenuFrame extends javax.swing.JFrame {
             .addGroup(titlebarLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jLabel8)
-                .addContainerGap(591, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                .addComponent(jButton46, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
         titlebarLayout.setVerticalGroup(
             titlebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlebarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel8)
+                .addGroup(titlebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jButton46))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -1070,7 +1082,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(sceneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechatxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -4084,6 +4096,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
         DetailsBienes.setVisible(false);
+        tmls = new TableModels();
+        invTable.setModel(tmls.modeloInventarioByAll());
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -4153,6 +4167,8 @@ public class MenuFrame extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                 if (scc.updateBien(nb, data)) {
                     JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+                    tmls = new TableModels();
+                    invTable.setModel(tmls.modeloInventarioByAll());
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
                 }
@@ -5042,7 +5058,7 @@ public class MenuFrame extends javax.swing.JFrame {
             while (matcher.find()) {
                 idConceptoExtraido2 += matcher.group();
             }
-            
+
             String[] data = new String[]{
                 grupo1.getText(), //0
                 sgrp1.getText(), //1
@@ -5060,6 +5076,8 @@ public class MenuFrame extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
                 if (scc.updateMvmt(noBien, data, 0)) {
                     JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+                    tmls = new TableModels();
+                    inctable.setModel(tmls.modeloIncorporacionesByAll());
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
                 }
@@ -5073,6 +5091,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
         // TODO add your handling code here:
         DetailsIncorporaciones.setVisible(false);
+        tmls = new TableModels();
+        inctable.setModel(tmls.modeloIncorporacionesByAll());
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void servCombo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_servCombo2ItemStateChanged
@@ -5468,7 +5488,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
         // TODO add your handling code here:
         tmls = new TableModels();
-        invTable.setModel(tmls.modeloInventarioByDesincorporar());
+        invTable.setModel(tmls.modeloInventarioByAll());
 
     }//GEN-LAST:event_jButton44ActionPerformed
 
@@ -5477,10 +5497,26 @@ public class MenuFrame extends javax.swing.JFrame {
         scc = new SqlControllerClass();
         if (scc.deleteMovimiento(nbien1.getText(), 0)) {
             JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+            tmls = new TableModels();
+            inctable.setModel(tmls.modeloIncorporacionesByAll());
+            DetailsIncorporaciones.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton45ActionPerformed
+
+    private void jButton46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton46ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+        if (scc.deleteBien(nbien.getText())) {
+            JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+            tmls = new TableModels();
+            invTable.setModel(tmls.modeloInventarioByAll());
+            DetailsBienes.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton46ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
@@ -5807,6 +5843,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton43;
     private javax.swing.JButton jButton44;
     private javax.swing.JButton jButton45;
+    private javax.swing.JButton jButton46;
     private javax.swing.JButton jButton47;
     private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton49;

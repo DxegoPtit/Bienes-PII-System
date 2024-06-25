@@ -3300,22 +3300,22 @@ FROM
                 switch (TYPE) {
                     //Es entidad
                     case 0:
-                        sql = "SELECT id FROM entidades";
+                        sql = "SELECT '-' as id FROM entidades";
                         break;
 
                     //Es sector
                     case 1:
-                        sql = "SELECT id FROM sectores";
+                        sql = "SELECT id FROM entidades";
                         break;
 
                     //Es unidad
                     case 2:
-                        sql = "SELECT id FROM unidades";
+                        sql = "SELECT id FROM sectores";
                         break;
 
                     //Es servicio
                     case 3:
-                        sql = "SELECT id FROM servicios";
+                        sql = "SELECT id FROM unidades";
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -3355,22 +3355,22 @@ FROM
                 switch (TYPE) {
                     //Es entidad
                     case 0:
-                        sql = "SELECT nombre FROM entidades WHERE id = " + ID;
+                        sql = "SELECT '-' as nombre FROM entidades WHERE id = " + ID;
                         break;
 
                     //Es sector
                     case 1:
-                        sql = "SELECT nombre FROM sectores WHERE id = " + ID;
+                        sql = "SELECT nombre FROM entidades WHERE id = " + ID;
                         break;
 
                     //Es unidad
                     case 2:
-                        sql = "SELECT nombre FROM unidades WHERE id = " + ID;
+                        sql = "SELECT nombre FROM sectores WHERE id = " + ID;
                         break;
 
                     //Es servicio
                     case 3:
-                        sql = "SELECT nombre FROM servicios WHERE id = " + ID;
+                        sql = "SELECT nombre FROM unidades WHERE id = " + ID;
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -3412,7 +3412,7 @@ FROM
                         sql = "UPDATE entidades SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "'";
+                                + "parroquia = '" + newData[3] + "' WHERE id = " + newData[5];
                         break;
 
                     //Es sector
@@ -3420,7 +3420,7 @@ FROM
                         sql = "UPDATE sectores SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "', idEntidadAs = " + newData[4];
+                                + "parroquia = '" + newData[3] + "', idEntidadAs = " + newData[4] + " WHERE id = " + newData[5];
                         break;
 
                     //Es unidad
@@ -3428,7 +3428,7 @@ FROM
                         sql = "UPDATE unidades SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "', idSectorAs = " + newData[4];
+                                + "parroquia = '" + newData[3] + "', idSectorAs = " + newData[4]+ " WHERE id = " + newData[5];;
                         break;
 
                     //Es servicio
@@ -3436,7 +3436,7 @@ FROM
                         sql = "UPDATE servicios SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "', idUnidadAs = " + newData[4];
+                                + "parroquia = '" + newData[3] + "', idUnidadAs = " + newData[4]+ " WHERE id = " + newData[5];;
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);

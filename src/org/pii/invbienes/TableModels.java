@@ -608,7 +608,6 @@ public class TableModels {
             columnas.add("ID DEL ENTE");
             columnas.add("DESCRIPCION");
             columnas.add("TIPO DE ENTE");
-            columnas.add("ASOCIADO A");
         Vector<Vector<Object>> data = scc.dataEntes();
         
         dtm = new DefaultTableModel(data, columnas){

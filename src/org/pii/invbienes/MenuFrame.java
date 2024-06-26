@@ -310,6 +310,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jButton16 = new javax.swing.JButton();
+        jButton50 = new javax.swing.JButton();
         DetailsIncorporaciones = new javax.swing.JFrame();
         titlebar1 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
@@ -383,7 +384,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel28 = new javax.swing.JPanel();
         jToggleButton5 = new javax.swing.JToggleButton();
         jButton48 = new javax.swing.JButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
+        jButton51 = new javax.swing.JButton();
         jLabel71 = new javax.swing.JLabel();
         nActa = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
@@ -589,9 +590,6 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel54 = new javax.swing.JPanel();
         jPanel55 = new javax.swing.JPanel();
         jButton67 = new javax.swing.JButton();
-        jButton68 = new javax.swing.JButton();
-        jButton69 = new javax.swing.JButton();
-        jButton70 = new javax.swing.JButton();
         jPanel64 = new javax.swing.JPanel();
         jLabel76 = new javax.swing.JLabel();
         selectedLabel5 = new javax.swing.JLabel();
@@ -910,35 +908,44 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton50.setText("Eliminar Registro");
+        jButton50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton50ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(103, 103, 103))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton15)
-                .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton15)
+                    .addComponent(jButton50))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout sceneLayout = new javax.swing.GroupLayout(scene);
@@ -1553,10 +1560,10 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton6.setText("Eliminar Registro");
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton51.setText("ELIMINAR REGISTRO");
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+                jButton51ActionPerformed(evt);
             }
         });
 
@@ -1565,9 +1572,9 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel28Layout.setHorizontalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(103, 103, 103)
+                .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
                 .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1580,7 +1587,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
@@ -2445,7 +2452,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE))
                 .addGap(0, 184, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -2856,7 +2863,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel41, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel43, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel43, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 874, Short.MAX_VALUE)
                     .addComponent(jPanel42, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 184, Short.MAX_VALUE))
         );
@@ -3641,34 +3648,10 @@ public class MenuFrame extends javax.swing.JFrame {
         scenary1.addTab("FALTANTES", jScrollPane14);
 
         jButton67.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton67.setText("Ver Entidades");
+        jButton67.setText("Añadir un organismo");
         jButton67.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton67ActionPerformed(evt);
-            }
-        });
-
-        jButton68.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton68.setText("Ver Sectores Presupuestarios");
-        jButton68.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton68ActionPerformed(evt);
-            }
-        });
-
-        jButton69.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton69.setText("Ver Unidades de Trabajo");
-        jButton69.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton69ActionPerformed(evt);
-            }
-        });
-
-        jButton70.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton70.setText("Ver Servicios");
-        jButton70.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton70ActionPerformed(evt);
             }
         });
 
@@ -3677,28 +3660,16 @@ public class MenuFrame extends javax.swing.JFrame {
         jPanel55Layout.setHorizontalGroup(
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel55Layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton67, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton68, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton70, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton69, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(293, 293, 293)
+                .addComponent(jButton67, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel55Layout.setVerticalGroup(
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel55Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton67, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton70, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton68, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton69, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addComponent(jButton67, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
         );
 
         jLabel76.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -5158,15 +5129,68 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
         // TODO add your handling code here:
+        scc = new SqlControllerClass();
+
+        if (jToggleButton5.isSelected()) {
+            grupo4.setEnabled(true);
+            sgrp2.setEnabled(true);
+            seccion2.setEnabled(true);
+            desc2.setEnabled(true);
+            nActa.setEnabled(true);
+            concLista2.setEnabled(true);
+            costo2.setEnabled(true);
+            servCombo2.setEnabled(true);
+            fechatxt2.setEnabled(true);
+        } else {
+            grupo4.setEnabled(false);
+            sgrp2.setEnabled(false);
+            seccion2.setEnabled(false);
+            desc2.setEnabled(false);
+            nActa.setEnabled(false);
+            concLista2.setEnabled(false);
+            costo2.setEnabled(false);
+            servCombo2.setEnabled(false);
+            fechatxt2.setEnabled(false);
+
+            String item2, idConceptoExtraido2 = "";
+            item2 = concLista2.getSelectedItem().toString();
+            Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+            Matcher matcher = patron.matcher(item2);
+            while (matcher.find()) {
+                idConceptoExtraido2 += matcher.group();
+            }
+
+            String[] data = new String[]{
+                grupo4.getText(), //0
+                sgrp2.getText(), //1
+                seccion2.getText(), //2
+                desc2.getText(), //3
+                nActa.getText(), //4
+                concLista2.getSelectedItem().toString(), //5
+                idConceptoExtraido2, //6
+                costo2.getText(), //7
+                servCombo2.getSelectedItem().toString(),//8
+                fechatxt2.getText(),};
+
+            String noBien = nbien2.getText();
+
+            if (JOptionPane.showConfirmDialog(null, "¿Está seguro de proceder con los cambios?", "Confirme modificaciones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                if (scc.updateMvmt(noBien, data, 1)) {
+                    JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+                    tmls = new TableModels();
+                    desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                //Selecciono no
+            }
+        }
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton48ActionPerformed
-
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
 
     private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
         // TODO add your handling code here:
@@ -5475,18 +5499,6 @@ public class MenuFrame extends javax.swing.JFrame {
         entable.setModel(tmls.modeloEntes());
     }//GEN-LAST:event_jButton77ActionPerformed
 
-    private void jButton68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton68ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton68ActionPerformed
-
-    private void jButton69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton69ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton69ActionPerformed
-
-    private void jButton70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton70ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton70ActionPerformed
-
     private void comboIDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboIDItemStateChanged
         // TODO add your handling code here:
         scc = new SqlControllerClass();
@@ -5539,12 +5551,13 @@ public class MenuFrame extends javax.swing.JFrame {
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
         // TODO add your handling code here:
         DetailsEnte.setVisible(false);
+        asoc_txt.setText("");
     }//GEN-LAST:event_jButton49ActionPerformed
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
         // TODO add your handling code here:
         tmls = new TableModels();
-        invTable.setModel(tmls.modeloInventarioByAll());
+        invTable.setModel(tmls.modeloInventarioByDesincorporar());
 
     }//GEN-LAST:event_jButton44ActionPerformed
 
@@ -5573,6 +5586,33 @@ public class MenuFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton46ActionPerformed
+
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+        if (scc.deleteMovimiento(nbien.getText(), 2)) {
+            JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+            tmls = new TableModels();
+            invTable.setModel(tmls.modeloInventarioByAll());
+            DetailsBienes.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton50ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        // TODO add your handling code here:
+        scc = new SqlControllerClass();
+        if (scc.deleteMovimiento(nbien2.getText(), 1)) {
+            JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
+            tmls = new TableModels();
+            desinctable.setModel(tmls.modeloDesIncorporacionesByAll());
+            DetailsDesIncorporaciones.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton51ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
@@ -5904,6 +5944,8 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton48;
     private javax.swing.JButton jButton49;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
     private javax.swing.JButton jButton54;
     private javax.swing.JButton jButton55;
     private javax.swing.JButton jButton56;
@@ -5918,10 +5960,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton64;
     private javax.swing.JButton jButton65;
     private javax.swing.JButton jButton67;
-    private javax.swing.JButton jButton68;
-    private javax.swing.JButton jButton69;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton70;
     private javax.swing.JButton jButton77;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -6089,7 +6128,6 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JLabel labelVisualizando;
     private javax.swing.JLabel labelVisualizando2;

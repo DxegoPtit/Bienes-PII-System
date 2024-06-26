@@ -2731,6 +2731,19 @@ public class SqlControllerClass {
             String[] dataBien = data;
             String clasif = dataBien[0] + "-" + dataBien[1] + "-" + dataBien[2];
             String sql = "";
+            
+            /*
+            grupo4.getText(), //0
+                sgrp2.getText(), //1
+                seccion2.getText(), //2
+                desc2.getText(), //3
+                nActa.getText(), //4
+                concLista2.getSelectedItem().toString(), //5
+                idConceptoExtraido2, //6
+                costo2.getText(), //7
+                servCombo2.getSelectedItem().toString(),//8
+                fechatxt2.getText(),};
+            */
 
             if (TYPE == 0) {
                 //Para modificar una incorporacion
@@ -2752,11 +2765,11 @@ public class SqlControllerClass {
                 sql = "UPDATE movimientos SET "
                         + "clasificacion = '" + clasif + "',"
                         + "descripcion = '" + dataBien[3] + "',"
-                        + "concepto = '" + dataBien[6] + "',"
+                        + "concepto = '" + dataBien[5] + "',"
                         + "monto_bs = '" + dataBien[7] + "',"
                         + "nfactura = '',"
                         + "ordencompra = '',"
-                        + "actadesincorp = '" + dataBien[5] + "',"
+                        + "actadesincorp = '" + dataBien[4] + "',"
                         + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "),"
                         + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + ")), "
                         + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "))),"
@@ -3481,6 +3494,11 @@ FROM
                     //Es desincp
                     case 1:
                         sql = "DELETE FROM movimientos WHERE nbien = '" + nBien + "'";
+                        break;
+                        
+                    //Es bienes
+                    case 2:
+                        sql = "DELETE FROM bienes WHERE nbien = '" + nBien + "'";
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de movimiento es inválido", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);

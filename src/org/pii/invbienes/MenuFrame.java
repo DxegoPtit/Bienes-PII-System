@@ -659,6 +659,7 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton77 = new javax.swing.JButton();
         jScrollPane16 = new javax.swing.JScrollPane();
         jPanel17 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
 
         AccountMgr.setTitle("Cambiar contraseña de usuario .:: Sistema de Inventario de Bienes de PII ::.");
         AccountMgr.setLocationByPlatform(true);
@@ -4139,15 +4140,23 @@ public class MenuFrame extends javax.swing.JFrame {
 
         scenary1.addTab("ORGANISMOS", jScrollPane15);
 
+        jLabel46.setText("FUNCION NO DESARROLLADA");
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1110, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(jLabel46)
+                .addContainerGap(579, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(337, 337, 337)
+                .addComponent(jLabel46)
+                .addContainerGap(415, Short.MAX_VALUE))
         );
 
         jScrollPane16.setViewportView(jPanel17);
@@ -6613,6 +6622,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;

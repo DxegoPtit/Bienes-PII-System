@@ -1439,6 +1439,58 @@ public class SqlControllerClass {
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         }
                         break;
+                        case 3:
+                        // ESTO ES PARA FALTANTES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Faltantes.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery4 = "SELECT "
+                                + "a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion AS ubic,"
+                                + "servicios.estado AS estado,"
+                                + "servicios.municipio AS munip,"
+                                + "servicios.parroquia AS parroq,"
+                                + "a.idServicio AS idServ,"
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + "FROM"
+                                + " movimientos AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id "
+                                + "LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id "
+                                + "WHERE a.idServicio = " + idServicio + " AND concepto = '60' "
+                                + " ORDER BY"
+                                + " a.idServicio ASC";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query4 = new JRDesignQuery();
+                        query4.setText(newQuery4);
+                        jasperDesign4.setQuery(query4);
+
+                        //-----------//
+                        JasperReport report4 = JasperCompileManager.compileReport(jasperDesign4);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters4 = new HashMap<>();
+                        parameters4.put("fecha", FECHA);
+
+                        JasperPrint jprint4 = JasperFillManager.fillReport(report4, parameters4, con);
+
+                        jvw = new JasperViewer(jprint4, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                         break;
@@ -1730,6 +1782,58 @@ public class SqlControllerClass {
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         }
                         break;
+                    case 3:
+                        // ESTO ES PARA FALTANTES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Faltantes.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery4 = "SELECT "
+                                + "a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion AS ubic,"
+                                + "servicios.estado AS estado,"
+                                + "servicios.municipio AS munip,"
+                                + "servicios.parroquia AS parroq,"
+                                + "a.idServicio AS idServ,"
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + "FROM"
+                                + " movimientos AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id "
+                                + "LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id "
+                                + "WHERE a.idUnidad = " + idUnidad + " AND concepto = '60' "
+                                + " ORDER BY"
+                                + " a.idServicio ASC";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query4 = new JRDesignQuery();
+                        query4.setText(newQuery4);
+                        jasperDesign4.setQuery(query4);
+
+                        //-----------//
+                        JasperReport report4 = JasperCompileManager.compileReport(jasperDesign4);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters4 = new HashMap<>();
+                        parameters4.put("fecha", FECHA);
+
+                        JasperPrint jprint4 = JasperFillManager.fillReport(report4, parameters4, con);
+
+                        jvw = new JasperViewer(jprint4, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                         break;
@@ -2018,6 +2122,59 @@ public class SqlControllerClass {
 
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         }
+                        break;
+                        
+                        case 3:
+                        // ESTO ES PARA FALTANTES!!!
+
+                        // Load the JRXML file
+                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Faltantes.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery4 = "SELECT "
+                                + "a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion AS ubic,"
+                                + "servicios.estado AS estado,"
+                                + "servicios.municipio AS munip,"
+                                + "servicios.parroquia AS parroq,"
+                                + "a.idServicio AS idServ,"
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + "FROM"
+                                + " movimientos AS a"
+                                + " INNER JOIN servicios ON a.idServicio = servicios.id"
+                                + " LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id"
+                                + " LEFT JOIN sectores ON unidades.idSectorAs = sectores.id "
+                                + "LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id "
+                                + "WHERE a.idSector = " + idSector + " AND concepto = '60' "
+                                + " ORDER BY"
+                                + " a.idServicio ASC";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query4 = new JRDesignQuery();
+                        query4.setText(newQuery4);
+                        jasperDesign4.setQuery(query4);
+
+                        //-----------//
+                        JasperReport report4 = JasperCompileManager.compileReport(jasperDesign4);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters4 = new HashMap<>();
+                        parameters4.put("fecha", FECHA);
+
+                        JasperPrint jprint4 = JasperFillManager.fillReport(report4, parameters4, con);
+
+                        jvw = new JasperViewer(jprint4, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -2319,7 +2476,7 @@ public class SqlControllerClass {
 
                         // ESTO ES PARA BIENES!!!
                         // Load the JRXML file
-                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
+                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Faltantes.jrxml").getFile());
 
                         // Create a new query
                         String newQuery4 = "SELECT "
@@ -2327,7 +2484,6 @@ public class SqlControllerClass {
                                 + "a.nbien AS nroBien,"
                                 + "a.descripcion AS descBien,"
                                 + "a.monto_bs AS mntBien,"
-                                + "a.concepto AS idConcepto,"
                                 + "servicios.nombre AS nomServicio,"
                                 + "unidades.nombre AS nomUnidad,"
                                 + "sectores.nombre AS nomSector,"
@@ -2662,7 +2818,7 @@ public class SqlControllerClass {
                     + "movimientos.concepto AS conc "
                     + "FROM movimientos "
                     + "WHERE"
-                    + " movimientos.nbien = '60'");
+                    + " movimientos.nbien = '"+BID+"' AND movimientos.concepto = '60'");
 
             String[] data;
 
@@ -3240,7 +3396,7 @@ public class SqlControllerClass {
                         pstmt = con.prepareStatement(sql);
                         pstmt.setString(1, datas[0]);
                         pstmt.setString(2, datas[1]);
-                        pstmt.setString(3, "'60'");
+                        pstmt.setString(3, "60");
                         pstmt.setString(4, datas[2]);
                         pstmt.setString(5, datas[3]);
                         pstmt.setString(6, "");

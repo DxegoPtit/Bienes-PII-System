@@ -12,7 +12,6 @@
     a.nbien AS nroBien,
     a.descripcion AS descBien,
     a.monto_bs AS mntBien,
-    a.concepto AS idConcepto,
     servicios.nombre AS nomServicio,
     unidades.nombre AS nomUnidad,
     sectores.nombre AS nomSector,

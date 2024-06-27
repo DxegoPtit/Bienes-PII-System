@@ -118,6 +118,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 //Para desincorporaciones
                 scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro);
                 break;
+            case 3:
+                //Para faltantes
+                scc.reportBienesByServicio(FECHA, TYPE, idServicio, conceptoNro);
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                 ;
@@ -141,6 +145,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 //Para desincorporaciones
                 scc.reportBienesByUnidad(FECHA, TYPE, idUnidad, conceptoNro);
                 break;
+            case 3:
+                //Para faltantes
+                scc.reportBienesByServicio(FECHA, TYPE, idUnidad, conceptoNro);
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "VALOR PARA GENERAR REPORTE NO VÁLIDO", ".::ERROR - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                 ;
@@ -162,6 +170,10 @@ public class MenuFrame extends javax.swing.JFrame {
                 break;
             case 2:
                 //Para desincorporaciones
+                scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro);
+                break;
+            case 3:
+                //Para faltantes
                 scc.reportBienesBySector(FECHA, TYPE, idSector, conceptoNro);
                 break;
             default:
@@ -3650,6 +3662,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton59.setText("Generar Reporte");
+        jButton59.setEnabled(false);
         jButton59.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton59ActionPerformed(evt);
@@ -3685,6 +3698,11 @@ public class MenuFrame extends javax.swing.JFrame {
         jTabbedPane2.addTab("POR ENTIDAD", jPanel31);
 
         sectoresList1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        sectoresList1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sectoresList1ActionPerformed(evt);
+            }
+        });
 
         jButton60.setText("VISUALIZAR");
         jButton60.addActionListener(new java.awt.event.ActionListener() {
@@ -3694,6 +3712,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton61.setText("Generar Reporte");
+        jButton61.setEnabled(false);
         jButton61.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton61ActionPerformed(evt);
@@ -3738,6 +3757,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton63.setText("Generar Reporte");
+        jButton63.setEnabled(false);
         jButton63.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton63ActionPerformed(evt);
@@ -3782,6 +3802,7 @@ public class MenuFrame extends javax.swing.JFrame {
         });
 
         jButton65.setText("Generar Reporte");
+        jButton65.setEnabled(false);
         jButton65.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton65ActionPerformed(evt);
@@ -5552,6 +5573,10 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
         // TODO add your handling code here:
+        AddingFaltante adf = new AddingFaltante();
+        adf.setLocationRelativeTo(null);
+        adf.setVisible(true);
+        adf.setiduser(user_data[1]);
     }//GEN-LAST:event_jButton56ActionPerformed
 
     private void faltableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_faltableMouseClicked
@@ -5608,7 +5633,7 @@ public class MenuFrame extends javax.swing.JFrame {
         String item;
         String idExtraido = "";
 
-        item = entidadesList.getSelectedItem().toString();
+        item = entidadesList1.getSelectedItem().toString();
 
         Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
         Matcher matcher = patron.matcher(item);
@@ -5628,7 +5653,7 @@ public class MenuFrame extends javax.swing.JFrame {
         // Imprimir la fecha formateada por consola
         System.out.println("Fecha actual formateada: " + fechaFormateada);
 
-        callReportBienesByEntidades(fechaFormateada, BIENES, idExtraido, "");
+        callReportBienesByEntidades(fechaFormateada, 3, idExtraido, "");
     }//GEN-LAST:event_jButton59ActionPerformed
 
     private void jButton60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton60ActionPerformed
@@ -5654,6 +5679,31 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton61ActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = sectoresList1.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesBySector(fechaFormateada, 3, idExtraido, "");
     }//GEN-LAST:event_jButton61ActionPerformed
 
     private void jButton62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton62ActionPerformed
@@ -5679,6 +5729,31 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton63ActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = sectoresList.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesBySector(fechaFormateada, 3, idExtraido, "");
     }//GEN-LAST:event_jButton63ActionPerformed
 
     private void jButton64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton64ActionPerformed
@@ -5704,6 +5779,31 @@ public class MenuFrame extends javax.swing.JFrame {
 
     private void jButton65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton65ActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        String item;
+        String idExtraido = "";
+
+        item = unidadesList1.getSelectedItem().toString();
+
+        Pattern patron = Pattern.compile("\\d+"); // Busca uno o mas digitos de tipo entero
+        Matcher matcher = patron.matcher(item);
+
+        while (matcher.find()) {
+            idExtraido += matcher.group();
+        }
+
+        Date fechaActual = new Date();
+
+        // Crear un formato de fecha personalizado
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy");
+
+        // Formatear la fecha actual como una cadena
+        String fechaFormateada = formatoFecha.format(fechaActual);
+
+        // Imprimir la fecha formateada por consola
+        System.out.println("Fecha actual formateada: " + fechaFormateada);
+
+        callReportBienesBySector(fechaFormateada, 3, idExtraido, "");
     }//GEN-LAST:event_jButton65ActionPerformed
 
     private void jButton67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton67ActionPerformed
@@ -6035,7 +6135,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 if (scc.updateMvmt(noBien, data, 2)) {
                     JOptionPane.showMessageDialog(null, "Se han realizado cambios con exito", ".:: INFORMACION ::.", JOptionPane.INFORMATION_MESSAGE);
                     tmls = new TableModels();
-                    faltable.setModel(tmls.modeloDesIncorporacionesByAll());
+                    faltable.setModel(tmls.modeloFaltantesByAll());
                 } else {
                     JOptionPane.showMessageDialog(null, "Ha ocurrido un error al actualizar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
                 }
@@ -6063,6 +6163,10 @@ public class MenuFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al eliminar", ".:: ERROR ::.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton53ActionPerformed
+
+    private void sectoresList1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectoresList1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sectoresList1ActionPerformed
 
     private void setEntesDetails(String byID) {
         scc = new SqlControllerClass();
@@ -6265,7 +6369,7 @@ public class MenuFrame extends javax.swing.JFrame {
         fechatxt3.setText(data[9]);
 
         servCombo3.setModel(scc.getServicios());
-        String[] ente = scc.getRutaEntes(servCombo2.getSelectedItem().toString());
+        String[] ente = scc.getRutaEntes(servCombo3.getSelectedItem().toString());
         entidadTxt2.setText(ente[0]);
         sectorTxt2.setText(ente[1]);
         unidadTxt2.setText(ente[2]);

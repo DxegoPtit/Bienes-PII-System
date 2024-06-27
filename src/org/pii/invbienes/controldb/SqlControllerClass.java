@@ -2313,6 +2313,61 @@ public class SqlControllerClass {
                             //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
                         }
                         break;
+                        
+                    case 3:
+                        System.out.println("I'M HERE (Faltantes por entidad)");
+
+                        // ESTO ES PARA BIENES!!!
+                        // Load the JRXML file
+                        JasperDesign jasperDesign4 = JRXmlLoader.load(getClass().getResource("/reportes/Bienesv2.jrxml").getFile());
+
+                        // Create a new query
+                        String newQuery4 = "SELECT "
+                                + "a.clasificacion AS clasificacion,"
+                                + "a.nbien AS nroBien,"
+                                + "a.descripcion AS descBien,"
+                                + "a.monto_bs AS mntBien,"
+                                + "a.concepto AS idConcepto,"
+                                + "servicios.nombre AS nomServicio,"
+                                + "unidades.nombre AS nomUnidad,"
+                                + "sectores.nombre AS nomSector,"
+                                + "entidades.nombre AS nomEntidad,"
+                                + "servicios.ubicacion as ubic,"
+                                + "servicios.estado as estado,"
+                                + "servicios.municipio as munip,"
+                                + "servicios.parroquia as parroq,"
+                                + "a.idServicio as idServ, "
+                                + "( SELECT sum( monto_bs ) FROM movimientos AS b WHERE b.idServicio = a.idServicio ) AS costo_aq "
+                                + " FROM "
+                                + "movimientos AS a "
+                                + "INNER JOIN servicios ON a.idServicio = servicios.id "
+                                + "LEFT JOIN unidades ON servicios.idUnidadAs = unidades.id " 
+                                + "LEFT JOIN sectores ON unidades.idSectorAs = sectores.id "
+                                + "LEFT JOIN entidades ON sectores.idEntidadAs = entidades.id "
+                                + "WHERE "
+                                + "a.concepto = '60' "
+                                + "ORDER BY a.idServicio ASC";
+
+                        // Set the new query in the JasperDesign
+                        JRDesignQuery query4 = new JRDesignQuery();
+                        query4.setText(newQuery4);
+                        jasperDesign4.setQuery(query4);
+
+                        //-----------//
+                        JasperReport report4 = JasperCompileManager.compileReport(jasperDesign4);
+
+                        // Crear parámetros para el informe
+                        Map<String, Object> parameters4 = new HashMap<>();
+                        parameters4.put("fecha", FECHA);
+
+                        JasperPrint jprint4 = JasperFillManager.fillReport(report4, parameters4, con);
+
+                        jvw = new JasperViewer(jprint4, false);
+                        jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        jvw.setVisible(true);
+
+                        //JasperExportManager.exportReportToPdfFile(jprint, "path/to/your/report.pdf");
+                        break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: ACCIÓN NO VÁLIDA", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                         break;
@@ -2362,6 +2417,33 @@ public class SqlControllerClass {
             if (openCon() != null) {
 
                 JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/DesIncorporaciones.jasper"));
+
+                // Crear parámetros para el informe
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("fecha", FECHA);
+
+                JasperPrint jprint = JasperFillManager.fillReport(report, parameters, con);
+
+                jvw = new JasperViewer(jprint, false);
+                jvw.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                jvw.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR AL GENERAR REPORTE", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } finally {
+            closeCon();
+        }
+    }
+
+    public void reportFaltantes(String FECHA) {
+        try {
+            if (openCon() != null) {
+
+                JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/Faltantes.jasper"));
 
                 // Crear parámetros para el informe
                 Map<String, Object> parameters = new HashMap<>();
@@ -2563,6 +2645,53 @@ public class SqlControllerClass {
         }
     }
 
+    public String[] FaltanteData(String BID) {
+        try {
+            openCon();
+            Statement stm = con.createStatement();
+            ResultSet rst = stm.executeQuery("SELECT "
+                    + "movimientos.clasificacion AS clasif, "
+                    + "movimientos.nbien AS nb, "
+                    + "movimientos.descripcion AS `desc`, "
+                    + "movimientos.monto_bs AS montobs,"
+                    + "movimientos.idEntidad AS identidad, "
+                    + "movimientos.idSector AS idsector, "
+                    + "movimientos.idUnidad AS idunidad, "
+                    + "movimientos.idServicio AS idservicio, "
+                    + "movimientos.fecha_mov AS fecha,"
+                    + "movimientos.concepto AS conc "
+                    + "FROM movimientos "
+                    + "WHERE"
+                    + " movimientos.nbien = '60'");
+
+            String[] data;
+
+            if (rst.next()) {
+                data = new String[]{
+                    rst.getString("clasif"),
+                    rst.getString("nb"),
+                    rst.getString("desc"),
+                    rst.getString("montobs"),
+                    rst.getString("identidad"),
+                    rst.getString("idsector"),
+                    rst.getString("idunidad"),
+                    rst.getString("idservicio"),
+                    rst.getString("fecha"),
+                    rst.getString("conc")
+                };
+                return data;
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeCon();
+        }
+    }
+
     public String getWorker(String ID) {
         try {
             openCon();
@@ -2731,7 +2860,7 @@ public class SqlControllerClass {
             String[] dataBien = data;
             String clasif = dataBien[0] + "-" + dataBien[1] + "-" + dataBien[2];
             String sql = "";
-            
+
             /*
             grupo4.getText(), //0
                 sgrp2.getText(), //1
@@ -2743,8 +2872,7 @@ public class SqlControllerClass {
                 costo2.getText(), //7
                 servCombo2.getSelectedItem().toString(),//8
                 fechatxt2.getText(),};
-            */
-
+             */
             if (TYPE == 0) {
                 //Para modificar una incorporacion
                 sql = "UPDATE movimientos SET "
@@ -2774,6 +2902,17 @@ public class SqlControllerClass {
                         + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + ")), "
                         + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[8] + "))),"
                         + "fecha_mov = '" + dataBien[9] + "' "
+                        + "WHERE movimientos.nbien = '" + byNBien + "'";
+            } else if (TYPE == 2) {
+                //Para modificar una desincorporacion
+                sql = "UPDATE movimientos SET "
+                        + "clasificacion = '" + clasif + "',"
+                        + "descripcion = '" + dataBien[3] + "',"
+                        + "monto_bs = '" + dataBien[4] + "',"
+                        + "idUnidad = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[5] + "),"
+                        + "idSector = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[5] + ")), "
+                        + "idEntidad = (SELECT idEntidadAs FROM sectores WHERE id = (SELECT idSectorAs FROM unidades WHERE id = (SELECT idUnidadAs FROM servicios WHERE id = " + dataBien[5] + "))),"
+                        + "fecha_mov = '" + dataBien[6] + "' "
                         + "WHERE movimientos.nbien = '" + byNBien + "'";
             }
 
@@ -2942,6 +3081,25 @@ public class SqlControllerClass {
                     } else {
                         return false;
                     }
+                case 3:
+                    //Verifica en faltantes
+                    if (openCon() != null) {
+                        if (openCon() != null) {
+                            Statement stm = con.createStatement();
+                            ResultSet rst = stm.executeQuery("SELECT * FROM movimientos WHERE nbien = '" + nroBien + "' AND concepto = '60'");
+                            if (rst.next()) {
+                                System.out.println("EXISTENCIA DE FALTANTE ENCONTRADA");
+                                return true;
+                            } else {
+                                System.out.println("EXISTENCIA DE FALTANTE NO ENCONTRADA");
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
                 default:
                     JOptionPane.showMessageDialog(null, "Tipo de consulta no válida", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                     return false;
@@ -3032,6 +3190,76 @@ public class SqlControllerClass {
                         } else {
                             return false;
                         }
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            closeCon();
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    //---------------AÑADIR UNA DESINCORPORACION--------------------------------------//
+    public boolean addFaltantes(String[] datas) {
+        /*
+                clasif,//0
+                nrobien,//1
+                descrip,//2
+                valor,//3
+                idServicio,//4
+                fecha,//5
+                iduser//6
+         */
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = openCon();
+            if (con != null) {
+                String[] data = getentsIDs(datas[4]);
+                if (data != null) {
+                    if (verifyExistencia(datas[1], 2, "")) {
+                        return false;
+                    } else {
+                        String sql = "INSERT INTO piibienes.movimientos "
+                                + "(clasificacion, nbien, concepto, descripcion, monto_bs, nfactura, ordencompra, actadesincorp, idusuario, identidad, idsector, idunidad, idservicio, fecha_mov) "
+                                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        pstmt = con.prepareStatement(sql);
+                        pstmt.setString(1, datas[0]);
+                        pstmt.setString(2, datas[1]);
+                        pstmt.setString(3, "'60'");
+                        pstmt.setString(4, datas[2]);
+                        pstmt.setString(5, datas[3]);
+                        pstmt.setString(6, "");
+                        pstmt.setString(7, "");
+                        pstmt.setString(8, "");
+                        pstmt.setString(9, datas[6]);
+                        pstmt.setString(10, data[0]);
+                        pstmt.setString(11, data[1]);
+                        pstmt.setString(12, data[2]);
+                        pstmt.setString(13, datas[4]);
+                        pstmt.setString(14, datas[5]);
+                        
+                        int i = pstmt.executeUpdate();
+                        if (i != 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
                     }
                 } else {
                     return false;
@@ -3441,7 +3669,8 @@ FROM
                         sql = "UPDATE unidades SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "', idSectorAs = " + newData[4]+ " WHERE id = " + newData[5];;
+                                + "parroquia = '" + newData[3] + "', idSectorAs = " + newData[4] + " WHERE id = " + newData[5];
+                        ;
                         break;
 
                     //Es servicio
@@ -3449,7 +3678,8 @@ FROM
                         sql = "UPDATE servicios SET nombre = '" + newData[0] + "', "
                                 + "estado = '" + newData[1] + "', "
                                 + "municipio = '" + newData[2] + "', "
-                                + "parroquia = '" + newData[3] + "', idUnidadAs = " + newData[4]+ " WHERE id = " + newData[5];;
+                                + "parroquia = '" + newData[3] + "', idUnidadAs = " + newData[4] + " WHERE id = " + newData[5];
+                        ;
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de Ente es nulo o inválido, intente con otro tipo", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
@@ -3495,11 +3725,17 @@ FROM
                     case 1:
                         sql = "DELETE FROM movimientos WHERE nbien = '" + nBien + "'";
                         break;
-                        
+
                     //Es bienes
                     case 2:
                         sql = "DELETE FROM bienes WHERE nbien = '" + nBien + "'";
                         break;
+
+                    //Es faltante
+                    case 3:
+                        sql = "DELETE FROM movimientos WHERE nbien = '" + nBien + "'";
+                        break;
+
                     default:
                         JOptionPane.showMessageDialog(null, "ERROR: El tipo de movimiento es inválido", ".::ERROR CRÍTICO - Sistema de Inventario de Bienes del Programa de Informática Integral::.", JOptionPane.ERROR_MESSAGE);
                         sql = null;
